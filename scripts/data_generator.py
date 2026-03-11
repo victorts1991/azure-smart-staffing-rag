@@ -4,13 +4,18 @@ from faker import Faker
 from datetime import datetime, timedelta
 
 # Inicializa o Faker para gerar nomes e endereços brasileiros
-
 fake = Faker('pt_BR')
 
+def mask_cpf(cpf):
+    # Transforma 785.069.142-30 em 785.***.***-30
+    parts = cpf.split('.')
+    # Captura o sufixo após o último ponto e traço
+    suffix = parts[2].split('-')[1]
+    return f"{parts[0]}.***.***-{suffix}"
+    
 def generate_vigilante_data(n_records=400):
     vigilantes = []
 
-    # Pool de certificações reais do setor de segurança armada
     certificacoes_pool = [
         "Vigilância Patrimonial", 
         "Transporte de Valores", 
@@ -23,16 +28,17 @@ def generate_vigilante_data(n_records=400):
     escalas_pool = ["12x36 Dia", "12x36 Noite", "5x2 Comercial"]
 
     for i in range(n_records):
-        # Gera data de reciclagem (algumas vencidas para testar os filtros da IA)
+        # MOVIDO PARA DENTRO DO LOOP: Cada iteração gera um CPF novo
+        raw_cpf = fake.cpf()
+        masked_cpf = mask_cpf(raw_cpf)
+
         data_reciclagem = fake.date_between(start_date='-1y', end_date='+2y')
-        
-        # Sorteia de 1 a 3 cursos para cada vigilante
         cursos = random.sample(certificacoes_pool, k=random.randint(1, 3))
         
         vigilante = {
             "id_funcional": f"VIG-{10000 + i}",
             "nome_completo": fake.name(),
-            "cpf": fake.cpf(),
+            "cpf": masked_cpf,
             "vencimento_reciclagem": data_reciclagem.strftime('%Y-%m-%d'),
             "certificacoes": ", ".join(cursos),
             "nota_performance": round(random.uniform(6.5, 10.0), 1),
@@ -44,9 +50,7 @@ def generate_vigilante_data(n_records=400):
 
     return pd.DataFrame(vigilantes)
 
-
 def create_sample_scale(df_vigilantes):
-    # Seleciona os primeiros vigilantes para simular quem precisa de cobertura (ex: João de Deus)
     escala = df_vigilantes.head(10).copy()
     escala['posto_atual'] = "Posto Bancário Centro - Agência " + fake.city()
     escala['data_inicio_ferias'] = (datetime.now() + timedelta(days=2)).strftime('%Y-%m-%d')
@@ -55,11 +59,9 @@ def create_sample_scale(df_vigilantes):
 if __name__ == "__main__":
     print("⏳ Iniciando geração da massa de dados sintéticos...")
 
-    # 1. Gerar base total (os substitutos)
     df_total = generate_vigilante_data(400)
     df_total.to_csv('base_vigilantes_ativos.csv', index=False, encoding='utf-8-sig')
 
-    # 2. Gerar escala de teste (os que sairão de férias)
     df_escala = create_sample_scale(df_total)
     df_escala.to_csv('escala_atual.csv', index=False, encoding='utf-8-sig')
 

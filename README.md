@@ -1,66 +1,115 @@
-# Azure-SmartStaffing-RAG 🛡️
+# Azure Smart Staffing RAG 🛡️
 
-### Sistema Inteligente de Alocação de Vigilantes e Gestão de Férias com IA Generativa
+Sistema Inteligente de Alocação de Vigilantes e Gestão de Férias utilizando arquitetura **RAG (Retrieval-Augmented Generation)**, focado em conformidade legal e otimização logística para o setor de segurança armada.
 
-Este projeto implementa uma arquitetura **RAG (Retrieval-Augmented Generation)** de ponta a ponta para resolver um dos maiores gargalos logísticos em empresas de segurança patrimonial e facilities: a **realocação tática de colaboradores para cobertura de férias e faltas**.
+## 🚀 Objetivo
 
-## 📖 O Cenário de Negócio
+O projeto resolve o gargalo de realocação tática de colaboradores. Ele utiliza busca híbrida para encontrar o substituto ideal baseado em geolocalização, validade de reciclagem da Polícia Federal e cursos de extensão, utilizando o **GPT-4o** para justificar a escolha ao gestor de operações.
 
-Em operações de segurança armada, a substituição de um vigilante não é apenas uma questão de escala, mas de **conformidade legal**. O sistema automatiza o "match" entre o posto e o substituto ideal, processando planilhas de RH para garantir que critérios como vencimento de reciclagem (Polícia Federal), cursos de extensão (VSPP, Escolta), geolocalização e performance sejam respeitados em milissegundos.
+## 🛠️ Stack Tecnológica
 
-## 🛠️ Stack Tecnológica & Requisitos Técnicos
+* **Linguagem:** Python 3.11+
+* **Framework:** FastAPI & LangChain
+* **IA Generativa:** Azure OpenAI (GPT-4o & Text-Embeddings)
+* **Busca Inteligente:** Azure AI Search (Hybrid Search & Scoring Profiles)
+* **Infraestrutura:** Terraform (Modular Design) & Kubernetes (AKS)
+* **Segurança:** Azure RBAC (Managed Identities) & Private Endpoints
+* **CI/CD:** GitHub Actions
+* **Dados:** Azure Blob Storage & Azure Functions (Event-Driven Ingestion)
 
-O projeto demonstra proficiência nos requisitos de nível enterprise exigidos:
+---
 
-* **IA Generativa:** Azure OpenAI (GPT-4o) para síntese e Embeddings para busca semântica.
-* **Busca Inteligente:** **Azure AI Search** com design de índices complexos, filtros e **Hybrid Search** (Keyword + Vetores).
-* **Engine:** FastAPI orquestrando o fluxo RAG com LangChain.
-* **Segurança (Zero Trust):** Implementação de **Private Endpoints**, **Managed Identities (RBAC)** e isolamento de rede via VNet.
-* **Infraestrutura:** 100% via **Terraform** e deploy automatizado por **GitHub Actions**.
+## 🗺️ Roadmap de Desenvolvimento
+
+### 1. Engenharia de Dados & Dataset (Camada Zero)
+
+* [x] **Setup de Gerador Sintético:** Script Python utilizando biblioteca `Faker` para criação de massa de dados.
+* [x] **Compliance LGPD (Data Masking):** Implementação de máscara em campos sensíveis (CPF: `785.***.***-30`) para proteção de PII.
+* [x] **Dicionário de Dados:** Definição de atributos críticos (Certificações, Reciclagem PF e Geolocalização).
+* [x] **Cenários de Teste:** Geração de arquivos `base_vigilantes_ativos.csv` (substitutos) e `escala_atual.csv` (operacional).
+
+### 2. Infraestrutura como Código (Terraform Modular)
+
+* [ ] **Setup de Provedores:** Configuração do Azure Provider e Backend Remoto para `.tfstate`.
+* [ ] **Módulo de Cluster:** Provisionamento do **Azure Kubernetes Service (AKS)** e Container Registry (ACR).
+* [ ] **Módulo de Storage:** Provisionamento de Blob Storage e Containers de Ingestão (`rh-uploads`).
+* [ ] **Módulo de IA:** Deployment do Azure OpenAI e Azure AI Search (SKU Standard).
+* [ ] **Módulo de Networking:** Configuração de VNet e Private Endpoints (Zero Trust).
+* [ ] **Segurança RBAC:** Implementação de Managed Identities para acesso passwordless.
+
+### 3. Ingestão e Processamento (Event-Driven ETL)
+
+* [ ] **Azure Function (Blob Trigger):** Função Serverless para captura e processamento automático de CSVs.
+* [ ] **Normalização:** Lógica de tratamento de dados brutos para formato JSON compatível com o Search.
+* [ ] **Index Design:** Configuração de campos filtráveis, facetáveis e vetoriais (Embeddings).
+* [ ] **Scoring Profiles:** Regras de negócio para boost de performance e proximidade.
+
+### 4. Engine RAG & API (FastAPI no AKS)
+
+* [ ] **Containerização:** Criação de Dockerfile otimizado para a API de orquestração.
+* [ ] **Setup de API:** Servidor FastAPI com documentação Swagger e integração LangChain.
+* [ ] **Retrieval Strategy:** Implementação de Busca Híbrida (Vetor + Keyword).
+* [ ] **Orquestração LLM:** Síntese de resposta com GPT-4o e justificativa de escolha.
+
+### 5. Automação e DevOps (GitHub Actions)
+
+* [ ] **CI Pipeline:** Linting, Docker Build e Push para o ACR.
+* [ ] **CD Pipeline:** Deploy automatizado no AKS com atualização de imagem.
+* [ ] **IaC Pipeline:** Automação do ciclo de vida da infraestrutura via Terraform.
+
+---
 
 ## 🏗️ Arquitetura do Sistema
 
-1. **Ingestão:** Planilhas CSV geradas pelo RH são carregadas no **Azure Blob Storage**.
-2. **Trigger & ETL:** Uma **Azure Function** detecta o upload, normaliza os dados e os envia para o índice.
-3. **Indexação:** O **Azure AI Search** vetoriza os perfis e armazena metadados técnicos.
-4. **Consumo:** O gestor consulta o **FastAPI**, que busca o melhor candidato e gera a justificativa via LLM.
+1. **Ingestão (Serverless):** O upload do CSV para o **Blob Storage** dispara uma **Azure Function**. Esta função processa o arquivo e alimenta o índice do **Azure AI Search**.
+2. **Orquestração (Containers):** A aplicação **FastAPI** roda em **Azure Kubernetes Service (AKS)**, garantindo escalabilidade e baixa latência para as consultas.
+3. **Processo RAG:**
+* O usuário solicita uma substituição via API.
+* A API consulta o **AI Search** (Busca Híbrida) filtrando por compliance e relevância.
+* Os resultados são enviados ao **Azure OpenAI** que gera a resposta final fundamentada.
+
+---
+
+## 🛠️ Guia de Execução Local
+
+### 1. Geração da Massa de Dados
+
+```bash
+python -m venv venv
+source venv/bin/activate  # venv\Scripts\activate no Windows
+pip install -r requirements.txt
+python scripts/data_generator.py
+
+```
+
+### 2. Provisionamento da Infraestrutura
+
+```bash
+cd terraform
+terraform init
+terraform apply -auto-approve
+
+```
+
+---
+
+## 🔐 Segurança e Compliance
+
+* **Zero Trust:** Comunicação entre AKS, Functions e Serviços de IA via **Managed Identities**.
+* **Isolamento:** Uso de Private Endpoints para garantir que o tráfego de dados não transite pela internet pública.
+* **LGPD:** Mascaramento de dados sensíveis na camada de geração de dataset sintético.
+
+---
 
 ## 📁 Estrutura do Repositório
 
 ```text
-├── .github/workflows/          # CI/CD: Terraform e App Deploy
-├── terraform/                  # IaC: Infraestrutura de Rede e Serviços AI
+├── .github/workflows/          # Automação de Infra e Deploy
+├── terraform/                  # Módulos IaC (AKS, Storage, AI, Network)
 ├── scripts/
-│   └── data_generator.py       # Gerador de dados sintéticos para testes (LGPD Compliance)
-├── azure_functions/            # Ingestão serverless de CSV para o Search
-├── app/                        # FastAPI: Orquestrador RAG e LangChain
+│   └── data_generator.py       # Gerador de massa de dados sintéticos
+├── azure_functions/            # Ingestão assíncrona (Blob -> Search)
+├── app/                        # FastAPI (Container): Lógica RAG e LangChain
 └── README.md
-
-```
-
-## 🛡️ Segurança e Compliance
-
-* **Managed Identities (RBAC):** Comunicação entre serviços via Identidade Gerenciada, eliminando chaves (secrets) expostas no código.
-* **Azure Private Link:** Tráfego de dados entre Storage, Function e Search isolado da internet pública.
-* **Audit Log:** Rastreabilidade completa de todas as consultas realizadas no motor de recomendação.
-
----
-
-## 🛠️ Comandos de Execução Local
-
-Vá para a raiz do projeto no terminal e siga o fluxo abaixo para validar o microserviço:
-
-```bash
-# 1. Configurar o ambiente Python
-python -m venv venv
-
-# No Linux ou macOS
-source venv/bin/activate
-# No Windows (Prompt de Comando - CMD)
-venv\Scripts\activate
-# No Windows (PowerShell)
-.\venv\Scripts\Activate.ps1
-
-pip install -r app/requirements.txt
 
 ```

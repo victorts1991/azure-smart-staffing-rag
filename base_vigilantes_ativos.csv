@@ -1,401 +1,401 @@
 ﻿id_funcional,nome_completo,cpf,vencimento_reciclagem,certificacoes,nota_performance,cep_base,escala_atual,ultimo_posto
-VIG-10000,Isabel Pacheco,785.069.142-30,2028-01-27,"Monitoramento de CFTV, Escolta Armada, Transporte de Valores",7.9,43408-286,12x36 Dia,Cirino - Unidade 2
-VIG-10001,Diogo Melo,960.843.125-51,2025-06-16,"Segurança Pessoal (VSPP), Escolta Armada, Transporte de Valores",7.7,19215-478,5x2 Comercial,Brito - Unidade 2
-VIG-10002,Benjamim Correia,981.347.652-46,2026-08-05,"Escolta Armada, Grandes Eventos, Vigilância Patrimonial",8.5,17584940,12x36 Dia,Alves Ltda. - Unidade 2
-VIG-10003,Dr. Heitor Fogaça,915.083.274-32,2026-09-13,Segurança Pessoal (VSPP),7.5,50322-588,12x36 Dia,Pereira - Unidade 4
-VIG-10004,Davi Miguel Pimenta,182.704.593-05,2025-03-24,Segurança Pessoal (VSPP),7.8,13897980,12x36 Dia,da Rocha - Unidade 4
-VIG-10005,Evelyn da Rocha,920.136.587-02,2025-10-17,"Escolta Armada, Transporte de Valores, Monitoramento de CFTV",7.9,48169-403,12x36 Dia,Fernandes Cassiano - ME - Unidade 1
-VIG-10006,Mateus Guerra,489.351.726-00,2025-10-16,Transporte de Valores,7.1,53644-778,12x36 Dia,Santos - Unidade 8
-VIG-10007,Sr. José Miguel Santos,587.412.063-71,2025-12-10,"Escolta Armada, Grandes Eventos",8.7,33616-461,5x2 Comercial,Brito - Unidade 5
-VIG-10008,Catarina Ramos,873.610.452-35,2026-06-17,"Grandes Eventos, Segurança Pessoal (VSPP), Vigilância Patrimonial",7.7,01950001,12x36 Dia,Sousa Sá S.A. - Unidade 6
-VIG-10009,Dr. Luiz Otávio Abreu,285.031.679-21,2025-09-01,"Monitoramento de CFTV, Segurança Pessoal (VSPP), Grandes Eventos",8.1,75482-488,12x36 Noite,Melo - Unidade 6
-VIG-10010,Srta. Sophie da Cruz,138.590.726-68,2027-08-19,"Transporte de Valores, Segurança Pessoal (VSPP)",9.7,41813341,12x36 Dia,Rocha Sá S/A - Unidade 4
-VIG-10011,Enzo Borges,590.312.476-34,2026-02-20,"Grandes Eventos, Segurança Pessoal (VSPP), Escolta Armada",6.9,23770765,5x2 Comercial,Pinto - EI - Unidade 5
-VIG-10012,Benjamin Mendes,980.721.365-77,2025-09-06,"Grandes Eventos, Escolta Armada",8.0,71782-384,5x2 Comercial,Rios - Unidade 10
-VIG-10013,Gabriela da Mata,387.169.240-96,2025-04-01,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Escolta Armada",7.2,84590050,12x36 Noite,Nascimento - Unidade 7
-VIG-10014,Fernando Mendes,709.182.563-21,2027-05-27,Transporte de Valores,8.9,74365913,5x2 Comercial,Machado S.A. - Unidade 2
-VIG-10015,Sara Aragão,490.273.815-50,2026-10-25,"Monitoramento de CFTV, Vigilância Patrimonial",7.1,80820-663,12x36 Dia,das Neves - ME - Unidade 1
-VIG-10016,Luiza Nunes,284.039.157-05,2027-01-09,Transporte de Valores,9.7,35613330,5x2 Comercial,Ribeiro S.A. - Unidade 9
-VIG-10017,Henry Casa Grande,908.543.617-66,2026-02-08,"Vigilância Patrimonial, Transporte de Valores, Monitoramento de CFTV",8.7,32542-205,12x36 Dia,Oliveira Sá e Filhos - Unidade 1
-VIG-10018,Ana Sophia Pires,213.789.605-21,2026-07-02,"Monitoramento de CFTV, Vigilância Patrimonial",8.3,92459883,12x36 Noite,da Cunha - Unidade 1
-VIG-10019,Jade Borges,938.145.726-37,2025-10-31,"Monitoramento de CFTV, Grandes Eventos, Transporte de Valores",8.3,47163-975,12x36 Dia,Nascimento - Unidade 2
-VIG-10020,Luísa Moreira,418.329.076-78,2027-05-17,"Segurança Pessoal (VSPP), Escolta Armada, Monitoramento de CFTV",9.1,48573485,5x2 Comercial,Abreu - ME - Unidade 3
-VIG-10021,Isabela Oliveira,126.048.793-87,2027-03-24,"Escolta Armada, Transporte de Valores, Segurança Pessoal (VSPP)",8.3,66239077,12x36 Dia,Moreira - Unidade 1
-VIG-10022,Sr. Murilo Ramos,962.308.451-05,2027-01-18,"Grandes Eventos, Vigilância Patrimonial, Transporte de Valores",8.2,54045-370,5x2 Comercial,Carvalho e Filhos - Unidade 5
-VIG-10023,Ana Cecília Gomes,384.120.769-31,2028-01-02,"Transporte de Valores, Segurança Pessoal (VSPP)",8.7,75162-832,12x36 Dia,Peixoto S/A - Unidade 1
-VIG-10024,Fernando Mendes,360.485.972-74,2026-06-24,"Monitoramento de CFTV, Transporte de Valores, Grandes Eventos",9.1,54671637,12x36 Dia,Gonçalves - Unidade 6
-VIG-10025,Dra. Larissa Moura,623.510.798-68,2026-10-27,"Segurança Pessoal (VSPP), Monitoramento de CFTV",6.8,94297-863,12x36 Noite,Garcia - Unidade 10
-VIG-10026,Gabriel Cavalcante,615.479.238-73,2027-01-29,"Segurança Pessoal (VSPP), Monitoramento de CFTV",8.2,63186-543,12x36 Dia,Sales S/A - Unidade 10
-VIG-10027,Ana Laura Costa,096.287.134-69,2027-03-26,"Escolta Armada, Segurança Pessoal (VSPP)",7.5,23608806,12x36 Noite,da Mata Farias S/A - Unidade 2
-VIG-10028,Isabela Camargo,495.361.807-66,2027-09-08,"Grandes Eventos, Transporte de Valores",7.1,39704390,12x36 Noite,Albuquerque - Unidade 2
-VIG-10029,Olivia Nunes,403.761.859-10,2028-01-27,"Vigilância Patrimonial, Monitoramento de CFTV",8.0,04003-915,12x36 Dia,Albuquerque - Unidade 4
-VIG-10030,Lucas Araújo,273.415.869-82,2025-10-21,Transporte de Valores,8.9,91238-756,12x36 Dia,Monteiro - Unidade 5
-VIG-10031,Joana Nunes,978.321.065-30,2028-02-02,Vigilância Patrimonial,8.3,38655-923,5x2 Comercial,Correia - Unidade 4
-VIG-10032,Isabella Sampaio,954.072.368-00,2027-11-01,"Transporte de Valores, Vigilância Patrimonial, Monitoramento de CFTV",9.9,66616101,5x2 Comercial,da Rosa - Unidade 10
-VIG-10033,Luigi Vasconcelos,109.872.345-79,2026-04-11,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Monitoramento de CFTV",8.5,31947-769,12x36 Dia,Castro Ltda. - Unidade 9
-VIG-10034,Pedro Miguel Rios,467.329.501-34,2027-04-20,"Vigilância Patrimonial, Grandes Eventos",9.0,90501569,5x2 Comercial,Carvalho - Unidade 8
-VIG-10035,Sophie Oliveira,869.703.415-93,2027-11-24,Grandes Eventos,8.1,62361492,12x36 Dia,da Paz - ME - Unidade 6
-VIG-10036,Emanuel da Luz,679.523.481-91,2026-03-25,Vigilância Patrimonial,6.9,04254086,12x36 Noite,Sales - Unidade 9
-VIG-10037,Maria Cecília Cassiano,407.618.329-04,2026-03-17,Escolta Armada,9.2,22276-317,12x36 Noite,Teixeira - Unidade 6
-VIG-10038,Ana Sophia Camargo,756.120.493-07,2027-11-29,"Grandes Eventos, Monitoramento de CFTV, Vigilância Patrimonial",10.0,07534940,5x2 Comercial,Jesus S/A - Unidade 5
-VIG-10039,Sr. João Miguel da Conceição,012.856.943-33,2025-11-25,Transporte de Valores,8.7,56772627,12x36 Dia,Rodrigues Ltda. - Unidade 7
-VIG-10040,Isaac da Paz,943.716.025-25,2025-08-31,"Escolta Armada, Monitoramento de CFTV, Grandes Eventos",8.4,64354766,12x36 Dia,Farias - Unidade 8
-VIG-10041,Kevin da Rocha,593.740.621-43,2025-03-21,"Grandes Eventos, Vigilância Patrimonial",9.7,59742929,12x36 Dia,da Luz Cirino Ltda. - Unidade 10
-VIG-10042,Sara Viana,428.639.705-00,2027-11-28,"Vigilância Patrimonial, Transporte de Valores, Monitoramento de CFTV",8.8,84572182,12x36 Noite,da Mota - Unidade 8
-VIG-10043,Jade Albuquerque,019.564.782-30,2027-12-11,"Transporte de Valores, Grandes Eventos, Segurança Pessoal (VSPP)",7.0,83989201,5x2 Comercial,Jesus - Unidade 5
-VIG-10044,Bruna Machado,306.954.871-75,2027-10-18,"Transporte de Valores, Segurança Pessoal (VSPP), Monitoramento de CFTV",7.1,15254-758,5x2 Comercial,Cardoso Novais - ME - Unidade 5
-VIG-10045,Gustavo Ribeiro,795.408.261-01,2026-03-15,"Transporte de Valores, Vigilância Patrimonial",8.8,95697311,12x36 Dia,Vargas Ltda. - Unidade 1
-VIG-10046,Maria Câmara,091.578.642-76,2027-02-02,"Transporte de Valores, Vigilância Patrimonial, Escolta Armada",8.9,82474-156,12x36 Dia,Cardoso Guerra S/A - Unidade 8
-VIG-10047,Laís Peixoto,963.217.450-06,2027-07-24,"Grandes Eventos, Vigilância Patrimonial, Segurança Pessoal (VSPP)",10.0,55970584,12x36 Noite,Farias - Unidade 10
-VIG-10048,Eduardo Costela,938.054.271-23,2027-03-04,"Monitoramento de CFTV, Vigilância Patrimonial",7.3,36782-130,12x36 Noite,Ribeiro - EI - Unidade 1
-VIG-10049,Guilherme Camargo,175.439.806-57,2027-06-14,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Grandes Eventos",6.8,35877970,5x2 Comercial,Siqueira e Filhos - Unidade 5
-VIG-10050,Nicolas Mendonça,986.132.475-55,2026-10-26,Vigilância Patrimonial,7.1,38767332,12x36 Dia,Pastor - Unidade 3
-VIG-10051,Dr. Davi Fernandes,594.231.680-51,2027-09-30,Transporte de Valores,8.3,15793318,5x2 Comercial,Monteiro da Mata - ME - Unidade 1
-VIG-10052,Luiz Otávio Dias,056.178.942-85,2025-09-21,"Grandes Eventos, Monitoramento de CFTV",9.1,36685436,12x36 Noite,Guerra - Unidade 10
-VIG-10053,Vicente da Conceição,845.637.092-47,2025-12-04,Grandes Eventos,8.7,63191-735,5x2 Comercial,Freitas - Unidade 10
-VIG-10054,Alana Vargas,734.915.602-25,2027-07-21,"Transporte de Valores, Escolta Armada",9.1,41496777,5x2 Comercial,Aragão Ltda. - Unidade 10
-VIG-10055,José Miguel da Conceição,307.186.549-00,2026-10-06,"Grandes Eventos, Transporte de Valores",8.7,17767-872,12x36 Dia,Nogueira - Unidade 5
-VIG-10056,Hellena Casa Grande,765.241.930-16,2025-10-31,Transporte de Valores,7.2,81446-209,5x2 Comercial,Jesus - Unidade 6
-VIG-10057,Eloá Cirino,186.905.437-75,2027-10-05,"Escolta Armada, Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.8,51760-822,12x36 Dia,Rios S/A - Unidade 7
-VIG-10058,João Miguel Teixeira,431.678.529-09,2026-08-23,"Escolta Armada, Segurança Pessoal (VSPP), Grandes Eventos",10.0,52748-050,12x36 Noite,da Cunha Duarte - EI - Unidade 1
-VIG-10059,Zoe Sales,437.658.291-37,2026-04-30,Monitoramento de CFTV,7.8,69465-047,12x36 Dia,Aragão Aparecida - ME - Unidade 4
-VIG-10060,Bernardo das Neves,942.167.058-20,2027-06-06,"Segurança Pessoal (VSPP), Monitoramento de CFTV",7.2,77698337,5x2 Comercial,Novaes S/A - Unidade 9
-VIG-10061,Thales Leão,103.947.685-66,2027-08-13,Escolta Armada,9.2,06288-394,5x2 Comercial,Martins Ltda. - Unidade 3
-VIG-10062,Mathias Almeida,839.261.054-70,2026-12-30,"Escolta Armada, Monitoramento de CFTV",7.0,66349486,5x2 Comercial,da Paz - Unidade 7
-VIG-10063,Lorena Gonçalves,824.756.391-64,2026-04-23,"Vigilância Patrimonial, Grandes Eventos, Transporte de Valores",8.0,01026-652,12x36 Dia,Monteiro - EI - Unidade 10
-VIG-10064,Evelyn Sales,154.690.273-25,2027-06-04,Monitoramento de CFTV,9.4,01365443,12x36 Dia,da Mota - Unidade 3
-VIG-10065,Heloísa Sá,439.028.715-04,2027-09-20,Segurança Pessoal (VSPP),8.0,29667066,12x36 Dia,Farias Martins S/A - Unidade 10
-VIG-10066,Srta. Ana Luiza da Conceição,736.150.928-21,2025-09-15,Transporte de Valores,6.6,98056-448,12x36 Noite,Vieira - Unidade 8
-VIG-10067,Beatriz Novaes,035.489.176-66,2027-09-11,Escolta Armada,7.9,57223-259,12x36 Noite,Rios - ME - Unidade 9
-VIG-10068,Vitor Gabriel Oliveira,089.142.756-20,2025-06-27,Segurança Pessoal (VSPP),6.5,89087-345,12x36 Dia,da Costa S/A - Unidade 3
-VIG-10069,Dr. Antony Ribeiro,241.986.573-19,2026-09-20,Escolta Armada,9.3,27431-659,12x36 Noite,Mendonça - Unidade 2
-VIG-10070,Maria Cecília da Costa,901.527.843-14,2028-03-06,"Grandes Eventos, Transporte de Valores",6.5,55479-369,12x36 Noite,Jesus Martins S/A - Unidade 10
-VIG-10071,Julia Gomes,687.359.214-55,2026-02-11,"Vigilância Patrimonial, Grandes Eventos",8.1,98043-802,12x36 Noite,Nunes S.A. - Unidade 7
-VIG-10072,Manuella Rezende,107.596.243-99,2027-02-08,"Transporte de Valores, Segurança Pessoal (VSPP), Escolta Armada",9.1,87152884,12x36 Noite,da Cruz - ME - Unidade 9
-VIG-10073,Dr. Alexandre Pastor,936.705.814-48,2026-03-14,Transporte de Valores,8.9,36953397,5x2 Comercial,Ferreira - EI - Unidade 10
-VIG-10074,Lara Guerra,305.897.146-00,2027-07-06,Vigilância Patrimonial,9.0,49531633,12x36 Noite,Nunes - EI - Unidade 9
-VIG-10075,João Gabriel da Conceição,639.207.851-77,2027-11-05,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.5,04220721,12x36 Noite,Barros - Unidade 7
-VIG-10076,Rodrigo Marques,417.250.869-30,2026-12-31,"Vigilância Patrimonial, Escolta Armada, Transporte de Valores",9.4,19837926,12x36 Dia,Vieira Fernandes S.A. - Unidade 8
-VIG-10077,Cauã Gomes,278.539.401-14,2026-05-14,"Monitoramento de CFTV, Grandes Eventos, Vigilância Patrimonial",8.6,60302809,12x36 Dia,Fonseca - Unidade 8
-VIG-10078,Rhavi Dias,138.459.672-00,2025-12-28,"Transporte de Valores, Escolta Armada, Vigilância Patrimonial",7.9,03498-449,12x36 Noite,Leão Costa - EI - Unidade 7
-VIG-10079,Olivia Sampaio,542.780.916-30,2027-09-27,Transporte de Valores,7.7,67970042,5x2 Comercial,Pimenta - Unidade 4
-VIG-10080,Arthur Miguel Monteiro,685.903.714-84,2026-03-28,Monitoramento de CFTV,8.6,47187963,5x2 Comercial,Pacheco - ME - Unidade 9
-VIG-10081,Rodrigo Pinto,497.150.823-60,2026-03-23,"Monitoramento de CFTV, Segurança Pessoal (VSPP)",7.8,65879-665,12x36 Dia,Cirino - Unidade 5
-VIG-10082,Samuel Sampaio,543.710.962-80,2025-06-18,"Segurança Pessoal (VSPP), Vigilância Patrimonial, Grandes Eventos",10.0,30792-027,12x36 Noite,da Rocha S.A. - Unidade 3
-VIG-10083,Sophia Silva,891.457.623-09,2027-12-04,"Vigilância Patrimonial, Monitoramento de CFTV, Segurança Pessoal (VSPP)",8.5,92843-008,12x36 Noite,Moraes - Unidade 3
-VIG-10084,Bianca Câmara,354.627.901-80,2026-04-21,"Escolta Armada, Transporte de Valores",8.2,86676390,12x36 Noite,Moreira - Unidade 9
-VIG-10085,Alícia Dias,640.597.821-49,2025-07-30,"Vigilância Patrimonial, Escolta Armada",9.4,70810-598,5x2 Comercial,Vieira - Unidade 4
-VIG-10086,Valentim Mendes,571.693.048-48,2027-01-07,"Monitoramento de CFTV, Grandes Eventos",9.1,52145-706,12x36 Noite,da Mata da Conceição e Filhos - Unidade 7
-VIG-10087,Ana Carolina Teixeira,246.918.507-67,2026-10-23,"Escolta Armada, Grandes Eventos",7.5,72347596,12x36 Dia,Souza - EI - Unidade 7
-VIG-10088,Benício Pereira,175.830.942-32,2028-02-05,"Transporte de Valores, Segurança Pessoal (VSPP)",9.0,05282659,5x2 Comercial,Montenegro da Cunha e Filhos - Unidade 5
-VIG-10089,Arthur Gabriel Rocha,430.176.295-70,2027-09-19,Escolta Armada,7.2,45479-109,5x2 Comercial,da Mota - Unidade 2
-VIG-10090,Marcelo Caldeira,085.492.713-14,2026-05-03,"Transporte de Valores, Vigilância Patrimonial",9.9,50588298,5x2 Comercial,Novaes Pacheco e Filhos - Unidade 2
-VIG-10091,Antonella Andrade,390.764.125-61,2026-11-03,Transporte de Valores,9.9,55991926,5x2 Comercial,Machado - Unidade 7
-VIG-10092,Rafaela Pereira,519.407.263-52,2027-03-10,Grandes Eventos,7.0,35737253,12x36 Dia,Câmara - Unidade 6
-VIG-10093,Gustavo Henrique Fonseca,315.946.078-93,2026-06-22,"Vigilância Patrimonial, Transporte de Valores",7.2,88876-619,12x36 Dia,Marques - Unidade 7
-VIG-10094,Emilly das Neves,453.269.187-73,2025-06-01,"Vigilância Patrimonial, Transporte de Valores, Monitoramento de CFTV",6.5,52666224,5x2 Comercial,Pastor - Unidade 5
-VIG-10095,Samuel Albuquerque,508.397.421-50,2026-08-31,"Transporte de Valores, Grandes Eventos, Escolta Armada",6.8,22629096,12x36 Dia,Lopes - Unidade 10
-VIG-10096,Théo Jesus,608.594.132-33,2026-11-01,"Monitoramento de CFTV, Segurança Pessoal (VSPP), Escolta Armada",9.0,84272689,12x36 Noite,Nunes S/A - Unidade 4
-VIG-10097,Dr. Cauã Siqueira,873.024.569-92,2028-03-01,Monitoramento de CFTV,8.1,22872-139,5x2 Comercial,Melo - Unidade 7
-VIG-10098,Theo Ferreira,320.417.659-25,2027-07-29,"Grandes Eventos, Escolta Armada, Segurança Pessoal (VSPP)",6.6,46264037,5x2 Comercial,Rocha - Unidade 3
-VIG-10099,Dr. Valentim da Costa,794.352.061-07,2025-09-25,Monitoramento de CFTV,7.7,06522-894,5x2 Comercial,Duarte Ltda. - Unidade 1
-VIG-10100,Dr. Diego Oliveira,298.470.615-30,2025-08-22,"Transporte de Valores, Monitoramento de CFTV, Segurança Pessoal (VSPP)",9.1,59009-702,5x2 Comercial,Silveira S/A - Unidade 2
-VIG-10101,Agatha Pires,386.971.024-13,2027-05-26,"Grandes Eventos, Transporte de Valores, Monitoramento de CFTV",8.4,78844-054,12x36 Dia,Rios - Unidade 3
-VIG-10102,Liam Pimenta,125.096.873-95,2027-05-29,Segurança Pessoal (VSPP),6.7,55367182,5x2 Comercial,Montenegro Pires S/A - Unidade 4
-VIG-10103,Sra. Marcela Pereira,651.027.938-02,2027-05-04,"Transporte de Valores, Grandes Eventos, Vigilância Patrimonial",8.8,34342633,12x36 Noite,Rocha - Unidade 6
-VIG-10104,Hellena Mendes,860.152.349-89,2027-09-26,"Segurança Pessoal (VSPP), Grandes Eventos, Escolta Armada",10.0,94193216,12x36 Noite,Gonçalves - Unidade 8
-VIG-10105,Henry Gabriel Aparecida,930.271.548-50,2028-02-12,"Segurança Pessoal (VSPP), Grandes Eventos",7.4,17034-704,5x2 Comercial,Mendonça - Unidade 6
-VIG-10106,Caio Silva,490.371.856-57,2028-01-31,"Grandes Eventos, Monitoramento de CFTV",7.1,55523595,12x36 Noite,Martins - Unidade 4
-VIG-10107,Stephany Leão,475.239.168-64,2027-06-26,"Segurança Pessoal (VSPP), Escolta Armada",9.7,16038-664,12x36 Dia,Moreira - Unidade 5
-VIG-10108,Thomas das Neves,271.359.846-09,2027-08-09,"Segurança Pessoal (VSPP), Grandes Eventos",8.4,61093-694,12x36 Noite,da Rosa - Unidade 1
-VIG-10109,Thomas Moura,349.051.276-61,2027-07-19,"Grandes Eventos, Segurança Pessoal (VSPP)",9.7,87829-291,5x2 Comercial,Rodrigues Ribeiro e Filhos - Unidade 8
-VIG-10110,Esther Novais,063.259.178-12,2027-06-22,"Escolta Armada, Transporte de Valores",9.9,49591834,5x2 Comercial,Pacheco e Filhos - Unidade 6
-VIG-10111,Maria Júlia Pastor,031.824.596-51,2025-09-08,"Monitoramento de CFTV, Grandes Eventos, Segurança Pessoal (VSPP)",8.0,52298-811,12x36 Dia,Novaes Moura S.A. - Unidade 4
-VIG-10112,Kevin Cavalcanti,847.136.590-10,2027-01-18,"Segurança Pessoal (VSPP), Transporte de Valores",8.9,27205190,12x36 Noite,da Rosa - ME - Unidade 1
-VIG-10113,Benício Araújo,139.257.460-99,2025-07-01,"Monitoramento de CFTV, Transporte de Valores",7.6,81236597,12x36 Dia,Marques Melo Ltda. - Unidade 5
-VIG-10114,Otto Moraes,794.530.261-07,2027-08-10,"Grandes Eventos, Transporte de Valores",8.1,37519442,12x36 Dia,Siqueira Cunha - EI - Unidade 8
-VIG-10115,Srta. Maria Alice Lima,582.913.640-60,2027-12-15,"Escolta Armada, Grandes Eventos",7.9,37078-430,12x36 Dia,Lima - Unidade 8
-VIG-10116,Isabel Sá,471.609.283-69,2026-08-09,"Segurança Pessoal (VSPP), Grandes Eventos, Monitoramento de CFTV",9.2,65932639,5x2 Comercial,Siqueira - Unidade 9
-VIG-10117,Sophia Fonseca,867.019.543-75,2027-11-08,"Grandes Eventos, Vigilância Patrimonial",9.2,89186401,5x2 Comercial,Teixeira Ltda. - Unidade 3
-VIG-10118,Alana Casa Grande,305.948.261-60,2026-04-14,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Transporte de Valores",9.4,28372256,12x36 Dia,Abreu - Unidade 9
-VIG-10119,Larissa Silva,318.762.940-78,2025-11-29,Monitoramento de CFTV,7.8,86665246,12x36 Noite,Machado S.A. - Unidade 2
-VIG-10120,Carolina da Rosa,578.409.123-97,2025-03-12,Segurança Pessoal (VSPP),8.9,03631-789,12x36 Dia,Novais Aparecida - EI - Unidade 9
-VIG-10121,Carolina Carvalho,465.013.782-90,2025-10-25,Segurança Pessoal (VSPP),8.1,01340-902,12x36 Dia,Sampaio S/A - Unidade 1
-VIG-10122,Sr. Samuel Porto,957.046.218-30,2027-02-08,"Transporte de Valores, Monitoramento de CFTV",6.8,05879-724,5x2 Comercial,Costa Dias - ME - Unidade 10
-VIG-10123,Maria Isis Aparecida,149.835.207-32,2027-02-18,"Grandes Eventos, Vigilância Patrimonial",7.6,22794203,12x36 Dia,das Neves Guerra e Filhos - Unidade 8
-VIG-10124,Amanda Machado,924.378.061-13,2026-01-15,Escolta Armada,9.7,59147415,12x36 Noite,Lima da Mota S.A. - Unidade 1
-VIG-10125,Isabela Carvalho,674.839.125-37,2026-10-09,"Vigilância Patrimonial, Monitoramento de CFTV",8.7,48307-320,12x36 Noite,Brito - Unidade 3
-VIG-10126,Jade da Luz,715.406.928-76,2025-06-18,"Grandes Eventos, Segurança Pessoal (VSPP), Vigilância Patrimonial",7.2,53325614,5x2 Comercial,Monteiro S/A - Unidade 6
-VIG-10127,Zoe Alves,867.052.319-12,2025-10-18,Transporte de Valores,7.9,85904281,5x2 Comercial,Casa Grande Vasconcelos Ltda. - Unidade 9
-VIG-10128,Benjamim Pereira,824.769.051-94,2027-01-19,"Grandes Eventos, Monitoramento de CFTV, Escolta Armada",8.0,04616-058,5x2 Comercial,Campos Nogueira e Filhos - Unidade 7
-VIG-10129,Henry Gabriel Cavalcanti,148.952.630-70,2027-03-03,"Escolta Armada, Transporte de Valores, Monitoramento de CFTV",8.6,77236-046,12x36 Dia,Rezende da Cruz e Filhos - Unidade 6
-VIG-10130,Zoe da Luz,169.203.548-70,2028-02-03,"Escolta Armada, Monitoramento de CFTV",7.4,78964-655,12x36 Noite,Ferreira - Unidade 5
-VIG-10131,Isabelly Duarte,603.245.917-99,2027-11-11,"Monitoramento de CFTV, Segurança Pessoal (VSPP), Vigilância Patrimonial",9.5,09043-511,12x36 Noite,Pereira Azevedo - EI - Unidade 10
-VIG-10132,Mathias Moreira,974.831.562-28,2028-02-12,Segurança Pessoal (VSPP),6.9,38906954,12x36 Noite,Andrade Ltda. - Unidade 3
-VIG-10133,Enzo Gabriel Machado,768.431.025-90,2026-08-17,"Segurança Pessoal (VSPP), Vigilância Patrimonial, Escolta Armada",8.2,65776-914,12x36 Dia,Sales Almeida Ltda. - Unidade 3
-VIG-10134,Kaique Barbosa,470.293.815-05,2026-12-01,"Transporte de Valores, Segurança Pessoal (VSPP), Grandes Eventos",9.9,14297046,5x2 Comercial,Ferreira - Unidade 5
-VIG-10135,Davi Luiz Cardoso,532.071.846-26,2025-07-25,"Transporte de Valores, Segurança Pessoal (VSPP), Grandes Eventos",8.7,41564-841,5x2 Comercial,Viana e Filhos - Unidade 7
-VIG-10136,Esther Sales,109.246.538-33,2027-11-25,"Escolta Armada, Grandes Eventos, Segurança Pessoal (VSPP)",7.7,96961915,5x2 Comercial,Fogaça Silva - EI - Unidade 4
-VIG-10137,Dra. Anna Liz Mendonça,152.386.074-07,2025-04-03,"Transporte de Valores, Grandes Eventos, Monitoramento de CFTV",7.1,83905-406,12x36 Noite,Ramos e Filhos - Unidade 6
-VIG-10138,Agatha Costela,680.917.423-04,2027-05-22,Vigilância Patrimonial,8.9,28983456,12x36 Dia,Aragão - ME - Unidade 7
-VIG-10139,Agatha Sousa,725.834.019-04,2025-11-13,"Escolta Armada, Monitoramento de CFTV, Transporte de Valores",7.4,30952-700,12x36 Dia,Azevedo - Unidade 1
-VIG-10140,Leandro Guerra,347.180.265-71,2027-11-04,"Grandes Eventos, Segurança Pessoal (VSPP)",8.5,28741-270,12x36 Dia,Cunha - Unidade 8
-VIG-10141,Raul Sousa,268.315.094-60,2026-02-03,"Transporte de Valores, Vigilância Patrimonial, Segurança Pessoal (VSPP)",8.6,34264-723,5x2 Comercial,Vieira Cavalcanti S/A - Unidade 8
-VIG-10142,Sr. Rodrigo Pires,045.631.792-99,2027-01-11,"Vigilância Patrimonial, Transporte de Valores",9.9,58779-537,12x36 Dia,Almeida - Unidade 2
-VIG-10143,Cauã Novais,560.372.194-43,2026-05-03,"Grandes Eventos, Monitoramento de CFTV",6.6,37499095,12x36 Dia,Carvalho Moraes S/A - Unidade 6
-VIG-10144,Rafael Nogueira,619.378.204-40,2026-08-19,Segurança Pessoal (VSPP),9.6,16263123,12x36 Noite,Nogueira Melo - ME - Unidade 6
-VIG-10145,Liam Duarte,192.584.306-89,2028-01-06,"Transporte de Valores, Grandes Eventos, Monitoramento de CFTV",8.7,51737999,5x2 Comercial,Sousa Ltda. - Unidade 5
-VIG-10146,Luiz Otávio da Luz,590.824.731-60,2026-10-06,Monitoramento de CFTV,9.8,82496300,5x2 Comercial,Martins - Unidade 7
-VIG-10147,Ryan Andrade,875.304.691-93,2028-02-03,"Escolta Armada, Monitoramento de CFTV, Transporte de Valores",6.8,06470350,12x36 Noite,Gonçalves Aparecida e Filhos - Unidade 5
-VIG-10148,Esther Moura,634.087.125-90,2026-08-01,Escolta Armada,7.5,38867819,12x36 Noite,Nunes Gomes - ME - Unidade 3
-VIG-10149,Laura Rezende,932.410.857-32,2025-09-01,Monitoramento de CFTV,8.7,75811691,12x36 Noite,Viana - Unidade 8
-VIG-10150,Ana Moreira,984.106.325-51,2025-07-06,"Segurança Pessoal (VSPP), Transporte de Valores, Vigilância Patrimonial",8.4,23941409,12x36 Noite,Cardoso S.A. - Unidade 1
-VIG-10151,Elisa Fernandes,624.973.058-38,2025-11-07,Monitoramento de CFTV,10.0,60240736,5x2 Comercial,Caldeira - ME - Unidade 3
-VIG-10152,Eduardo Ribeiro,204.539.176-07,2025-10-19,"Transporte de Valores, Monitoramento de CFTV, Segurança Pessoal (VSPP)",9.4,29523227,12x36 Dia,Pacheco e Filhos - Unidade 2
-VIG-10153,Yan Farias,345.960.872-29,2025-10-11,Grandes Eventos,7.7,15480-441,5x2 Comercial,Nunes - Unidade 1
-VIG-10154,Bryan Rocha,189.276.304-40,2026-01-24,"Segurança Pessoal (VSPP), Vigilância Patrimonial",7.5,69899992,5x2 Comercial,Aparecida e Filhos - Unidade 1
-VIG-10155,Davi Leão,728.693.015-02,2027-11-21,"Transporte de Valores, Vigilância Patrimonial, Monitoramento de CFTV",7.5,60042886,12x36 Dia,Cunha - Unidade 10
-VIG-10156,Sarah Farias,724.860.359-74,2025-09-18,"Escolta Armada, Grandes Eventos, Vigilância Patrimonial",10.0,85458011,5x2 Comercial,Duarte - Unidade 2
-VIG-10157,Nicole Pimenta,501.784.963-75,2025-08-07,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Escolta Armada",6.7,12504-561,12x36 Noite,Brito - Unidade 7
-VIG-10158,Sra. Ana Júlia Souza,139.457.862-82,2026-10-21,Segurança Pessoal (VSPP),8.6,43264-188,12x36 Noite,Gonçalves - EI - Unidade 6
-VIG-10159,Pedro Henrique Cassiano,917.506.348-48,2025-12-25,"Escolta Armada, Monitoramento de CFTV",6.9,73596-037,12x36 Dia,Vieira Silveira S/A - Unidade 4
-VIG-10160,Agatha da Mata,075.648.132-53,2025-09-15,"Monitoramento de CFTV, Vigilância Patrimonial, Escolta Armada",6.7,67783-315,12x36 Dia,da Luz e Filhos - Unidade 10
-VIG-10161,Sara Melo,015.932.784-97,2026-10-23,Grandes Eventos,7.8,48063519,5x2 Comercial,Moreira S/A - Unidade 8
-VIG-10162,Luiz Fernando Rodrigues,502.497.631-25,2026-02-05,"Monitoramento de CFTV, Vigilância Patrimonial",9.2,60030453,5x2 Comercial,Martins - Unidade 10
-VIG-10163,Sra. Esther Gomes,174.025.693-06,2026-01-04,"Escolta Armada, Transporte de Valores, Vigilância Patrimonial",8.6,14615899,5x2 Comercial,Fogaça - Unidade 5
-VIG-10164,Agatha Costela,189.754.603-39,2026-02-05,Vigilância Patrimonial,8.0,55676-835,12x36 Noite,Andrade - Unidade 8
-VIG-10165,Lara Pimenta,697.852.130-21,2027-06-13,Vigilância Patrimonial,8.4,33060-087,12x36 Noite,Câmara - Unidade 2
-VIG-10166,Eduarda Rios,246.580.371-90,2025-03-10,"Transporte de Valores, Segurança Pessoal (VSPP), Escolta Armada",7.6,96377-341,12x36 Dia,Macedo - EI - Unidade 5
-VIG-10167,Allana Souza,172.534.609-52,2027-12-18,Grandes Eventos,7.2,63879-528,5x2 Comercial,Moreira Martins S.A. - Unidade 10
-VIG-10168,Ana Luiza Almeida,583.046.127-71,2025-10-27,"Escolta Armada, Monitoramento de CFTV, Vigilância Patrimonial",9.9,91927889,5x2 Comercial,da Mota - Unidade 1
-VIG-10169,Enzo Gabriel Novaes,963.184.752-73,2028-01-06,Escolta Armada,9.4,95056011,12x36 Dia,Alves - EI - Unidade 1
-VIG-10170,Ana Lívia Silva,306.184.925-42,2025-04-15,"Escolta Armada, Grandes Eventos",9.6,77250449,12x36 Dia,Gonçalves - EI - Unidade 6
-VIG-10171,João Felipe Melo,680.417.593-00,2026-05-10,"Segurança Pessoal (VSPP), Grandes Eventos, Vigilância Patrimonial",8.5,53235-432,12x36 Dia,Mendonça S.A. - Unidade 2
-VIG-10172,João Felipe Santos,167.028.549-94,2027-02-08,Monitoramento de CFTV,7.2,62153174,5x2 Comercial,Gomes - Unidade 2
-VIG-10173,Sr. Pedro Pinto,276.148.509-20,2025-05-14,Transporte de Valores,7.9,73937-746,12x36 Dia,Nunes - Unidade 10
-VIG-10174,Ryan Brito,162.875.093-68,2027-11-10,"Grandes Eventos, Segurança Pessoal (VSPP)",9.0,44022826,5x2 Comercial,Araújo S.A. - Unidade 7
-VIG-10175,Manuela Viana,690.183.754-20,2026-10-22,"Grandes Eventos, Transporte de Valores, Monitoramento de CFTV",9.4,29474-173,5x2 Comercial,Campos - Unidade 1
-VIG-10176,Sr. João Gabriel das Neves,701.286.354-44,2025-03-24,Monitoramento de CFTV,6.6,04270530,12x36 Dia,Araújo - Unidade 1
-VIG-10177,Srta. Maria Clara da Cruz,963.147.052-07,2027-06-28,Vigilância Patrimonial,7.6,30584699,5x2 Comercial,Garcia Ltda. - Unidade 5
-VIG-10178,Vitor Gabriel da Luz,087.265.431-17,2028-02-07,"Transporte de Valores, Segurança Pessoal (VSPP), Vigilância Patrimonial",9.0,56454116,12x36 Noite,da Rosa - Unidade 8
-VIG-10179,Cecilia Nunes,647.923.105-80,2025-11-25,"Escolta Armada, Transporte de Valores",9.6,48492765,12x36 Dia,Almeida Cardoso - ME - Unidade 9
-VIG-10180,Brayan Castro,049.285.163-89,2027-09-01,"Grandes Eventos, Transporte de Valores",7.2,63274910,5x2 Comercial,Carvalho Azevedo S.A. - Unidade 7
-VIG-10181,Helena Sales,256.739.418-46,2027-01-09,Segurança Pessoal (VSPP),7.3,11944-689,12x36 Dia,Ramos - Unidade 8
-VIG-10182,Leandro Moraes,049.615.328-51,2025-11-14,"Escolta Armada, Monitoramento de CFTV",7.2,92724-645,12x36 Dia,Aparecida - Unidade 10
-VIG-10183,Calebe Freitas,759.246.310-52,2027-02-15,"Segurança Pessoal (VSPP), Grandes Eventos",9.7,35725-444,5x2 Comercial,Silva S/A - Unidade 5
-VIG-10184,José Pedro Oliveira,127.804.359-41,2026-01-13,"Grandes Eventos, Vigilância Patrimonial, Segurança Pessoal (VSPP)",8.0,94131280,12x36 Dia,Machado - ME - Unidade 10
-VIG-10185,Dr. João Miguel Caldeira,769.483.102-22,2025-10-03,"Transporte de Valores, Segurança Pessoal (VSPP)",8.9,59974-856,12x36 Dia,Sá da Luz e Filhos - Unidade 8
-VIG-10186,Aurora Oliveira,017.298.635-40,2025-03-12,"Transporte de Valores, Grandes Eventos",7.0,77275-111,12x36 Dia,Siqueira - Unidade 5
-VIG-10187,Henry Gabriel Montenegro,617.894.023-87,2026-02-12,"Segurança Pessoal (VSPP), Transporte de Valores",8.8,60882014,12x36 Dia,Rocha - Unidade 10
-VIG-10188,Enzo Gabriel Mendonça,204.193.756-43,2027-05-14,Segurança Pessoal (VSPP),8.4,27716129,12x36 Dia,Silveira - Unidade 3
-VIG-10189,Mariah Vargas,189.705.246-49,2026-09-30,Segurança Pessoal (VSPP),7.1,07424212,5x2 Comercial,Machado S/A - Unidade 1
-VIG-10190,Lunna Fogaça,730.591.284-05,2027-11-12,"Escolta Armada, Transporte de Valores, Segurança Pessoal (VSPP)",8.9,68731053,5x2 Comercial,da Conceição Abreu e Filhos - Unidade 1
-VIG-10191,Dr. Renan Rezende,140.987.526-11,2025-04-23,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Grandes Eventos",9.0,98395707,12x36 Noite,Almeida - EI - Unidade 2
-VIG-10192,Caleb Pereira,693.207.541-52,2025-03-18,"Grandes Eventos, Vigilância Patrimonial",9.0,75482782,12x36 Noite,Teixeira - Unidade 2
-VIG-10193,Antônio Santos,813.540.276-71,2026-02-16,"Escolta Armada, Grandes Eventos, Vigilância Patrimonial",7.1,17122-630,5x2 Comercial,Vieira e Filhos - Unidade 2
-VIG-10194,Ana Carolina Rezende,092.345.816-60,2026-10-31,"Segurança Pessoal (VSPP), Monitoramento de CFTV",8.7,20478-954,12x36 Dia,Montenegro - Unidade 9
-VIG-10195,Calebe Rezende,715.920.438-79,2026-09-27,Vigilância Patrimonial,7.4,13939242,5x2 Comercial,Oliveira - Unidade 6
-VIG-10196,Alexandre Pastor,873.415.260-17,2027-03-12,Escolta Armada,7.6,41243-794,12x36 Noite,Aparecida - Unidade 3
-VIG-10197,Pedro Henrique Oliveira,978.043.612-03,2026-04-27,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.0,57479993,12x36 Dia,Silveira - Unidade 5
-VIG-10198,Dr. José Pedro Peixoto,610.459.782-30,2027-05-02,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",7.4,41206-481,5x2 Comercial,Araújo Nascimento Ltda. - Unidade 1
-VIG-10199,Danilo Cavalcanti,912.538.764-28,2025-09-10,Vigilância Patrimonial,6.6,39933-225,12x36 Noite,Camargo - Unidade 6
-VIG-10200,Igor Borges,183.409.265-51,2027-02-04,"Escolta Armada, Grandes Eventos, Transporte de Valores",8.2,68494602,5x2 Comercial,Moreira - EI - Unidade 6
-VIG-10201,Lavínia Campos,824.719.056-76,2027-05-20,"Segurança Pessoal (VSPP), Transporte de Valores, Escolta Armada",6.9,89246-442,12x36 Noite,Jesus Barros - ME - Unidade 10
-VIG-10202,Bernardo Vieira,570.986.142-11,2027-06-25,"Monitoramento de CFTV, Transporte de Valores",7.2,88798-689,12x36 Noite,Martins - EI - Unidade 4
-VIG-10203,Maria Cecília Melo,650.487.219-85,2027-07-15,"Grandes Eventos, Vigilância Patrimonial",9.8,94206-531,12x36 Noite,Câmara Ltda. - Unidade 4
-VIG-10204,Caio Viana,241.398.065-24,2027-04-30,"Transporte de Valores, Escolta Armada",9.3,62469-657,5x2 Comercial,da Luz - Unidade 6
-VIG-10205,Alana Pacheco,823.459.160-60,2027-06-08,"Transporte de Valores, Grandes Eventos, Monitoramento de CFTV",8.3,60015084,5x2 Comercial,Lopes Pacheco Ltda. - Unidade 3
-VIG-10206,Marina Mendes,863.104.729-50,2025-05-27,Escolta Armada,7.3,38905397,12x36 Dia,Martins - Unidade 2
-VIG-10207,Kevin Andrade,561.248.039-33,2026-07-07,"Transporte de Valores, Grandes Eventos",6.6,43162-548,12x36 Noite,Pereira - Unidade 5
-VIG-10208,Bernardo Caldeira,965.108.472-30,2027-02-26,"Segurança Pessoal (VSPP), Escolta Armada, Monitoramento de CFTV",7.9,69410-379,12x36 Dia,Novais Albuquerque e Filhos - Unidade 10
-VIG-10209,Esther Novaes,694.057.821-85,2026-04-20,Grandes Eventos,6.8,50038328,12x36 Noite,Barros - Unidade 7
-VIG-10210,Cauê Sousa,824.690.573-29,2025-03-18,Segurança Pessoal (VSPP),9.4,38232629,12x36 Noite,Gomes Ramos e Filhos - Unidade 4
-VIG-10211,Sra. Cecília Vasconcelos,395.672.081-40,2027-01-29,"Grandes Eventos, Vigilância Patrimonial, Escolta Armada",9.8,50081281,12x36 Noite,Borges - Unidade 5
-VIG-10212,Heitor Fonseca,428.107.569-02,2025-10-27,Monitoramento de CFTV,7.2,52927-504,12x36 Noite,Mendonça - Unidade 4
-VIG-10213,José Miguel da Rocha,965.308.412-70,2025-12-29,"Monitoramento de CFTV, Segurança Pessoal (VSPP)",7.5,23284018,12x36 Noite,Costela - Unidade 5
-VIG-10214,Eduardo Almeida,375.498.206-00,2027-05-20,"Escolta Armada, Transporte de Valores, Grandes Eventos",7.0,39561869,5x2 Comercial,Duarte - Unidade 6
-VIG-10215,Pedro Miguel Melo,425.319.708-60,2025-12-04,"Escolta Armada, Transporte de Valores",7.4,63207893,12x36 Noite,Souza - Unidade 7
-VIG-10216,Antony Novais,506.197.243-07,2027-12-15,Escolta Armada,9.0,12505282,12x36 Noite,Sousa Ltda. - Unidade 4
-VIG-10217,Rodrigo Farias,067.138.245-44,2025-08-08,"Segurança Pessoal (VSPP), Monitoramento de CFTV",6.5,69279217,5x2 Comercial,Carvalho - Unidade 10
-VIG-10218,Luísa Sá,297.806.135-95,2028-02-28,"Vigilância Patrimonial, Transporte de Valores",9.3,97806109,12x36 Noite,Siqueira - Unidade 7
-VIG-10219,Anthony Gabriel Souza,504.829.761-01,2027-11-04,"Grandes Eventos, Transporte de Valores",9.4,36538641,12x36 Noite,Oliveira da Costa - EI - Unidade 10
-VIG-10220,Dra. Maria Fernanda Cassiano,607.138.942-96,2025-05-21,"Escolta Armada, Monitoramento de CFTV, Vigilância Patrimonial",7.0,45607717,12x36 Dia,Pires - Unidade 9
-VIG-10221,Bruno Jesus,286.015.394-24,2027-08-20,Vigilância Patrimonial,8.7,81765-021,5x2 Comercial,Fernandes - Unidade 4
-VIG-10222,Leonardo Gonçalves,395.472.168-64,2026-06-15,"Vigilância Patrimonial, Transporte de Valores, Monitoramento de CFTV",8.4,43199722,12x36 Dia,Alves Câmara - ME - Unidade 9
-VIG-10223,Ágatha Souza,716.053.429-80,2026-03-08,"Segurança Pessoal (VSPP), Vigilância Patrimonial",9.1,14236064,12x36 Noite,Abreu S.A. - Unidade 4
-VIG-10224,Carolina Fonseca,491.068.527-85,2026-09-06,"Monitoramento de CFTV, Vigilância Patrimonial",9.6,65293-013,12x36 Noite,Pereira S.A. - Unidade 6
-VIG-10225,Eloá Siqueira,160.529.387-30,2027-02-27,Transporte de Valores,7.6,34403711,12x36 Dia,Moura - Unidade 4
-VIG-10226,Otávio Freitas,673.521.084-08,2025-08-15,Monitoramento de CFTV,8.4,08143322,12x36 Noite,das Neves - ME - Unidade 1
-VIG-10227,Dra. Anna Liz Moraes,519.834.672-19,2026-07-08,"Transporte de Valores, Segurança Pessoal (VSPP), Monitoramento de CFTV",6.9,18729882,12x36 Dia,Mendonça Ltda. - Unidade 4
-VIG-10228,Ana Carolina Porto,837.614.920-22,2026-03-07,"Escolta Armada, Transporte de Valores, Vigilância Patrimonial",8.1,51955976,12x36 Dia,Moreira - Unidade 3
-VIG-10229,Gabrielly Pimenta,083.617.924-22,2026-08-15,Escolta Armada,7.3,03142627,5x2 Comercial,Ramos - Unidade 3
-VIG-10230,Maria Luísa Fonseca,639.074.185-57,2026-03-15,Segurança Pessoal (VSPP),7.6,45762-133,12x36 Dia,da Mota - EI - Unidade 5
-VIG-10231,Larissa Vargas,597.362.108-12,2026-10-16,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Transporte de Valores",7.1,74613-815,12x36 Dia,Cirino das Neves - ME - Unidade 3
-VIG-10232,Alexia Ramos,476.109.832-50,2026-06-07,"Vigilância Patrimonial, Monitoramento de CFTV",7.9,42792213,5x2 Comercial,Azevedo - Unidade 6
-VIG-10233,Augusto Macedo,701.935.624-99,2027-06-09,Grandes Eventos,8.3,42184-101,12x36 Dia,Aragão - Unidade 9
-VIG-10234,João Gabriel Jesus,385.204.176-71,2027-10-19,"Transporte de Valores, Segurança Pessoal (VSPP), Escolta Armada",7.2,49559967,12x36 Dia,Borges - Unidade 3
-VIG-10235,Samuel Moura,865.091.473-00,2025-03-22,Escolta Armada,9.1,34353-603,12x36 Dia,Moreira - Unidade 10
-VIG-10236,Catarina Barros,162.893.045-42,2026-08-11,Monitoramento de CFTV,7.4,93220-563,5x2 Comercial,Vieira Cunha S/A - Unidade 8
-VIG-10237,Sr. João Lucas Vargas,278.459.031-32,2027-09-02,"Grandes Eventos, Escolta Armada",9.4,45473-100,5x2 Comercial,Câmara Almeida Ltda. - Unidade 5
-VIG-10238,Enzo Cavalcanti,976.834.152-19,2025-08-31,"Transporte de Valores, Grandes Eventos, Vigilância Patrimonial",9.9,94686-389,12x36 Dia,Marques Sales - ME - Unidade 2
-VIG-10239,Antony Sá,453.197.680-01,2027-11-15,Segurança Pessoal (VSPP),6.8,32058255,12x36 Dia,Farias - Unidade 1
-VIG-10240,Olivia Guerra,129.405.683-24,2026-07-11,"Segurança Pessoal (VSPP), Grandes Eventos",9.0,52307-413,12x36 Dia,Fernandes - Unidade 1
-VIG-10241,Ana Julia Machado,409.635.218-70,2027-04-09,"Grandes Eventos, Segurança Pessoal (VSPP)",9.2,15090194,5x2 Comercial,Lopes - Unidade 5
-VIG-10242,Bruno Ribeiro,630.971.245-43,2027-03-11,"Grandes Eventos, Monitoramento de CFTV",8.9,13699-848,12x36 Dia,Novais Ltda. - Unidade 2
-VIG-10243,Aylla Moraes,714.352.098-50,2027-04-12,"Transporte de Valores, Monitoramento de CFTV",9.3,67375-426,12x36 Noite,Machado - Unidade 2
-VIG-10244,Camila Sousa,597.146.823-55,2027-06-25,"Segurança Pessoal (VSPP), Monitoramento de CFTV",9.3,95933-354,12x36 Dia,Cirino - Unidade 8
-VIG-10245,Yan Moraes,523.816.947-73,2028-02-05,"Monitoramento de CFTV, Vigilância Patrimonial",9.7,75922-252,12x36 Noite,Jesus Melo Ltda. - Unidade 4
-VIG-10246,Gael Barros,369.204.817-31,2025-09-19,"Transporte de Valores, Grandes Eventos",8.1,85589068,12x36 Dia,das Neves - Unidade 7
-VIG-10247,Amanda Cavalcante,561.203.978-68,2027-01-06,"Transporte de Valores, Escolta Armada",9.2,76361-626,5x2 Comercial,Barbosa da Rocha - ME - Unidade 5
-VIG-10248,Esther Gomes,894.175.263-91,2026-04-13,"Vigilância Patrimonial, Escolta Armada",6.6,28085591,5x2 Comercial,Rios - Unidade 3
-VIG-10249,Erick Souza,870.563.912-30,2027-06-02,"Segurança Pessoal (VSPP), Grandes Eventos, Vigilância Patrimonial",7.7,94442183,12x36 Noite,Moreira - Unidade 2
-VIG-10250,Thiago Sales,436.527.189-09,2026-04-09,Vigilância Patrimonial,8.7,01282742,5x2 Comercial,Camargo - Unidade 9
-VIG-10251,Joana Sales,361.509.248-15,2027-11-23,"Vigilância Patrimonial, Transporte de Valores",7.9,17197278,12x36 Dia,Rezende Ltda. - Unidade 4
-VIG-10252,Antônio Silveira,923.148.075-88,2027-02-28,Escolta Armada,9.9,89534940,12x36 Dia,Andrade - Unidade 8
-VIG-10253,Ana Júlia Cassiano,914.726.083-13,2027-02-02,"Escolta Armada, Transporte de Valores",8.8,45017-730,5x2 Comercial,Alves - Unidade 9
-VIG-10254,Davi Lucas Ferreira,743.910.658-00,2027-10-18,"Monitoramento de CFTV, Grandes Eventos, Segurança Pessoal (VSPP)",7.5,99857-149,12x36 Noite,Araújo Mendes S/A - Unidade 10
-VIG-10255,Ana Beatriz Araújo,127.530.486-90,2025-07-17,"Monitoramento de CFTV, Vigilância Patrimonial, Grandes Eventos",8.3,14650-109,12x36 Noite,Brito - EI - Unidade 5
-VIG-10256,Emanuel Cassiano,437.982.160-96,2027-10-16,"Grandes Eventos, Escolta Armada",7.8,08093910,12x36 Dia,Dias - EI - Unidade 8
-VIG-10257,Vitor Hugo Casa Grande,012.934.687-03,2028-02-25,Escolta Armada,7.4,64110-254,5x2 Comercial,Cassiano Ltda. - Unidade 2
-VIG-10258,Luiz Henrique Pimenta,302.541.869-98,2026-02-28,Vigilância Patrimonial,9.9,40201-945,12x36 Noite,Pinto - Unidade 6
-VIG-10259,Sra. Maria Freitas,310.589.267-21,2026-01-19,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Grandes Eventos",9.7,67567-759,5x2 Comercial,Barbosa - Unidade 3
-VIG-10260,Dra. Maria Fernanda Ribeiro,160.295.834-33,2026-02-01,"Vigilância Patrimonial, Escolta Armada, Monitoramento de CFTV",7.3,61168-397,12x36 Dia,Moura - Unidade 9
-VIG-10261,Ravi Lucca Pinto,409.153.768-57,2025-07-31,"Escolta Armada, Transporte de Valores, Grandes Eventos",7.8,92605681,12x36 Dia,Pacheco - Unidade 1
-VIG-10262,Felipe da Cruz,358.714.026-07,2025-08-17,"Escolta Armada, Grandes Eventos",6.7,90245-173,12x36 Dia,Silveira - Unidade 6
-VIG-10263,Ana Luiza da Cruz,459.263.870-00,2026-02-10,Escolta Armada,6.8,81830981,12x36 Noite,Viana - Unidade 8
-VIG-10264,Raul Lopes,697.815.243-91,2027-02-20,Transporte de Valores,9.1,65914292,5x2 Comercial,da Cruz Pires Ltda. - Unidade 3
-VIG-10265,Dra. Hellena Macedo,834.215.709-14,2025-11-24,Monitoramento de CFTV,6.8,55573230,12x36 Noite,Cirino Novais S/A - Unidade 4
-VIG-10266,Vitória Almeida,647.359.182-64,2026-04-09,Monitoramento de CFTV,8.6,04076-394,12x36 Dia,Casa Grande - Unidade 4
-VIG-10267,Kamilly Vargas,034.752.168-17,2026-12-03,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Escolta Armada",9.8,56515-141,12x36 Dia,Rocha e Filhos - Unidade 1
-VIG-10268,Ester Sampaio,583.947.621-82,2026-07-21,"Monitoramento de CFTV, Transporte de Valores, Escolta Armada",8.7,60414137,5x2 Comercial,Moreira Gonçalves e Filhos - Unidade 10
-VIG-10269,Juan da Mata,390.827.654-38,2027-06-28,"Vigilância Patrimonial, Monitoramento de CFTV, Escolta Armada",9.0,99600-187,12x36 Dia,Campos - Unidade 5
-VIG-10270,Oliver Pereira,174.825.963-64,2027-08-31,"Transporte de Valores, Monitoramento de CFTV",8.1,96841480,12x36 Dia,Aparecida - Unidade 6
-VIG-10271,Cauê Castro,501.873.296-21,2027-11-26,"Monitoramento de CFTV, Grandes Eventos, Vigilância Patrimonial",7.8,79244-213,12x36 Noite,Leão Mendes S.A. - Unidade 4
-VIG-10272,Gabrielly Pimenta,564.390.827-10,2027-04-04,Escolta Armada,8.3,61317-245,5x2 Comercial,Araújo Silveira Ltda. - Unidade 1
-VIG-10273,Henry Macedo,102.938.457-60,2027-07-16,"Monitoramento de CFTV, Grandes Eventos, Segurança Pessoal (VSPP)",7.9,21102-852,12x36 Dia,Borges - EI - Unidade 10
-VIG-10274,Stella Duarte,391.860.725-95,2027-08-11,Vigilância Patrimonial,9.8,13284536,12x36 Noite,Montenegro - Unidade 10
-VIG-10275,José Miguel Oliveira,495.083.172-05,2026-04-29,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Escolta Armada",10.0,15289990,12x36 Noite,Cassiano - EI - Unidade 2
-VIG-10276,Caio Lopes,391.527.048-23,2027-03-30,Grandes Eventos,9.3,57842-418,12x36 Dia,Andrade - Unidade 9
-VIG-10277,Jade da Paz,795.462.038-74,2028-01-26,"Segurança Pessoal (VSPP), Escolta Armada",9.5,75820479,12x36 Noite,da Conceição - Unidade 8
-VIG-10278,Beatriz da Cruz,390.827.541-50,2025-11-17,"Transporte de Valores, Vigilância Patrimonial, Segurança Pessoal (VSPP)",8.4,78832-009,5x2 Comercial,Rios S/A - Unidade 6
-VIG-10279,Sra. Ana Carolina Oliveira,705.298.436-92,2027-09-01,"Transporte de Valores, Grandes Eventos, Vigilância Patrimonial",8.7,01702-439,12x36 Noite,Alves - Unidade 2
-VIG-10280,Sr. Yago Freitas,951.370.826-86,2025-08-18,"Vigilância Patrimonial, Grandes Eventos",6.8,50118-571,12x36 Dia,Camargo Caldeira e Filhos - Unidade 9
-VIG-10281,Amanda Carvalho,951.736.240-43,2025-12-29,"Segurança Pessoal (VSPP), Vigilância Patrimonial",6.8,96911-020,12x36 Dia,Novais - Unidade 4
-VIG-10282,Mariah Pastor,821.509.473-23,2026-12-02,Monitoramento de CFTV,8.9,46514789,5x2 Comercial,da Mata - Unidade 10
-VIG-10283,Dr. Eduardo Melo,402.758.136-90,2026-05-20,"Escolta Armada, Vigilância Patrimonial",6.9,00906030,12x36 Noite,Pimenta - Unidade 7
-VIG-10284,Carlos Eduardo Oliveira,091.834.752-14,2027-01-27,"Vigilância Patrimonial, Escolta Armada",8.2,05987985,12x36 Noite,Carvalho - Unidade 1
-VIG-10285,Liam Barros,307.129.586-30,2027-07-19,"Segurança Pessoal (VSPP), Transporte de Valores, Vigilância Patrimonial",9.4,74874-821,12x36 Noite,Pacheco - Unidade 8
-VIG-10286,Vitória Peixoto,124.975.380-50,2027-10-11,Segurança Pessoal (VSPP),8.1,96800909,12x36 Noite,Jesus e Filhos - Unidade 10
-VIG-10287,Bento da Mota,571.603.498-57,2027-06-06,"Escolta Armada, Monitoramento de CFTV",8.4,22106716,12x36 Dia,Freitas S.A. - Unidade 3
-VIG-10288,João Teixeira,017.453.962-25,2027-09-25,Grandes Eventos,7.6,34045960,12x36 Dia,Andrade Montenegro e Filhos - Unidade 8
-VIG-10289,Maria Isis Aragão,571.468.293-91,2025-03-12,"Vigilância Patrimonial, Monitoramento de CFTV, Escolta Armada",7.0,48441668,12x36 Noite,Lima - Unidade 7
-VIG-10290,Sr. Theodoro da Paz,471.896.530-66,2026-02-24,"Monitoramento de CFTV, Vigilância Patrimonial, Transporte de Valores",8.1,14427620,12x36 Dia,Melo - Unidade 3
-VIG-10291,Dr. Calebe Sampaio,296.387.514-28,2026-10-13,Transporte de Valores,8.8,05921059,12x36 Noite,Pires Peixoto - ME - Unidade 9
-VIG-10292,Anna Liz Barbosa,375.821.460-26,2026-09-19,Escolta Armada,7.2,60779-071,5x2 Comercial,da Mata Azevedo S.A. - Unidade 4
-VIG-10293,Maria Sophia Andrade,093.756.428-10,2027-07-18,"Transporte de Valores, Grandes Eventos, Monitoramento de CFTV",6.7,16187890,12x36 Noite,Mendes - Unidade 4
-VIG-10294,Heloisa Vieira,297.418.306-96,2026-03-05,"Escolta Armada, Grandes Eventos",7.5,20233384,12x36 Dia,Carvalho Ltda. - Unidade 6
-VIG-10295,Srta. Kamilly Silveira,217.056.894-85,2027-11-27,"Transporte de Valores, Monitoramento de CFTV, Escolta Armada",9.7,62240-275,12x36 Noite,Aparecida - Unidade 3
-VIG-10296,Dr. Enzo Gabriel Cavalcanti,106.574.928-76,2025-04-24,Grandes Eventos,10.0,38520019,12x36 Noite,Rocha - Unidade 3
-VIG-10297,Luiz Fernando Pimenta,915.460.723-06,2027-04-13,Vigilância Patrimonial,7.5,89965253,5x2 Comercial,Rocha - Unidade 3
-VIG-10298,Alexandre Oliveira,620.147.859-02,2027-04-23,"Escolta Armada, Segurança Pessoal (VSPP)",7.7,28360-499,12x36 Dia,Moura - Unidade 6
-VIG-10299,Igor Casa Grande,492.651.370-61,2027-03-31,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Grandes Eventos",7.1,37658467,12x36 Dia,Cassiano - Unidade 4
-VIG-10300,João Felipe da Luz,523.904.786-38,2026-06-06,"Monitoramento de CFTV, Vigilância Patrimonial",8.0,51511587,12x36 Noite,Moraes Santos S/A - Unidade 3
-VIG-10301,Sra. Yasmin Guerra,365.408.129-06,2027-08-23,"Transporte de Valores, Vigilância Patrimonial, Monitoramento de CFTV",9.1,42794886,12x36 Noite,Nogueira Pires - EI - Unidade 7
-VIG-10302,Sr. Isaac Pacheco,435.781.902-41,2027-05-28,Grandes Eventos,8.0,91630-542,5x2 Comercial,Ramos - Unidade 8
-VIG-10303,Luigi Montenegro,710.835.694-57,2026-09-26,"Monitoramento de CFTV, Vigilância Patrimonial",7.5,62873077,12x36 Dia,Moura - Unidade 8
-VIG-10304,Ana Laura Campos,208.567.493-38,2027-02-28,Transporte de Valores,8.0,19527-349,5x2 Comercial,Aparecida da Rosa S.A. - Unidade 9
-VIG-10305,Davi Luiz Cavalcanti,621.908.475-67,2025-10-30,"Grandes Eventos, Segurança Pessoal (VSPP)",7.9,23357-875,12x36 Dia,Rios Cirino - ME - Unidade 4
-VIG-10306,Otto Pinto,352.879.604-92,2026-05-13,Escolta Armada,8.6,28157-809,5x2 Comercial,Gonçalves - Unidade 8
-VIG-10307,Sr. Ravi Azevedo,017.698.543-39,2027-07-12,Transporte de Valores,9.9,90768-827,5x2 Comercial,Duarte Monteiro - ME - Unidade 9
-VIG-10308,Emanuel Silva,283.596.140-24,2025-11-10,Vigilância Patrimonial,9.3,80142-114,5x2 Comercial,Machado Pereira S/A - Unidade 5
-VIG-10309,Ísis Rezende,423.851.709-14,2026-04-20,"Grandes Eventos, Transporte de Valores",7.3,18976-904,5x2 Comercial,Duarte - Unidade 10
-VIG-10310,Stella Jesus,150.297.864-49,2027-04-27,"Transporte de Valores, Escolta Armada",7.6,86861-477,12x36 Noite,Costa Montenegro S/A - Unidade 7
-VIG-10311,João Miguel Leão,248.675.190-49,2025-10-20,"Escolta Armada, Monitoramento de CFTV",8.2,72494-471,5x2 Comercial,Albuquerque - Unidade 3
-VIG-10312,Sra. Aylla Abreu,063.854.197-20,2025-09-27,"Escolta Armada, Monitoramento de CFTV, Vigilância Patrimonial",7.7,43323-313,5x2 Comercial,Albuquerque Costela - EI - Unidade 6
-VIG-10313,Nicole Marques,814.950.627-67,2027-10-22,"Segurança Pessoal (VSPP), Monitoramento de CFTV",7.4,62624236,5x2 Comercial,Macedo Vargas e Filhos - Unidade 7
-VIG-10314,Vinicius Moura,240.587.936-00,2027-11-21,"Monitoramento de CFTV, Escolta Armada, Grandes Eventos",6.6,86742341,5x2 Comercial,da Rosa Ltda. - Unidade 10
-VIG-10315,Theodoro Rocha,257.491.063-06,2028-01-22,"Grandes Eventos, Monitoramento de CFTV",7.5,91950928,12x36 Dia,Silveira - Unidade 3
-VIG-10316,Henry Fogaça,549.263.178-00,2026-08-17,"Monitoramento de CFTV, Escolta Armada, Transporte de Valores",9.6,27077311,12x36 Noite,Campos Peixoto S.A. - Unidade 10
-VIG-10317,Lucas da Luz,154.760.823-44,2026-12-09,"Grandes Eventos, Escolta Armada, Transporte de Valores",7.8,91402-295,5x2 Comercial,Rocha S.A. - Unidade 3
-VIG-10318,José Nascimento,896.314.257-46,2025-11-22,Monitoramento de CFTV,9.4,37368-331,12x36 Dia,Lima Ltda. - Unidade 3
-VIG-10319,Sra. Maria Liz Cardoso,892.351.076-95,2027-01-04,"Grandes Eventos, Escolta Armada, Monitoramento de CFTV",6.6,87881968,5x2 Comercial,Machado - Unidade 4
-VIG-10320,André Guerra,863.042.571-71,2027-10-02,Escolta Armada,7.1,22281-521,12x36 Dia,Aragão - Unidade 1
-VIG-10321,Kaique Mendonça,473.189.562-64,2026-07-14,Grandes Eventos,7.0,93803-456,12x36 Dia,Ramos - Unidade 9
-VIG-10322,Thomas Guerra,407.269.813-03,2027-03-25,"Segurança Pessoal (VSPP), Grandes Eventos, Escolta Armada",7.4,66062085,12x36 Noite,Campos Pires - EI - Unidade 10
-VIG-10323,Francisco Montenegro,347.802.659-83,2026-03-21,"Transporte de Valores, Segurança Pessoal (VSPP)",9.8,01210408,12x36 Noite,Pacheco - Unidade 7
-VIG-10324,Ravi Jesus,860.134.275-26,2026-04-09,"Transporte de Valores, Escolta Armada",9.2,48163-933,12x36 Dia,Sousa - Unidade 10
-VIG-10325,Erick Vieira,412.978.356-46,2028-01-26,"Segurança Pessoal (VSPP), Escolta Armada, Monitoramento de CFTV",7.4,73343656,5x2 Comercial,Alves - Unidade 4
-VIG-10326,Ana Júlia Novaes,730.419.265-80,2027-03-22,Transporte de Valores,8.0,05867865,12x36 Noite,Dias Ltda. - Unidade 5
-VIG-10327,Maria Liz Caldeira,679.821.035-02,2025-08-25,Grandes Eventos,9.7,00576588,12x36 Dia,Correia - Unidade 7
-VIG-10328,Gabriela Almeida,804.253.976-29,2025-10-26,"Vigilância Patrimonial, Transporte de Valores",7.9,42785-319,5x2 Comercial,Borges - Unidade 9
-VIG-10329,Sr. Noah Monteiro,806.413.952-05,2025-05-29,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Escolta Armada",8.0,09937084,12x36 Noite,Fogaça - Unidade 7
-VIG-10330,Bryan da Conceição,918.724.360-13,2027-05-11,"Grandes Eventos, Transporte de Valores",9.2,46060-895,12x36 Noite,Sá da Cruz - EI - Unidade 8
-VIG-10331,Yan Nascimento,824.590.136-98,2025-11-24,"Segurança Pessoal (VSPP), Escolta Armada",7.2,67202578,12x36 Dia,Pacheco e Filhos - Unidade 8
-VIG-10332,Benjamin da Cunha,650.932.814-33,2025-10-07,"Transporte de Valores, Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.3,10586763,5x2 Comercial,Sousa Ltda. - Unidade 2
-VIG-10333,Nicolas Moraes,172.403.598-32,2026-08-26,Segurança Pessoal (VSPP),7.8,32848-542,12x36 Noite,Rocha - Unidade 8
-VIG-10334,Stephany Farias,249.380.517-88,2026-04-25,Segurança Pessoal (VSPP),7.5,82356-037,12x36 Noite,da Cruz - Unidade 4
-VIG-10335,Davi Lucca Pimenta,805.342.719-79,2026-02-04,"Transporte de Valores, Segurança Pessoal (VSPP), Grandes Eventos",8.8,99162-618,12x36 Noite,Vasconcelos - EI - Unidade 1
-VIG-10336,Augusto Gomes,629.574.108-85,2026-04-05,Escolta Armada,7.4,17299254,12x36 Dia,Melo - Unidade 8
-VIG-10337,Sabrina Pastor,540.836.197-75,2025-05-12,"Monitoramento de CFTV, Vigilância Patrimonial",9.3,33835002,12x36 Noite,Sampaio Monteiro Ltda. - Unidade 5
-VIG-10338,Nicole Ramos,567.189.203-12,2026-12-28,Vigilância Patrimonial,9.8,72306718,12x36 Noite,Abreu - Unidade 4
-VIG-10339,Dra. Clarice Silveira,265.408.971-11,2026-03-06,"Grandes Eventos, Transporte de Valores, Monitoramento de CFTV",8.2,90106-286,12x36 Dia,da Mata - Unidade 6
-VIG-10340,João Felipe Pereira,495.320.876-56,2025-10-26,Vigilância Patrimonial,6.6,54069-386,12x36 Dia,Porto - Unidade 7
-VIG-10341,Aylla Rocha,790.856.143-84,2027-07-03,"Vigilância Patrimonial, Grandes Eventos",8.8,40376-146,12x36 Dia,Silva - Unidade 3
-VIG-10342,Sr. Otto da Mota,561.793.208-02,2028-02-18,"Escolta Armada, Grandes Eventos, Monitoramento de CFTV",9.4,07058265,12x36 Noite,das Neves - Unidade 1
-VIG-10343,Sra. Isabella Nascimento,572.809.613-12,2025-11-27,"Transporte de Valores, Monitoramento de CFTV",9.9,60971-825,12x36 Noite,Monteiro - Unidade 5
-VIG-10344,Enzo Almeida,976.154.830-93,2027-07-04,Transporte de Valores,8.5,28495-972,12x36 Noite,Rios - Unidade 5
-VIG-10345,Sara da Luz,054.839.621-33,2026-07-24,"Grandes Eventos, Segurança Pessoal (VSPP)",9.4,37256-528,12x36 Dia,Pastor - Unidade 2
-VIG-10346,Lara Azevedo,364.805.127-07,2025-08-26,Monitoramento de CFTV,9.0,91610563,12x36 Dia,Cassiano Moraes S.A. - Unidade 6
-VIG-10347,Júlia Sá,297.034.815-23,2028-02-22,"Transporte de Valores, Vigilância Patrimonial, Grandes Eventos",6.8,84511812,12x36 Dia,Araújo - Unidade 8
-VIG-10348,Maria Júlia Melo,910.427.568-30,2027-12-22,Vigilância Patrimonial,8.2,81762803,5x2 Comercial,Vieira Leão - ME - Unidade 5
-VIG-10349,Isadora Rodrigues,238.759.160-77,2028-01-13,"Transporte de Valores, Escolta Armada",7.6,11639939,5x2 Comercial,da Luz - Unidade 5
-VIG-10350,Arthur Silva,570.384.269-74,2025-10-25,"Transporte de Valores, Vigilância Patrimonial",6.8,22729480,12x36 Noite,Cavalcanti Pacheco - EI - Unidade 6
-VIG-10351,José Camargo,674.953.820-74,2027-05-05,"Transporte de Valores, Monitoramento de CFTV",6.8,50052-501,12x36 Dia,Guerra - Unidade 9
-VIG-10352,Catarina Cirino,528.647.903-00,2025-11-30,Monitoramento de CFTV,8.0,28811927,12x36 Dia,Rocha - Unidade 9
-VIG-10353,Ana Sophia Costela,520.398.471-97,2027-12-22,"Grandes Eventos, Escolta Armada",8.5,23803-705,12x36 Dia,Montenegro - ME - Unidade 7
-VIG-10354,Theodoro Oliveira,874.612.539-64,2025-12-27,"Vigilância Patrimonial, Grandes Eventos",7.3,17596-466,12x36 Noite,Sousa Alves S.A. - Unidade 6
-VIG-10355,Bryan Costela,685.017.294-85,2026-11-13,Segurança Pessoal (VSPP),6.8,73354989,12x36 Dia,Sampaio S/A - Unidade 2
-VIG-10356,Letícia Araújo,103.896.457-10,2026-08-29,"Segurança Pessoal (VSPP), Vigilância Patrimonial, Monitoramento de CFTV",8.3,78373-285,5x2 Comercial,da Mata - EI - Unidade 3
-VIG-10357,Lara da Cunha,670.528.143-07,2025-12-05,Transporte de Valores,9.7,74189205,12x36 Noite,Costela - Unidade 3
-VIG-10358,Dra. Ana Cecília Moreira,938.502.674-74,2025-04-22,"Escolta Armada, Vigilância Patrimonial",6.7,74916-507,5x2 Comercial,Cavalcante - Unidade 4
-VIG-10359,Benjamim Ferreira,269.014.853-60,2027-02-14,Escolta Armada,8.7,28635846,12x36 Dia,Sales Silveira S/A - Unidade 10
-VIG-10360,Sr. Léo Macedo,692.450.873-10,2028-01-24,"Vigilância Patrimonial, Monitoramento de CFTV",8.7,56936-195,5x2 Comercial,Duarte Andrade - ME - Unidade 7
-VIG-10361,Benicio Leão,430.598.672-83,2025-12-08,"Grandes Eventos, Monitoramento de CFTV, Segurança Pessoal (VSPP)",8.1,28329760,5x2 Comercial,Costela - Unidade 3
-VIG-10362,Alana Pereira,164.375.029-16,2026-04-26,"Grandes Eventos, Segurança Pessoal (VSPP)",7.8,53551329,12x36 Dia,Alves da Costa S/A - Unidade 2
-VIG-10363,Olivia Peixoto,253.169.480-33,2027-04-07,"Segurança Pessoal (VSPP), Escolta Armada, Monitoramento de CFTV",8.8,51022528,12x36 Noite,Sales Teixeira - ME - Unidade 9
-VIG-10364,Yan Mendes,063.758.921-12,2026-10-05,"Vigilância Patrimonial, Monitoramento de CFTV, Transporte de Valores",9.4,04924736,12x36 Dia,Sampaio - ME - Unidade 10
-VIG-10365,Sr. Miguel Cirino,192.057.483-23,2025-11-30,Transporte de Valores,6.9,18089-878,12x36 Noite,Macedo - Unidade 6
-VIG-10366,Bianca Caldeira,049.813.756-20,2027-10-24,"Escolta Armada, Transporte de Valores, Monitoramento de CFTV",9.7,04033161,5x2 Comercial,Cavalcante Moura S.A. - Unidade 9
-VIG-10367,Raquel Mendonça,569.802.317-40,2027-12-10,Escolta Armada,8.8,76076-561,12x36 Dia,Silveira S/A - Unidade 3
-VIG-10368,Maria Luiza Cassiano,147.869.035-66,2027-02-10,Grandes Eventos,9.0,91500-063,5x2 Comercial,Silva - Unidade 6
-VIG-10369,Oliver Novaes,869.705.124-01,2026-04-09,Transporte de Valores,8.6,95699-846,5x2 Comercial,Melo Silveira Ltda. - Unidade 9
-VIG-10370,Ryan Lopes,924.087.365-10,2025-05-24,Escolta Armada,8.9,08126-954,12x36 Noite,Sousa da Costa S/A - Unidade 10
-VIG-10371,Ayla Pacheco,642.890.735-65,2025-05-01,"Transporte de Valores, Monitoramento de CFTV",7.7,49745-360,12x36 Noite,Ramos - EI - Unidade 8
-VIG-10372,Stephany Porto,862.970.315-68,2025-12-03,"Segurança Pessoal (VSPP), Monitoramento de CFTV",7.8,67739965,12x36 Noite,Albuquerque Oliveira S.A. - Unidade 4
-VIG-10373,Matteo Abreu,358.764.219-28,2028-03-03,"Transporte de Valores, Vigilância Patrimonial",9.7,77484-320,12x36 Dia,Siqueira Ltda. - Unidade 7
-VIG-10374,Clarice Fonseca,607.245.391-07,2028-02-29,"Segurança Pessoal (VSPP), Escolta Armada, Vigilância Patrimonial",9.0,19947-001,12x36 Dia,da Conceição Costa S/A - Unidade 8
-VIG-10375,Sra. Ana Teixeira,754.012.986-76,2025-10-21,"Segurança Pessoal (VSPP), Monitoramento de CFTV",6.7,82206990,12x36 Noite,Sampaio - Unidade 3
-VIG-10376,Dra. Catarina Garcia,791.820.463-87,2026-06-07,"Monitoramento de CFTV, Transporte de Valores",6.6,78129-302,5x2 Comercial,da Luz - Unidade 3
-VIG-10377,João Vitor Barbosa,506.239.714-61,2025-03-24,"Monitoramento de CFTV, Escolta Armada",9.6,53489158,12x36 Noite,Camargo Duarte Ltda. - Unidade 8
-VIG-10378,Sr. Nicolas Borges,916.204.573-34,2025-09-22,"Escolta Armada, Transporte de Valores",9.3,80298-207,12x36 Noite,da Cruz - ME - Unidade 8
-VIG-10379,Sr. Yuri Moraes,748.195.362-73,2026-05-04,"Grandes Eventos, Segurança Pessoal (VSPP), Transporte de Valores",8.2,95844-491,12x36 Dia,Oliveira Aparecida S/A - Unidade 6
-VIG-10380,Otávio Machado,273.456.108-53,2026-06-12,Vigilância Patrimonial,9.2,43384-330,5x2 Comercial,Siqueira - Unidade 2
-VIG-10381,Lorenzo Viana,596.830.217-86,2026-05-19,"Segurança Pessoal (VSPP), Escolta Armada",8.8,13618-806,12x36 Noite,Monteiro - Unidade 4
-VIG-10382,Augusto Gomes,052.187.496-30,2026-03-29,"Vigilância Patrimonial, Grandes Eventos",7.5,11499896,5x2 Comercial,Guerra S.A. - Unidade 9
-VIG-10383,Cecilia Cavalcanti,963.715.284-91,2025-04-15,"Vigilância Patrimonial, Grandes Eventos",9.1,71963365,12x36 Dia,da Paz Novais - ME - Unidade 7
-VIG-10384,Ana Vitória Gomes,675.198.342-55,2027-12-25,"Grandes Eventos, Vigilância Patrimonial",7.1,61441-841,12x36 Noite,Brito da Rosa - EI - Unidade 6
-VIG-10385,Gael Correia,920.835.647-74,2025-11-19,"Monitoramento de CFTV, Escolta Armada, Transporte de Valores",8.3,49567-479,5x2 Comercial,da Costa Costela Ltda. - Unidade 1
-VIG-10386,Sra. Maria Eduarda Cardoso,274.596.380-56,2027-10-02,Vigilância Patrimonial,9.6,61354141,12x36 Noite,Fernandes Moura e Filhos - Unidade 2
-VIG-10387,Luiz Gustavo Ribeiro,742.568.319-91,2025-06-27,Escolta Armada,9.1,59376-344,5x2 Comercial,Pacheco S/A - Unidade 9
-VIG-10388,Eduardo Fernandes,708.392.514-32,2026-05-04,Grandes Eventos,7.9,72296-285,5x2 Comercial,Martins - EI - Unidade 6
-VIG-10389,Thomas Pinto,569.128.347-28,2027-06-03,"Vigilância Patrimonial, Monitoramento de CFTV",7.4,20475731,12x36 Noite,Oliveira - ME - Unidade 9
-VIG-10390,Srta. Luiza Freitas,824.153.069-24,2026-05-10,Segurança Pessoal (VSPP),9.1,62139689,12x36 Noite,Costela Pinto - EI - Unidade 5
-VIG-10391,Nicole Sampaio,913.057.624-52,2028-02-24,"Grandes Eventos, Vigilância Patrimonial",8.4,96523782,12x36 Noite,da Rosa e Filhos - Unidade 4
-VIG-10392,Dr. Benjamim Andrade,438.026.957-47,2025-06-07,"Transporte de Valores, Segurança Pessoal (VSPP), Monitoramento de CFTV",7.4,37024360,12x36 Noite,Vieira Rocha - ME - Unidade 1
-VIG-10393,Eloá Campos,642.785.190-01,2028-01-19,Grandes Eventos,7.2,00290847,5x2 Comercial,Carvalho - Unidade 3
-VIG-10394,Sophie Silveira,314.259.608-98,2026-10-02,"Transporte de Valores, Segurança Pessoal (VSPP), Vigilância Patrimonial",7.7,77949371,12x36 Dia,Cirino S.A. - Unidade 8
-VIG-10395,Gabriela Macedo,309.861.542-70,2026-07-12,Segurança Pessoal (VSPP),7.2,97434-460,12x36 Dia,Pereira - ME - Unidade 7
-VIG-10396,Sra. Maria Liz Cardoso,826.134.759-19,2025-08-28,Vigilância Patrimonial,6.8,11230-761,12x36 Dia,Cunha - Unidade 6
-VIG-10397,Rael Rezende,634.709.852-00,2027-09-16,"Grandes Eventos, Transporte de Valores, Vigilância Patrimonial",9.6,64521-482,5x2 Comercial,Macedo - Unidade 1
-VIG-10398,Maria Alice Montenegro,826.071.395-03,2028-01-03,Escolta Armada,9.7,60085976,5x2 Comercial,Barbosa - ME - Unidade 8
-VIG-10399,Laís Ribeiro,845.923.071-60,2027-12-13,Vigilância Patrimonial,8.3,45455-061,12x36 Noite,Sá - Unidade 9
+VIG-10000,Levi Peixoto,593.***.***-14,2027-02-24,Escolta Armada,9.8,57602-445,12x36 Dia,Ferreira - Unidade 2
+VIG-10001,Bernardo da Luz,163.***.***-04,2027-11-08,"Monitoramento de CFTV, Escolta Armada, Transporte de Valores",9.3,01043-838,5x2 Comercial,Moraes Macedo - EI - Unidade 10
+VIG-10002,Hellena Nascimento,089.***.***-41,2025-10-28,"Transporte de Valores, Monitoramento de CFTV, Segurança Pessoal (VSPP)",8.8,62896143,12x36 Dia,Casa Grande S.A. - Unidade 8
+VIG-10003,Rebeca Porto,961.***.***-42,2025-12-15,"Grandes Eventos, Vigilância Patrimonial, Monitoramento de CFTV",7.2,83449-298,5x2 Comercial,Porto - Unidade 2
+VIG-10004,Luana Cavalcanti,075.***.***-01,2027-10-10,"Transporte de Valores, Segurança Pessoal (VSPP), Grandes Eventos",9.3,55561-284,12x36 Dia,Pinto - Unidade 8
+VIG-10005,Lívia da Rosa,386.***.***-98,2026-09-19,Vigilância Patrimonial,8.5,99479-220,12x36 Dia,Moraes - Unidade 10
+VIG-10006,Marina Carvalho,594.***.***-10,2025-05-29,Vigilância Patrimonial,7.1,81195-441,12x36 Noite,Freitas Vieira S.A. - Unidade 1
+VIG-10007,Heitor da Luz,278.***.***-38,2026-04-02,"Monitoramento de CFTV, Escolta Armada, Segurança Pessoal (VSPP)",9.2,30657-859,12x36 Dia,Pereira - Unidade 9
+VIG-10008,Mathias Sampaio,472.***.***-28,2026-04-27,"Grandes Eventos, Monitoramento de CFTV, Segurança Pessoal (VSPP)",6.6,07075165,12x36 Dia,Albuquerque - Unidade 5
+VIG-10009,Cauã Moraes,910.***.***-94,2027-04-12,Transporte de Valores,8.3,28156071,5x2 Comercial,Barbosa Freitas - ME - Unidade 10
+VIG-10010,Valentim Vieira,961.***.***-02,2026-07-06,"Grandes Eventos, Vigilância Patrimonial, Transporte de Valores",9.2,10008415,12x36 Noite,Freitas Costa Ltda. - Unidade 2
+VIG-10011,Apollo Sales,103.***.***-02,2027-09-21,"Escolta Armada, Vigilância Patrimonial",8.1,11138-696,12x36 Noite,Carvalho S/A - Unidade 5
+VIG-10012,Danilo Sousa,751.***.***-14,2025-09-08,Segurança Pessoal (VSPP),8.2,88175932,5x2 Comercial,da Rocha - EI - Unidade 3
+VIG-10013,Cauê Pinto,349.***.***-51,2027-03-17,Escolta Armada,7.9,98063-605,5x2 Comercial,Vieira - Unidade 10
+VIG-10014,Mathias Costela,165.***.***-39,2026-08-01,"Grandes Eventos, Monitoramento de CFTV",10.0,09098-372,12x36 Noite,Pereira - EI - Unidade 6
+VIG-10015,Clara Rodrigues,514.***.***-28,2025-08-09,Transporte de Valores,7.6,53521-013,12x36 Noite,Campos S.A. - Unidade 1
+VIG-10016,Júlia Rodrigues,480.***.***-79,2026-02-24,Vigilância Patrimonial,6.6,12133-973,5x2 Comercial,Cirino S/A - Unidade 3
+VIG-10017,Ana Júlia Marques,132.***.***-42,2027-05-29,Monitoramento de CFTV,9.7,64185-396,5x2 Comercial,Moraes Santos S.A. - Unidade 2
+VIG-10018,Levi Pires,406.***.***-16,2027-07-30,"Grandes Eventos, Transporte de Valores, Escolta Armada",8.9,19805993,5x2 Comercial,Ferreira - Unidade 4
+VIG-10019,Sophie Lopes,274.***.***-85,2027-11-29,"Grandes Eventos, Vigilância Patrimonial",8.3,58508236,5x2 Comercial,Pimenta - Unidade 8
+VIG-10020,Giovanna da Mata,468.***.***-49,2027-06-13,"Monitoramento de CFTV, Segurança Pessoal (VSPP), Escolta Armada",9.1,29557-275,5x2 Comercial,Silveira S/A - Unidade 5
+VIG-10021,Gustavo Aragão,896.***.***-10,2028-03-07,"Grandes Eventos, Monitoramento de CFTV, Vigilância Patrimonial",6.7,12622844,12x36 Dia,Rocha - Unidade 9
+VIG-10022,Joana da Cunha,289.***.***-33,2026-03-19,"Vigilância Patrimonial, Monitoramento de CFTV, Transporte de Valores",7.5,76516761,5x2 Comercial,Cavalcanti Melo S.A. - Unidade 8
+VIG-10023,Lunna Pimenta,514.***.***-20,2025-07-07,Transporte de Valores,6.8,63008-796,5x2 Comercial,Vargas - Unidade 7
+VIG-10024,Dra. Isadora Porto,739.***.***-46,2025-12-27,"Escolta Armada, Transporte de Valores",6.9,47955555,5x2 Comercial,Fernandes Lopes e Filhos - Unidade 1
+VIG-10025,Henry Lopes,601.***.***-25,2026-07-16,"Grandes Eventos, Segurança Pessoal (VSPP)",9.3,87531-399,12x36 Noite,Oliveira - Unidade 7
+VIG-10026,Sr. Gael das Neves,027.***.***-56,2027-10-31,"Monitoramento de CFTV, Segurança Pessoal (VSPP), Escolta Armada",9.5,77380076,12x36 Dia,Barbosa - Unidade 10
+VIG-10027,Hellena da Rosa,895.***.***-68,2027-12-20,Vigilância Patrimonial,8.9,61191423,5x2 Comercial,da Rosa - Unidade 7
+VIG-10028,Melina Fonseca,094.***.***-23,2027-03-01,Monitoramento de CFTV,9.0,93470875,5x2 Comercial,Duarte - Unidade 3
+VIG-10029,Nina Novaes,019.***.***-59,2025-09-22,"Vigilância Patrimonial, Grandes Eventos, Escolta Armada",8.4,91366984,12x36 Noite,Azevedo da Rocha S.A. - Unidade 7
+VIG-10030,Bernardo Novaes,625.***.***-49,2028-02-18,"Monitoramento de CFTV, Grandes Eventos",7.8,64705-987,12x36 Noite,Brito - Unidade 6
+VIG-10031,Esther Câmara,845.***.***-71,2027-05-02,"Escolta Armada, Monitoramento de CFTV",8.0,71046137,12x36 Noite,Pastor e Filhos - Unidade 4
+VIG-10032,Dante Fonseca,415.***.***-62,2026-10-15,"Escolta Armada, Monitoramento de CFTV, Transporte de Valores",9.2,04430379,5x2 Comercial,da Mota - Unidade 6
+VIG-10033,Gael Henrique Fonseca,213.***.***-23,2025-09-22,Segurança Pessoal (VSPP),7.2,53201-715,12x36 Dia,da Rocha - Unidade 10
+VIG-10034,Raul Gomes,791.***.***-77,2027-04-12,"Segurança Pessoal (VSPP), Monitoramento de CFTV",7.7,88164-940,5x2 Comercial,Andrade - Unidade 1
+VIG-10035,Luan Rodrigues,126.***.***-99,2027-01-28,"Grandes Eventos, Monitoramento de CFTV",8.3,77662-907,5x2 Comercial,Melo - Unidade 9
+VIG-10036,Mateus Moura,568.***.***-62,2026-09-16,Segurança Pessoal (VSPP),7.3,42924837,12x36 Dia,Costa S/A - Unidade 4
+VIG-10037,Emilly Cunha,460.***.***-56,2025-10-29,Grandes Eventos,8.4,50813-199,12x36 Noite,Lopes - Unidade 8
+VIG-10038,Valentina Costa,173.***.***-01,2027-06-04,Grandes Eventos,7.3,47882660,12x36 Noite,Moura - Unidade 10
+VIG-10039,Yago Oliveira,324.***.***-71,2026-06-30,"Segurança Pessoal (VSPP), Escolta Armada",8.3,79536976,12x36 Dia,Sá - Unidade 6
+VIG-10040,Dra. Emanuella Nascimento,764.***.***-29,2026-01-21,Transporte de Valores,7.5,58280597,12x36 Noite,Ramos - Unidade 2
+VIG-10041,João Vitor Ramos,165.***.***-17,2027-07-16,Transporte de Valores,7.0,21677769,12x36 Dia,Nogueira da Luz e Filhos - Unidade 6
+VIG-10042,Emilly Santos,864.***.***-13,2025-04-26,"Vigilância Patrimonial, Monitoramento de CFTV, Segurança Pessoal (VSPP)",6.9,14975-589,12x36 Noite,Gonçalves - Unidade 3
+VIG-10043,Yuri Rios,601.***.***-94,2028-02-15,"Transporte de Valores, Grandes Eventos",8.7,43804-145,12x36 Noite,Fernandes S.A. - Unidade 8
+VIG-10044,José Ferreira,096.***.***-93,2027-04-11,"Monitoramento de CFTV, Transporte de Valores, Grandes Eventos",6.8,24780243,12x36 Noite,Teixeira S.A. - Unidade 6
+VIG-10045,Ana Andrade,876.***.***-38,2027-07-03,"Vigilância Patrimonial, Transporte de Valores, Grandes Eventos",8.4,61119947,5x2 Comercial,Pimenta - Unidade 6
+VIG-10046,Levi Costa,037.***.***-75,2025-07-08,"Grandes Eventos, Transporte de Valores, Vigilância Patrimonial",7.4,18201-139,5x2 Comercial,Rios - Unidade 2
+VIG-10047,Clarice Moura,072.***.***-44,2025-09-06,"Segurança Pessoal (VSPP), Transporte de Valores",9.7,40667-151,12x36 Dia,Vasconcelos Ramos S/A - Unidade 4
+VIG-10048,Juliana Andrade,374.***.***-93,2025-12-10,"Transporte de Valores, Monitoramento de CFTV, Vigilância Patrimonial",8.9,91011-696,12x36 Dia,Vasconcelos - Unidade 1
+VIG-10049,Bárbara Barbosa,730.***.***-95,2025-05-01,"Escolta Armada, Transporte de Valores, Vigilância Patrimonial",7.1,42752-020,12x36 Dia,Lopes - Unidade 7
+VIG-10050,Alice Pinto,012.***.***-89,2026-05-15,"Grandes Eventos, Monitoramento de CFTV",7.7,98123-603,12x36 Noite,Pires e Filhos - Unidade 6
+VIG-10051,Gael Almeida,029.***.***-85,2025-09-01,"Escolta Armada, Monitoramento de CFTV",8.3,39776323,12x36 Noite,Moreira Rezende S/A - Unidade 1
+VIG-10052,Valentina Albuquerque,470.***.***-71,2025-04-07,"Vigilância Patrimonial, Transporte de Valores, Escolta Armada",7.2,19281416,12x36 Noite,Ribeiro Marques - ME - Unidade 3
+VIG-10053,Luísa Fogaça,781.***.***-95,2027-03-25,"Escolta Armada, Grandes Eventos",7.5,48515-718,5x2 Comercial,Viana S/A - Unidade 2
+VIG-10054,Hadassa da Luz,036.***.***-03,2025-09-03,"Escolta Armada, Vigilância Patrimonial, Grandes Eventos",6.7,71425-759,5x2 Comercial,Pimenta - Unidade 3
+VIG-10055,Ryan Alves,029.***.***-01,2025-10-11,"Escolta Armada, Vigilância Patrimonial",6.9,47060874,12x36 Noite,Brito Casa Grande Ltda. - Unidade 7
+VIG-10056,Yago Pastor,582.***.***-51,2026-08-19,"Escolta Armada, Vigilância Patrimonial",7.5,45178213,12x36 Dia,Moreira - Unidade 4
+VIG-10057,Ravi Rezende,485.***.***-92,2025-08-23,Vigilância Patrimonial,8.4,59777-871,5x2 Comercial,Farias - Unidade 1
+VIG-10058,Dr. Heitor Ramos,429.***.***-73,2025-06-03,Vigilância Patrimonial,7.0,22774-253,12x36 Dia,Duarte - Unidade 8
+VIG-10059,Isabela Castro,827.***.***-73,2028-01-25,Escolta Armada,8.0,68323-050,5x2 Comercial,Correia Ltda. - Unidade 5
+VIG-10060,Srta. Luísa Santos,175.***.***-95,2025-06-24,"Escolta Armada, Segurança Pessoal (VSPP)",6.7,89883870,12x36 Noite,Sampaio - EI - Unidade 3
+VIG-10061,Cecília da Rocha,389.***.***-96,2025-10-03,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Transporte de Valores",8.8,61098-329,5x2 Comercial,da Rosa - Unidade 8
+VIG-10062,Hellena Pereira,867.***.***-11,2027-01-10,"Vigilância Patrimonial, Transporte de Valores",9.6,66419043,12x36 Noite,Sá - Unidade 6
+VIG-10063,João Silva,254.***.***-62,2025-07-11,"Vigilância Patrimonial, Escolta Armada, Transporte de Valores",6.7,18777-202,12x36 Noite,Ribeiro - Unidade 7
+VIG-10064,Sra. Júlia Fogaça,864.***.***-76,2026-12-21,"Transporte de Valores, Segurança Pessoal (VSPP), Escolta Armada",8.7,51997855,12x36 Noite,Ferreira - Unidade 4
+VIG-10065,Yasmin Campos,465.***.***-05,2027-02-03,"Monitoramento de CFTV, Vigilância Patrimonial, Transporte de Valores",9.3,65351-392,12x36 Noite,Garcia - Unidade 4
+VIG-10066,Ana Júlia Melo,916.***.***-60,2027-02-18,"Segurança Pessoal (VSPP), Grandes Eventos",7.9,70336425,12x36 Noite,Gomes - Unidade 10
+VIG-10067,Gabriel Peixoto,098.***.***-88,2026-02-20,"Grandes Eventos, Escolta Armada",7.4,42361540,12x36 Dia,Vieira - Unidade 6
+VIG-10068,Joana Correia,639.***.***-43,2027-02-02,"Escolta Armada, Segurança Pessoal (VSPP)",9.2,48493737,12x36 Dia,Oliveira - Unidade 3
+VIG-10069,Srta. Rebeca Almeida,815.***.***-57,2026-05-23,Transporte de Valores,9.2,67267731,5x2 Comercial,Sampaio Brito - ME - Unidade 5
+VIG-10070,Raul Pimenta,432.***.***-22,2026-10-18,"Monitoramento de CFTV, Grandes Eventos, Vigilância Patrimonial",9.8,55933-038,12x36 Dia,da Mota - Unidade 10
+VIG-10071,Marcela Viana,238.***.***-26,2025-04-30,Transporte de Valores,7.2,09432217,12x36 Dia,Macedo - Unidade 5
+VIG-10072,Melina Cavalcanti,325.***.***-83,2027-12-30,Vigilância Patrimonial,6.9,30425-446,12x36 Noite,Cardoso - Unidade 8
+VIG-10073,Ravi Fernandes,274.***.***-91,2026-01-14,"Vigilância Patrimonial, Escolta Armada",8.5,62911-065,5x2 Comercial,Novais da Paz - EI - Unidade 4
+VIG-10074,Maria Julia Fonseca,516.***.***-00,2028-02-29,Vigilância Patrimonial,6.8,55349285,12x36 Dia,Andrade - Unidade 10
+VIG-10075,Bruna Correia,085.***.***-10,2025-04-29,"Vigilância Patrimonial, Grandes Eventos, Transporte de Valores",7.7,69028-164,5x2 Comercial,Rios e Filhos - Unidade 9
+VIG-10076,Dr. Henrique Nunes,781.***.***-04,2026-11-21,Escolta Armada,9.6,69256-889,5x2 Comercial,Campos - Unidade 1
+VIG-10077,Pietra Martins,209.***.***-05,2026-04-15,"Escolta Armada, Monitoramento de CFTV",7.5,77141890,12x36 Noite,Castro Ltda. - Unidade 9
+VIG-10078,Marcela Castro,270.***.***-16,2026-08-03,"Segurança Pessoal (VSPP), Monitoramento de CFTV",8.2,33648252,12x36 Dia,da Mata - Unidade 5
+VIG-10079,Dante Moreira,064.***.***-66,2026-09-13,Grandes Eventos,6.8,06653-102,12x36 Noite,Pacheco - Unidade 10
+VIG-10080,Dante Rezende,643.***.***-90,2027-10-12,"Grandes Eventos, Transporte de Valores",9.5,16085-436,12x36 Dia,Pimenta - Unidade 7
+VIG-10081,Luiza Fogaça,690.***.***-30,2026-10-04,Escolta Armada,7.2,28301-515,12x36 Noite,Costa - Unidade 10
+VIG-10082,Francisco Novaes,726.***.***-80,2025-06-27,"Escolta Armada, Transporte de Valores",6.9,99994-601,5x2 Comercial,da Paz Silveira Ltda. - Unidade 1
+VIG-10083,Sr. Joaquim da Cunha,209.***.***-38,2025-11-06,"Grandes Eventos, Monitoramento de CFTV",7.1,88383-911,12x36 Noite,Pacheco - Unidade 3
+VIG-10084,Antony Vargas,389.***.***-55,2026-07-26,"Grandes Eventos, Escolta Armada",7.1,32205-190,12x36 Dia,Porto - Unidade 1
+VIG-10085,Dr. Marcos Vinicius Camargo,781.***.***-19,2025-10-29,"Segurança Pessoal (VSPP), Monitoramento de CFTV",8.6,58022-422,12x36 Noite,Albuquerque S/A - Unidade 5
+VIG-10086,Sra. Heloisa Camargo,634.***.***-80,2025-05-13,Segurança Pessoal (VSPP),7.9,12654969,5x2 Comercial,Nunes Melo S/A - Unidade 4
+VIG-10087,Murilo Cunha,035.***.***-43,2027-10-16,"Escolta Armada, Vigilância Patrimonial, Grandes Eventos",9.3,92665-958,12x36 Dia,Dias - Unidade 2
+VIG-10088,Leandro da Costa,239.***.***-56,2025-07-30,"Segurança Pessoal (VSPP), Monitoramento de CFTV",7.5,45849-291,12x36 Dia,Martins Teixeira S/A - Unidade 8
+VIG-10089,Olivia Cassiano,741.***.***-35,2027-04-27,"Grandes Eventos, Monitoramento de CFTV, Segurança Pessoal (VSPP)",7.9,12082-361,5x2 Comercial,Rezende Montenegro S/A - Unidade 8
+VIG-10090,Gabrielly Borges,216.***.***-73,2027-07-22,"Vigilância Patrimonial, Transporte de Valores",9.4,31643-892,5x2 Comercial,Marques Leão e Filhos - Unidade 6
+VIG-10091,Srta. Olívia Cirino,109.***.***-15,2026-08-26,"Transporte de Valores, Segurança Pessoal (VSPP), Escolta Armada",7.4,95756-586,12x36 Dia,da Mata - Unidade 6
+VIG-10092,Henry Costela,024.***.***-96,2025-04-14,"Escolta Armada, Monitoramento de CFTV, Grandes Eventos",8.2,76865389,12x36 Dia,Silveira - Unidade 8
+VIG-10093,Sr. Henry Gabriel Jesus,741.***.***-70,2027-08-05,"Monitoramento de CFTV, Segurança Pessoal (VSPP), Vigilância Patrimonial",7.1,68158027,5x2 Comercial,Macedo - Unidade 10
+VIG-10094,Ana Vitória Novais,298.***.***-15,2025-08-11,Escolta Armada,9.8,74073289,12x36 Dia,Pacheco e Filhos - Unidade 5
+VIG-10095,Otávio Mendonça,609.***.***-67,2025-05-07,Grandes Eventos,7.3,73832-660,12x36 Noite,Mendonça Cavalcanti Ltda. - Unidade 7
+VIG-10096,Maria Helena Abreu,534.***.***-84,2027-08-20,"Escolta Armada, Grandes Eventos",9.6,45470-595,12x36 Noite,Cardoso - Unidade 3
+VIG-10097,Luna da Mata,954.***.***-38,2027-05-02,"Grandes Eventos, Vigilância Patrimonial",7.4,28673-935,12x36 Noite,da Rosa Ltda. - Unidade 10
+VIG-10098,Luiz Gustavo Novaes,659.***.***-20,2027-05-26,"Transporte de Valores, Segurança Pessoal (VSPP), Vigilância Patrimonial",9.0,94959598,5x2 Comercial,Rezende - Unidade 7
+VIG-10099,Sr. Gustavo Henrique Lima,185.***.***-76,2026-11-27,"Monitoramento de CFTV, Transporte de Valores, Segurança Pessoal (VSPP)",6.8,25308-148,12x36 Noite,da Paz - Unidade 4
+VIG-10100,Luiz Henrique da Cruz,564.***.***-52,2026-01-27,"Vigilância Patrimonial, Grandes Eventos",7.0,59568535,12x36 Noite,Ferreira Rocha - ME - Unidade 3
+VIG-10101,Gustavo Castro,695.***.***-80,2027-02-15,"Segurança Pessoal (VSPP), Vigilância Patrimonial",6.7,00384076,12x36 Dia,Sampaio - Unidade 2
+VIG-10102,Thiago Fonseca,639.***.***-12,2025-10-02,Segurança Pessoal (VSPP),7.7,43306-378,5x2 Comercial,Peixoto S/A - Unidade 10
+VIG-10103,Bianca Fogaça,528.***.***-26,2027-10-09,Monitoramento de CFTV,8.3,89486-529,12x36 Dia,Jesus Casa Grande - ME - Unidade 9
+VIG-10104,Benício Moreira,526.***.***-60,2027-05-11,Escolta Armada,9.0,41429-069,5x2 Comercial,Andrade - Unidade 7
+VIG-10105,Raquel Sá,398.***.***-96,2027-05-03,"Segurança Pessoal (VSPP), Escolta Armada",9.2,61565497,5x2 Comercial,Porto - Unidade 9
+VIG-10106,Gabriela Peixoto,598.***.***-95,2028-02-19,Segurança Pessoal (VSPP),8.8,52672335,12x36 Dia,Garcia - Unidade 9
+VIG-10107,Rebeca Cirino,641.***.***-07,2025-12-20,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Monitoramento de CFTV",9.5,78302-643,12x36 Noite,Andrade - Unidade 5
+VIG-10108,Ágatha Almeida,916.***.***-37,2025-09-06,Grandes Eventos,9.3,91298686,5x2 Comercial,Mendes Silveira e Filhos - Unidade 9
+VIG-10109,Hellena Pires,941.***.***-64,2025-12-15,"Grandes Eventos, Monitoramento de CFTV, Segurança Pessoal (VSPP)",9.8,47486949,12x36 Dia,Novaes - Unidade 1
+VIG-10110,Lucas Leão,572.***.***-47,2026-03-17,Transporte de Valores,6.6,23748999,12x36 Noite,Barros - Unidade 7
+VIG-10111,Caroline Macedo,813.***.***-10,2027-09-09,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",6.8,21576497,12x36 Noite,Sousa S/A - Unidade 3
+VIG-10112,Léo Monteiro,805.***.***-50,2026-01-14,"Grandes Eventos, Escolta Armada",8.7,40535178,12x36 Dia,Siqueira Araújo Ltda. - Unidade 9
+VIG-10113,Davi Lucas Ribeiro,781.***.***-07,2026-05-04,Escolta Armada,8.8,60896-266,5x2 Comercial,Machado Sá S.A. - Unidade 3
+VIG-10114,Maya Araújo,567.***.***-61,2027-01-06,"Segurança Pessoal (VSPP), Vigilância Patrimonial",8.6,96554822,5x2 Comercial,da Mata Costela S.A. - Unidade 4
+VIG-10115,Valentim Montenegro,056.***.***-48,2026-03-13,"Segurança Pessoal (VSPP), Escolta Armada, Monitoramento de CFTV",8.3,16023-730,12x36 Noite,da Paz - Unidade 3
+VIG-10116,Lucas Gabriel Dias,496.***.***-57,2026-03-27,"Monitoramento de CFTV, Vigilância Patrimonial, Escolta Armada",7.4,22313299,12x36 Dia,Novais - Unidade 6
+VIG-10117,Dr. Lucas Gabriel Garcia,903.***.***-20,2027-08-12,"Grandes Eventos, Escolta Armada, Segurança Pessoal (VSPP)",8.2,25769419,12x36 Dia,Gomes Ltda. - Unidade 5
+VIG-10118,Srta. Luara Pires,604.***.***-62,2027-11-27,"Monitoramento de CFTV, Transporte de Valores, Vigilância Patrimonial",7.5,52531863,12x36 Dia,Montenegro - Unidade 6
+VIG-10119,Danilo Rios,945.***.***-58,2027-05-28,"Grandes Eventos, Transporte de Valores, Segurança Pessoal (VSPP)",9.7,24624-452,12x36 Dia,Melo Borges S/A - Unidade 3
+VIG-10120,Sr. Otávio Freitas,189.***.***-85,2028-02-06,"Segurança Pessoal (VSPP), Transporte de Valores, Escolta Armada",7.5,13874-163,5x2 Comercial,Silva - Unidade 2
+VIG-10121,Camila Sá,027.***.***-71,2026-06-08,Monitoramento de CFTV,9.5,49609-351,5x2 Comercial,Araújo Câmara S.A. - Unidade 1
+VIG-10122,Sophie Mendonça,138.***.***-04,2025-04-04,Segurança Pessoal (VSPP),9.2,91340-231,12x36 Dia,Viana Sousa - EI - Unidade 1
+VIG-10123,Srta. Isabelly Camargo,063.***.***-03,2026-11-27,"Escolta Armada, Vigilância Patrimonial",6.9,99505-504,12x36 Dia,Gonçalves - Unidade 8
+VIG-10124,Milena Cavalcante,952.***.***-29,2027-11-14,"Grandes Eventos, Transporte de Valores, Vigilância Patrimonial",6.9,61893-599,5x2 Comercial,Campos S/A - Unidade 10
+VIG-10125,Srta. Aylla Rocha,349.***.***-57,2025-03-31,"Monitoramento de CFTV, Transporte de Valores, Vigilância Patrimonial",7.6,42334-824,12x36 Dia,Silva - Unidade 10
+VIG-10126,Ryan Viana,359.***.***-23,2027-02-02,Vigilância Patrimonial,9.4,89591564,12x36 Noite,Barbosa Vasconcelos - EI - Unidade 6
+VIG-10127,Isabella Oliveira,971.***.***-49,2025-07-05,Vigilância Patrimonial,6.6,31892-082,12x36 Noite,Fogaça - ME - Unidade 3
+VIG-10128,Dr. José Miguel Azevedo,937.***.***-40,2025-04-25,Grandes Eventos,7.1,85370627,12x36 Noite,Monteiro S/A - Unidade 4
+VIG-10129,Luiz Henrique Fonseca,875.***.***-97,2028-02-01,"Monitoramento de CFTV, Vigilância Patrimonial",8.3,23592454,12x36 Dia,Mendes - Unidade 5
+VIG-10130,Caleb Monteiro,736.***.***-91,2028-01-29,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Grandes Eventos",9.7,01741-095,12x36 Dia,Macedo - ME - Unidade 4
+VIG-10131,Dr. Danilo Souza,761.***.***-31,2025-11-04,"Grandes Eventos, Transporte de Valores",8.7,65308-041,5x2 Comercial,Silveira - Unidade 6
+VIG-10132,Rhavi Garcia,918.***.***-97,2027-04-22,"Monitoramento de CFTV, Transporte de Valores, Segurança Pessoal (VSPP)",9.2,59184283,12x36 Dia,Cardoso - Unidade 9
+VIG-10133,Sra. Yasmin das Neves,213.***.***-98,2026-02-14,"Transporte de Valores, Grandes Eventos",8.0,97483-680,12x36 Noite,da Mota - Unidade 4
+VIG-10134,Isaac Camargo,381.***.***-15,2025-04-14,"Grandes Eventos, Vigilância Patrimonial",6.9,73928017,5x2 Comercial,Moreira Pires S.A. - Unidade 2
+VIG-10135,Yago Freitas,942.***.***-67,2025-05-07,"Segurança Pessoal (VSPP), Escolta Armada",8.6,08440223,12x36 Noite,Rezende - Unidade 10
+VIG-10136,Eduarda Teixeira,083.***.***-62,2026-09-09,"Grandes Eventos, Segurança Pessoal (VSPP)",9.0,66933101,12x36 Dia,Silva - Unidade 2
+VIG-10137,Srta. Luana Mendonça,193.***.***-70,2028-02-19,Monitoramento de CFTV,8.0,92807945,12x36 Noite,da Rosa - ME - Unidade 1
+VIG-10138,Guilherme da Cunha,290.***.***-41,2028-02-29,Monitoramento de CFTV,7.3,44031-687,12x36 Noite,Aparecida - Unidade 5
+VIG-10139,João Vitor Peixoto,321.***.***-70,2027-09-06,"Escolta Armada, Segurança Pessoal (VSPP)",7.3,94380526,12x36 Noite,Caldeira Carvalho - EI - Unidade 1
+VIG-10140,Luara Borges,308.***.***-86,2026-08-15,"Monitoramento de CFTV, Segurança Pessoal (VSPP)",9.9,77281-538,5x2 Comercial,Pacheco - Unidade 5
+VIG-10141,Kaique Novaes,451.***.***-70,2026-11-08,"Segurança Pessoal (VSPP), Grandes Eventos, Transporte de Valores",6.6,83267652,12x36 Noite,Fogaça Campos - ME - Unidade 8
+VIG-10142,Davi Miguel Fonseca,093.***.***-77,2027-08-30,"Grandes Eventos, Segurança Pessoal (VSPP), Escolta Armada",8.3,08676462,12x36 Dia,Cardoso - Unidade 4
+VIG-10143,Ana Luiza Vasconcelos,516.***.***-68,2026-02-26,"Vigilância Patrimonial, Grandes Eventos, Segurança Pessoal (VSPP)",6.6,18661-518,12x36 Dia,Garcia - Unidade 8
+VIG-10144,Jade Fogaça,712.***.***-73,2027-09-23,Vigilância Patrimonial,8.9,46896-709,12x36 Dia,Costela S.A. - Unidade 5
+VIG-10145,Isabella Farias,127.***.***-73,2026-05-30,"Segurança Pessoal (VSPP), Escolta Armada",7.6,19254-458,12x36 Noite,Almeida - Unidade 2
+VIG-10146,Dr. Augusto Correia,718.***.***-60,2026-03-11,"Transporte de Valores, Grandes Eventos, Monitoramento de CFTV",10.0,24515499,12x36 Dia,Sales Nascimento e Filhos - Unidade 8
+VIG-10147,Miguel Sá,586.***.***-28,2025-09-20,Escolta Armada,8.3,40468412,12x36 Noite,Barbosa S/A - Unidade 2
+VIG-10148,Mateus Moreira,745.***.***-17,2027-03-09,"Escolta Armada, Transporte de Valores",9.1,44129387,12x36 Noite,Fogaça - Unidade 8
+VIG-10149,João Pedro Porto,253.***.***-62,2028-01-22,"Escolta Armada, Grandes Eventos",8.2,30385675,5x2 Comercial,Fernandes S/A - Unidade 1
+VIG-10150,Ana Sophia Lopes,476.***.***-22,2026-10-15,"Segurança Pessoal (VSPP), Vigilância Patrimonial",7.8,43228372,12x36 Dia,da Rosa - ME - Unidade 6
+VIG-10151,Benjamim Moreira,197.***.***-59,2027-03-24,Vigilância Patrimonial,7.4,57416423,5x2 Comercial,Dias Cardoso - EI - Unidade 8
+VIG-10152,José Monteiro,258.***.***-20,2026-01-05,Transporte de Valores,8.0,95874879,12x36 Dia,Duarte - ME - Unidade 10
+VIG-10153,Arthur Gabriel Farias,715.***.***-82,2028-02-12,Monitoramento de CFTV,7.4,38646107,12x36 Noite,Barros - Unidade 2
+VIG-10154,Mariana Mendonça,943.***.***-66,2027-05-23,"Transporte de Valores, Monitoramento de CFTV, Grandes Eventos",9.6,70538-590,12x36 Noite,Campos - ME - Unidade 4
+VIG-10155,Murilo Peixoto,596.***.***-25,2025-10-30,"Transporte de Valores, Escolta Armada, Segurança Pessoal (VSPP)",7.2,88552837,12x36 Noite,Pastor Almeida - ME - Unidade 3
+VIG-10156,Oliver Ramos,930.***.***-68,2027-03-09,Grandes Eventos,9.5,01586616,12x36 Noite,Barros - Unidade 6
+VIG-10157,Augusto da Rosa,091.***.***-69,2026-09-03,"Escolta Armada, Vigilância Patrimonial",8.2,79829336,12x36 Dia,Silva - Unidade 3
+VIG-10158,Maria Liz da Rosa,621.***.***-02,2025-06-14,"Escolta Armada, Monitoramento de CFTV",9.5,06318057,12x36 Noite,Fogaça Freitas e Filhos - Unidade 5
+VIG-10159,Dra. Raquel Ribeiro,842.***.***-40,2027-11-04,"Grandes Eventos, Vigilância Patrimonial, Monitoramento de CFTV",8.4,63488096,12x36 Noite,Cassiano - Unidade 5
+VIG-10160,Maria Cecília Correia,253.***.***-89,2027-05-21,Monitoramento de CFTV,7.1,81648-767,5x2 Comercial,Fogaça e Filhos - Unidade 4
+VIG-10161,Emanuelly Rodrigues,298.***.***-14,2025-07-15,"Escolta Armada, Vigilância Patrimonial, Monitoramento de CFTV",6.8,44552048,12x36 Dia,Caldeira - Unidade 7
+VIG-10162,Pietra Barbosa,647.***.***-85,2025-12-04,"Segurança Pessoal (VSPP), Vigilância Patrimonial",6.9,68541-142,5x2 Comercial,das Neves - Unidade 3
+VIG-10163,Ravi Monteiro,564.***.***-53,2026-11-15,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",6.6,86296592,12x36 Noite,Rodrigues - Unidade 10
+VIG-10164,Sr. Otávio Fogaça,164.***.***-67,2025-09-20,"Segurança Pessoal (VSPP), Transporte de Valores, Monitoramento de CFTV",7.9,40970384,5x2 Comercial,Azevedo - Unidade 3
+VIG-10165,Sra. Milena Sampaio,409.***.***-88,2027-09-25,Grandes Eventos,7.3,73624612,12x36 Dia,Freitas - Unidade 5
+VIG-10166,Gustavo Henrique da Costa,315.***.***-09,2025-09-05,"Segurança Pessoal (VSPP), Vigilância Patrimonial",7.6,75224790,5x2 Comercial,Pimenta Ltda. - Unidade 8
+VIG-10167,Dra. Helena Viana,382.***.***-97,2026-12-16,"Segurança Pessoal (VSPP), Vigilância Patrimonial",9.5,18642206,12x36 Dia,Novais - Unidade 10
+VIG-10168,Heitor Costela,065.***.***-53,2025-05-28,"Transporte de Valores, Escolta Armada",7.8,86513600,5x2 Comercial,Mendonça Ltda. - Unidade 3
+VIG-10169,Aylla Moreira,102.***.***-60,2026-08-07,Transporte de Valores,8.5,29861217,12x36 Dia,Marques Fernandes - ME - Unidade 7
+VIG-10170,Isabel Rios,456.***.***-51,2027-05-21,"Transporte de Valores, Escolta Armada, Monitoramento de CFTV",7.3,61425-266,12x36 Dia,Câmara - Unidade 2
+VIG-10171,Sr. Cauã Dias,782.***.***-02,2026-12-09,"Monitoramento de CFTV, Segurança Pessoal (VSPP)",6.6,12890901,12x36 Noite,Rocha - Unidade 10
+VIG-10172,João Gabriel Freitas,237.***.***-69,2027-06-26,Vigilância Patrimonial,7.2,49268556,12x36 Dia,Sá - Unidade 3
+VIG-10173,Caroline Pimenta,148.***.***-55,2025-05-31,"Transporte de Valores, Monitoramento de CFTV, Escolta Armada",7.2,60243-818,5x2 Comercial,Teixeira - Unidade 1
+VIG-10174,Bruno Nogueira,482.***.***-29,2026-06-05,"Grandes Eventos, Monitoramento de CFTV, Escolta Armada",7.8,63135-879,12x36 Dia,Albuquerque S.A. - Unidade 9
+VIG-10175,Nathan Fernandes,280.***.***-80,2026-02-10,"Grandes Eventos, Monitoramento de CFTV, Transporte de Valores",8.2,86092764,12x36 Noite,Borges Aragão - ME - Unidade 6
+VIG-10176,Melissa Pires,485.***.***-85,2027-05-30,Segurança Pessoal (VSPP),8.0,97883327,12x36 Dia,da Paz Rodrigues S/A - Unidade 4
+VIG-10177,Melissa Caldeira,501.***.***-01,2025-04-03,"Segurança Pessoal (VSPP), Grandes Eventos",7.0,77220015,12x36 Noite,Novaes - Unidade 10
+VIG-10178,Arthur Gabriel Fonseca,203.***.***-42,2025-06-07,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.2,25567702,5x2 Comercial,Porto - Unidade 3
+VIG-10179,Olívia da Mata,205.***.***-14,2027-03-03,Monitoramento de CFTV,6.6,64139281,12x36 Noite,da Luz - Unidade 2
+VIG-10180,Lunna Gonçalves,540.***.***-66,2025-06-13,Monitoramento de CFTV,8.8,48067687,12x36 Dia,Carvalho - Unidade 2
+VIG-10181,Laís Cassiano,837.***.***-14,2026-11-30,"Grandes Eventos, Escolta Armada",8.8,54740-917,12x36 Noite,Brito Nunes - ME - Unidade 10
+VIG-10182,Ana Luiza Nascimento,489.***.***-79,2027-01-03,"Vigilância Patrimonial, Transporte de Valores, Escolta Armada",9.6,92522450,12x36 Dia,Martins Andrade Ltda. - Unidade 1
+VIG-10183,Alexia Lima,793.***.***-79,2027-03-30,"Monitoramento de CFTV, Grandes Eventos",6.7,18298-364,12x36 Noite,Sousa Ltda. - Unidade 8
+VIG-10184,Vicente Ferreira,457.***.***-62,2027-01-15,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Vigilância Patrimonial",7.0,50002-825,12x36 Noite,Cavalcante S.A. - Unidade 9
+VIG-10185,Alexia Cirino,196.***.***-12,2025-04-24,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Grandes Eventos",6.6,99636-325,12x36 Dia,Santos - Unidade 10
+VIG-10186,Arthur Gabriel Nunes,891.***.***-33,2026-05-15,Vigilância Patrimonial,9.9,93797803,5x2 Comercial,da Costa - Unidade 10
+VIG-10187,Sr. Benicio Cirino,614.***.***-75,2025-10-28,"Escolta Armada, Vigilância Patrimonial",9.5,59170434,12x36 Noite,Rodrigues - Unidade 2
+VIG-10188,Rael Garcia,124.***.***-91,2026-03-03,Transporte de Valores,7.1,57601-716,12x36 Noite,Pinto - Unidade 9
+VIG-10189,Raquel Borges,685.***.***-60,2026-07-19,Transporte de Valores,6.9,28802915,5x2 Comercial,Aragão Pimenta S.A. - Unidade 9
+VIG-10190,Henry Gabriel da Mata,190.***.***-76,2026-03-12,"Vigilância Patrimonial, Transporte de Valores",8.0,89116-776,12x36 Dia,Gomes Moreira S.A. - Unidade 1
+VIG-10191,Dr. Felipe Ramos,239.***.***-02,2026-04-26,Transporte de Valores,9.0,88220-391,12x36 Noite,da Paz Mendes S/A - Unidade 7
+VIG-10192,Ana Vitória Rocha,960.***.***-20,2027-09-13,"Vigilância Patrimonial, Escolta Armada",8.3,40156708,12x36 Dia,Aragão Sampaio e Filhos - Unidade 4
+VIG-10193,Dr. Luiz Otávio Sousa,659.***.***-64,2028-03-08,"Grandes Eventos, Transporte de Valores, Vigilância Patrimonial",8.4,73511839,12x36 Dia,Andrade - Unidade 7
+VIG-10194,Sra. Jade Araújo,290.***.***-65,2025-11-13,"Monitoramento de CFTV, Escolta Armada, Grandes Eventos",9.5,52984956,12x36 Dia,da Paz - Unidade 7
+VIG-10195,Valentina Peixoto,804.***.***-31,2026-10-29,"Transporte de Valores, Escolta Armada",9.6,80042-831,12x36 Noite,Pastor - Unidade 2
+VIG-10196,Srta. Sophie Martins,812.***.***-21,2027-11-23,"Escolta Armada, Monitoramento de CFTV, Transporte de Valores",6.9,71130-264,5x2 Comercial,Abreu e Filhos - Unidade 2
+VIG-10197,Ester Costa,385.***.***-40,2026-12-30,Monitoramento de CFTV,6.6,47573-874,5x2 Comercial,Silva - Unidade 8
+VIG-10198,Laura Machado,156.***.***-99,2026-11-19,Escolta Armada,8.6,36463-215,12x36 Noite,da Costa - Unidade 10
+VIG-10199,Srta. Isabel Moura,493.***.***-37,2026-03-24,Escolta Armada,8.4,41154-382,12x36 Noite,Albuquerque - Unidade 3
+VIG-10200,Sophia Guerra,026.***.***-83,2027-07-14,Monitoramento de CFTV,8.5,54404-125,12x36 Dia,Souza e Filhos - Unidade 5
+VIG-10201,Luiz Gustavo Cassiano,369.***.***-02,2026-09-06,"Grandes Eventos, Segurança Pessoal (VSPP)",8.3,30998-838,12x36 Noite,Pires Casa Grande S.A. - Unidade 4
+VIG-10202,Luiz Miguel Pacheco,075.***.***-80,2027-08-07,Vigilância Patrimonial,7.3,89646165,5x2 Comercial,Nascimento - Unidade 10
+VIG-10203,Sra. Valentina Lima,046.***.***-00,2025-04-06,"Vigilância Patrimonial, Escolta Armada",7.0,14938-330,5x2 Comercial,Pires Andrade S/A - Unidade 3
+VIG-10204,Diogo Gomes,147.***.***-93,2026-06-16,"Segurança Pessoal (VSPP), Vigilância Patrimonial, Escolta Armada",8.7,32001-558,5x2 Comercial,Almeida - Unidade 7
+VIG-10205,João Miguel Peixoto,870.***.***-53,2025-10-06,"Segurança Pessoal (VSPP), Grandes Eventos, Escolta Armada",8.4,23927-521,12x36 Dia,Silva Guerra - ME - Unidade 10
+VIG-10206,André Fogaça,397.***.***-73,2026-10-01,"Grandes Eventos, Vigilância Patrimonial",6.8,97251-088,5x2 Comercial,Cardoso e Filhos - Unidade 5
+VIG-10207,Ravi Jesus,563.***.***-24,2026-02-14,"Monitoramento de CFTV, Grandes Eventos, Vigilância Patrimonial",9.4,89046-803,12x36 Dia,da Costa - Unidade 5
+VIG-10208,Dra. Luna Souza,659.***.***-91,2026-10-17,"Escolta Armada, Vigilância Patrimonial, Monitoramento de CFTV",9.0,44679-139,5x2 Comercial,Melo S.A. - Unidade 10
+VIG-10209,Emanuel da Costa,452.***.***-58,2028-01-13,"Grandes Eventos, Segurança Pessoal (VSPP)",7.3,90243-998,5x2 Comercial,Moraes - Unidade 1
+VIG-10210,Alícia Teixeira,758.***.***-07,2027-10-31,"Segurança Pessoal (VSPP), Transporte de Valores, Grandes Eventos",7.4,62832972,5x2 Comercial,Duarte - Unidade 7
+VIG-10211,Paulo Câmara,139.***.***-13,2027-02-05,"Segurança Pessoal (VSPP), Escolta Armada, Grandes Eventos",7.0,36373-151,12x36 Dia,Carvalho e Filhos - Unidade 2
+VIG-10212,Sr. Henry Gabriel Teixeira,508.***.***-00,2026-05-05,Monitoramento de CFTV,6.9,54957865,12x36 Dia,Pimenta S/A - Unidade 8
+VIG-10213,Thomas Aragão,087.***.***-12,2026-06-17,"Vigilância Patrimonial, Escolta Armada, Transporte de Valores",8.2,35164-705,12x36 Noite,Barros S.A. - Unidade 1
+VIG-10214,Rafael Aparecida,579.***.***-95,2025-07-25,"Transporte de Valores, Escolta Armada",8.0,54472740,5x2 Comercial,Vasconcelos - Unidade 1
+VIG-10215,Sra. Mariah Cavalcante,031.***.***-32,2025-10-24,"Grandes Eventos, Vigilância Patrimonial",9.9,03915355,5x2 Comercial,Cardoso - Unidade 5
+VIG-10216,Maria Luísa Cunha,712.***.***-80,2026-07-29,"Grandes Eventos, Escolta Armada",9.2,80983740,12x36 Noite,Freitas - Unidade 6
+VIG-10217,Srta. Fernanda Pastor,591.***.***-20,2027-11-27,Grandes Eventos,7.7,98487283,12x36 Dia,Gonçalves - Unidade 3
+VIG-10218,Letícia Moraes,057.***.***-67,2027-08-27,"Transporte de Valores, Monitoramento de CFTV, Segurança Pessoal (VSPP)",9.5,35024071,12x36 Dia,da Paz S/A - Unidade 5
+VIG-10219,Dr. Gael Henrique Pacheco,783.***.***-97,2026-09-30,"Transporte de Valores, Monitoramento de CFTV, Segurança Pessoal (VSPP)",6.6,68052275,12x36 Noite,Correia - Unidade 6
+VIG-10220,Dr. Cauã Novaes,647.***.***-70,2027-04-22,"Segurança Pessoal (VSPP), Transporte de Valores",9.9,00938536,12x36 Noite,Camargo - Unidade 1
+VIG-10221,Sofia da Luz,476.***.***-00,2025-07-20,"Segurança Pessoal (VSPP), Transporte de Valores",7.1,09953013,12x36 Dia,Pacheco - ME - Unidade 1
+VIG-10222,Levi Campos,540.***.***-30,2025-04-15,Escolta Armada,7.8,56591292,12x36 Noite,Barros - Unidade 2
+VIG-10223,Luiz Otávio Cavalcante,719.***.***-11,2026-03-19,Escolta Armada,6.8,78970169,12x36 Dia,Fernandes - Unidade 7
+VIG-10224,Alexia Nogueira,671.***.***-84,2026-06-20,Escolta Armada,7.9,37493811,12x36 Dia,Peixoto Ltda. - Unidade 4
+VIG-10225,Sr. Luiz Otávio Andrade,714.***.***-84,2027-11-12,Vigilância Patrimonial,8.1,52468576,5x2 Comercial,Albuquerque Cassiano Ltda. - Unidade 10
+VIG-10226,Sr. Arthur Caldeira,604.***.***-89,2027-05-07,Segurança Pessoal (VSPP),8.6,01414-959,5x2 Comercial,Novais - Unidade 1
+VIG-10227,Igor Siqueira,829.***.***-96,2028-01-01,"Grandes Eventos, Monitoramento de CFTV, Escolta Armada",6.9,31720718,5x2 Comercial,Freitas - Unidade 3
+VIG-10228,Rodrigo Ramos,639.***.***-15,2025-10-05,"Segurança Pessoal (VSPP), Grandes Eventos, Monitoramento de CFTV",9.1,55034-926,5x2 Comercial,Lopes Peixoto Ltda. - Unidade 1
+VIG-10229,Bruno Rodrigues,892.***.***-37,2025-04-29,"Segurança Pessoal (VSPP), Grandes Eventos",9.8,82298-988,12x36 Noite,Rezende da Costa S/A - Unidade 4
+VIG-10230,Emanuella Cardoso,273.***.***-32,2028-01-24,Grandes Eventos,9.5,53999379,12x36 Dia,Martins Silveira e Filhos - Unidade 2
+VIG-10231,Levi Rezende,129.***.***-42,2027-08-04,"Grandes Eventos, Escolta Armada",9.3,91639-995,12x36 Noite,da Cruz S/A - Unidade 10
+VIG-10232,Dr. Benjamim Moraes,327.***.***-83,2025-07-11,"Grandes Eventos, Segurança Pessoal (VSPP), Transporte de Valores",7.6,01706-383,12x36 Noite,Araújo S/A - Unidade 6
+VIG-10233,Catarina Porto,658.***.***-19,2025-04-19,"Grandes Eventos, Monitoramento de CFTV, Vigilância Patrimonial",7.5,38112-097,5x2 Comercial,Moreira - Unidade 2
+VIG-10234,Alexia Brito,658.***.***-98,2026-09-14,"Transporte de Valores, Segurança Pessoal (VSPP), Monitoramento de CFTV",8.3,84778026,12x36 Dia,Macedo - Unidade 10
+VIG-10235,Bárbara Carvalho,938.***.***-21,2026-05-29,"Grandes Eventos, Segurança Pessoal (VSPP), Transporte de Valores",6.7,62378-521,5x2 Comercial,Siqueira Ltda. - Unidade 1
+VIG-10236,Yasmin da Conceição,610.***.***-22,2026-10-30,Monitoramento de CFTV,8.3,40633-651,5x2 Comercial,Borges - Unidade 1
+VIG-10237,Antony Fogaça,163.***.***-69,2026-12-18,Escolta Armada,9.7,84967673,12x36 Noite,Novais - Unidade 7
+VIG-10238,Isadora Casa Grande,029.***.***-03,2025-05-01,"Monitoramento de CFTV, Transporte de Valores, Grandes Eventos",6.8,54817624,12x36 Dia,Moura - Unidade 5
+VIG-10239,Brenda Fonseca,405.***.***-23,2026-02-02,"Grandes Eventos, Transporte de Valores, Segurança Pessoal (VSPP)",9.5,32543375,12x36 Dia,Jesus - Unidade 7
+VIG-10240,Giovanna da Rosa,709.***.***-00,2026-12-05,"Monitoramento de CFTV, Transporte de Valores",7.2,70710-380,5x2 Comercial,Câmara Ltda. - Unidade 3
+VIG-10241,Dra. Alana da Paz,035.***.***-06,2026-03-23,"Vigilância Patrimonial, Transporte de Valores, Grandes Eventos",9.0,90594531,12x36 Noite,Ramos - Unidade 6
+VIG-10242,Srta. Larissa da Cunha,194.***.***-31,2026-04-19,"Grandes Eventos, Vigilância Patrimonial, Transporte de Valores",7.5,43822809,12x36 Noite,da Mata S.A. - Unidade 5
+VIG-10243,Apollo Peixoto,540.***.***-05,2028-01-06,Segurança Pessoal (VSPP),8.0,54110428,12x36 Dia,Peixoto - Unidade 9
+VIG-10244,Antonella Aparecida,502.***.***-67,2026-07-25,Transporte de Valores,7.5,30259385,5x2 Comercial,Borges - Unidade 7
+VIG-10245,Srta. Manuela Sousa,657.***.***-01,2027-02-26,"Monitoramento de CFTV, Vigilância Patrimonial",9.8,08308858,12x36 Noite,Gonçalves - EI - Unidade 7
+VIG-10246,Oliver Farias,476.***.***-40,2025-07-30,"Transporte de Valores, Grandes Eventos",9.9,14497970,12x36 Dia,Rodrigues Ltda. - Unidade 4
+VIG-10247,João Miguel Moraes,257.***.***-80,2026-08-09,"Monitoramento de CFTV, Transporte de Valores, Escolta Armada",7.5,68673-470,5x2 Comercial,Fonseca - EI - Unidade 4
+VIG-10248,Marcos Vinicius Pacheco,643.***.***-48,2025-04-24,"Transporte de Valores, Monitoramento de CFTV",8.2,69036647,5x2 Comercial,da Rosa - Unidade 8
+VIG-10249,Stephany Costela,769.***.***-76,2026-11-06,"Transporte de Valores, Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.0,29503940,12x36 Noite,Andrade - Unidade 4
+VIG-10250,Caroline Novaes,612.***.***-78,2025-07-09,"Grandes Eventos, Segurança Pessoal (VSPP), Vigilância Patrimonial",9.7,77188-296,12x36 Noite,Gonçalves Rodrigues Ltda. - Unidade 8
+VIG-10251,Sr. Kaique Peixoto,106.***.***-84,2025-12-20,"Escolta Armada, Monitoramento de CFTV",6.6,94739-557,5x2 Comercial,Silva - Unidade 3
+VIG-10252,Srta. Lorena da Rosa,351.***.***-91,2027-04-06,"Monitoramento de CFTV, Escolta Armada",7.6,10638682,12x36 Dia,Martins - Unidade 3
+VIG-10253,Lorenzo da Costa,620.***.***-65,2028-01-22,Segurança Pessoal (VSPP),9.4,74247916,12x36 Dia,das Neves - Unidade 5
+VIG-10254,Bianca Rezende,476.***.***-82,2026-06-13,Segurança Pessoal (VSPP),7.5,47896-338,5x2 Comercial,Freitas - Unidade 9
+VIG-10255,Srta. Isabela Cassiano,951.***.***-25,2025-03-17,"Grandes Eventos, Escolta Armada",9.0,63027-598,12x36 Noite,Castro - Unidade 7
+VIG-10256,Sr. Otávio Rocha,306.***.***-42,2027-11-02,"Grandes Eventos, Segurança Pessoal (VSPP)",7.1,49310-108,5x2 Comercial,Casa Grande Cavalcanti - EI - Unidade 2
+VIG-10257,Valentim Sales,281.***.***-82,2027-11-14,Transporte de Valores,9.0,58738957,12x36 Dia,Vargas e Filhos - Unidade 2
+VIG-10258,Thales Garcia,793.***.***-03,2027-06-13,Transporte de Valores,9.5,75319-115,5x2 Comercial,Ferreira - Unidade 4
+VIG-10259,Lorena Camargo,601.***.***-40,2025-08-12,"Segurança Pessoal (VSPP), Grandes Eventos",7.5,49606230,5x2 Comercial,Novaes - Unidade 9
+VIG-10260,Theodoro Leão,835.***.***-53,2027-05-27,Monitoramento de CFTV,6.7,33182202,12x36 Noite,Fogaça - Unidade 2
+VIG-10261,Sr. Pedro Abreu,678.***.***-77,2026-04-24,"Monitoramento de CFTV, Vigilância Patrimonial",7.4,93520625,12x36 Dia,Cirino - Unidade 7
+VIG-10262,Kaique Ribeiro,308.***.***-84,2026-02-04,"Grandes Eventos, Segurança Pessoal (VSPP), Vigilância Patrimonial",8.2,35336486,12x36 Dia,Mendes Souza - EI - Unidade 9
+VIG-10263,Luiz Henrique Rodrigues,934.***.***-97,2026-02-15,"Vigilância Patrimonial, Transporte de Valores, Grandes Eventos",9.6,55671-564,5x2 Comercial,Peixoto - ME - Unidade 7
+VIG-10264,Dom Marques,096.***.***-99,2027-03-19,Monitoramento de CFTV,8.0,39211-356,12x36 Dia,Sá Dias - EI - Unidade 6
+VIG-10265,Maria Luiza Garcia,621.***.***-44,2027-10-20,"Monitoramento de CFTV, Vigilância Patrimonial, Escolta Armada",8.3,29820049,5x2 Comercial,Cirino - Unidade 4
+VIG-10266,Bento Silveira,530.***.***-60,2025-05-31,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Grandes Eventos",8.9,73644-740,5x2 Comercial,da Costa Araújo - EI - Unidade 5
+VIG-10267,Pietra Nascimento,458.***.***-65,2027-04-19,"Segurança Pessoal (VSPP), Grandes Eventos",8.5,20775-322,5x2 Comercial,Teixeira - Unidade 8
+VIG-10268,Josué Alves,375.***.***-07,2027-02-28,"Transporte de Valores, Escolta Armada, Vigilância Patrimonial",8.4,31669089,5x2 Comercial,da Rosa S/A - Unidade 7
+VIG-10269,Dr. Anthony Siqueira,714.***.***-17,2025-11-06,"Escolta Armada, Transporte de Valores, Grandes Eventos",8.7,20053832,5x2 Comercial,Castro S.A. - Unidade 4
+VIG-10270,Sr. Rodrigo Costela,748.***.***-01,2027-11-16,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Monitoramento de CFTV",7.1,81505-696,5x2 Comercial,Correia Almeida - ME - Unidade 7
+VIG-10271,Kamilly Moreira,235.***.***-07,2027-08-20,"Monitoramento de CFTV, Transporte de Valores",8.2,81395936,5x2 Comercial,Cavalcante da Paz - ME - Unidade 3
+VIG-10272,Maria Alice Sousa,034.***.***-61,2027-06-21,Vigilância Patrimonial,8.8,93046299,12x36 Noite,Correia - Unidade 2
+VIG-10273,Carolina Costa,194.***.***-22,2028-01-25,Transporte de Valores,7.0,72148223,5x2 Comercial,Costela - Unidade 8
+VIG-10274,Lorenzo Vargas,718.***.***-21,2026-06-24,"Segurança Pessoal (VSPP), Escolta Armada",9.2,66033-184,5x2 Comercial,Costa - EI - Unidade 5
+VIG-10275,Sr. Mathias Gonçalves,295.***.***-38,2025-07-26,"Transporte de Valores, Segurança Pessoal (VSPP)",7.2,06198700,5x2 Comercial,Leão - Unidade 3
+VIG-10276,Sophie Siqueira,498.***.***-76,2026-07-10,"Segurança Pessoal (VSPP), Grandes Eventos",8.8,64346539,12x36 Dia,Sá - Unidade 3
+VIG-10277,Dra. Ana Cecília Lima,824.***.***-56,2026-01-05,"Monitoramento de CFTV, Transporte de Valores",7.4,00256-609,5x2 Comercial,Moreira Guerra S/A - Unidade 1
+VIG-10278,Sr. Marcos Vinicius Camargo,870.***.***-20,2026-04-04,"Transporte de Valores, Monitoramento de CFTV, Vigilância Patrimonial",7.0,91272376,5x2 Comercial,Azevedo - Unidade 10
+VIG-10279,Leonardo da Rocha,697.***.***-95,2026-03-12,"Vigilância Patrimonial, Segurança Pessoal (VSPP)",8.1,66378-742,12x36 Noite,Fernandes - Unidade 4
+VIG-10280,João Vitor Rodrigues,095.***.***-60,2026-08-11,"Transporte de Valores, Monitoramento de CFTV",7.4,13667-985,12x36 Dia,Montenegro Moura e Filhos - Unidade 4
+VIG-10281,Maitê Pacheco,510.***.***-25,2028-01-11,"Monitoramento de CFTV, Vigilância Patrimonial",7.4,95167-585,12x36 Dia,Câmara - Unidade 3
+VIG-10282,Daniela da Conceição,903.***.***-83,2028-02-26,"Vigilância Patrimonial, Grandes Eventos",10.0,84126325,5x2 Comercial,Vasconcelos Casa Grande S.A. - Unidade 10
+VIG-10283,Maria Clara Carvalho,407.***.***-79,2025-11-14,Escolta Armada,8.8,66500085,12x36 Dia,da Luz - Unidade 2
+VIG-10284,Dra. Ana Carolina Gomes,965.***.***-43,2026-09-12,Vigilância Patrimonial,8.9,65375040,5x2 Comercial,Pimenta - Unidade 5
+VIG-10285,Dra. Natália Dias,756.***.***-59,2026-09-20,"Vigilância Patrimonial, Transporte de Valores, Segurança Pessoal (VSPP)",9.1,99403801,12x36 Noite,Teixeira Rodrigues - EI - Unidade 6
+VIG-10286,Sra. Júlia Pires,830.***.***-62,2027-12-03,"Monitoramento de CFTV, Grandes Eventos",6.8,67186-996,12x36 Noite,da Luz - Unidade 8
+VIG-10287,Caleb Cassiano,897.***.***-57,2025-11-11,"Transporte de Valores, Monitoramento de CFTV",8.8,20902-291,12x36 Dia,Vargas - ME - Unidade 2
+VIG-10288,Isabela Nascimento,579.***.***-03,2026-03-17,"Escolta Armada, Grandes Eventos",9.7,29398-058,5x2 Comercial,Martins S.A. - Unidade 2
+VIG-10289,Dr. Levi Lima,749.***.***-29,2027-04-13,"Segurança Pessoal (VSPP), Transporte de Valores, Vigilância Patrimonial",8.2,97780131,12x36 Noite,Cunha Vargas - EI - Unidade 8
+VIG-10290,Luara Pinto,451.***.***-06,2028-01-28,"Grandes Eventos, Segurança Pessoal (VSPP)",9.3,27435-604,5x2 Comercial,Cavalcanti Moura e Filhos - Unidade 9
+VIG-10291,Cauã Castro,867.***.***-35,2027-01-15,"Segurança Pessoal (VSPP), Grandes Eventos, Monitoramento de CFTV",6.5,86426-333,5x2 Comercial,da Cruz Casa Grande - ME - Unidade 4
+VIG-10292,Theo Almeida,281.***.***-87,2025-12-20,"Transporte de Valores, Segurança Pessoal (VSPP), Escolta Armada",7.2,26353-384,5x2 Comercial,da Mota - Unidade 3
+VIG-10293,Agatha da Conceição,123.***.***-87,2026-12-26,"Monitoramento de CFTV, Transporte de Valores, Escolta Armada",8.4,52952-549,12x36 Dia,Aparecida S.A. - Unidade 8
+VIG-10294,Davi Luiz das Neves,956.***.***-56,2025-07-29,Monitoramento de CFTV,7.7,54493873,5x2 Comercial,Martins Sampaio S/A - Unidade 8
+VIG-10295,Agatha Monteiro,287.***.***-30,2027-01-09,Segurança Pessoal (VSPP),7.5,68228-878,12x36 Dia,Machado Câmara Ltda. - Unidade 7
+VIG-10296,Thomas Cavalcante,670.***.***-74,2025-10-07,"Grandes Eventos, Vigilância Patrimonial, Segurança Pessoal (VSPP)",7.2,42204717,12x36 Dia,Costa Viana Ltda. - Unidade 4
+VIG-10297,Allana Cavalcante,170.***.***-48,2027-02-05,"Transporte de Valores, Grandes Eventos",8.5,44811-481,12x36 Noite,Novaes - Unidade 1
+VIG-10298,João Lucas Fernandes,630.***.***-16,2028-02-23,"Grandes Eventos, Vigilância Patrimonial, Escolta Armada",7.8,17072-722,5x2 Comercial,Fernandes - Unidade 4
+VIG-10299,André Cavalcanti,341.***.***-71,2025-08-25,"Vigilância Patrimonial, Escolta Armada",9.1,15318-691,12x36 Dia,Pinto - Unidade 3
+VIG-10300,Davi Lucca Mendonça,413.***.***-90,2027-04-16,"Vigilância Patrimonial, Transporte de Valores",7.2,86867-255,12x36 Noite,Oliveira - Unidade 4
+VIG-10301,Maria Vitória Duarte,964.***.***-82,2026-03-08,"Segurança Pessoal (VSPP), Monitoramento de CFTV, Transporte de Valores",6.8,39530-534,12x36 Noite,Cassiano Barbosa - ME - Unidade 8
+VIG-10302,Bruna Fonseca,964.***.***-50,2025-04-14,"Transporte de Valores, Monitoramento de CFTV, Vigilância Patrimonial",7.2,86858341,12x36 Dia,Vieira - Unidade 6
+VIG-10303,Manuella Jesus,126.***.***-80,2027-10-22,Grandes Eventos,8.6,84322-484,12x36 Noite,Araújo - EI - Unidade 9
+VIG-10304,Gabriel Pacheco,927.***.***-09,2025-05-28,Segurança Pessoal (VSPP),7.3,67406009,5x2 Comercial,Dias - Unidade 9
+VIG-10305,Anthony Jesus,075.***.***-83,2028-01-20,Vigilância Patrimonial,7.5,55346640,5x2 Comercial,Souza - Unidade 10
+VIG-10306,Maya Casa Grande,254.***.***-05,2027-01-24,"Monitoramento de CFTV, Vigilância Patrimonial",8.1,17475358,5x2 Comercial,Freitas - Unidade 7
+VIG-10307,Rhavi Vieira,915.***.***-30,2026-05-24,Escolta Armada,7.2,90817-855,5x2 Comercial,Macedo Freitas S/A - Unidade 1
+VIG-10308,Luara Rezende,470.***.***-04,2028-02-14,Vigilância Patrimonial,7.8,65982832,5x2 Comercial,Mendonça Azevedo S/A - Unidade 10
+VIG-10309,Pietro Ferreira,012.***.***-62,2025-10-17,"Grandes Eventos, Vigilância Patrimonial",7.7,32343-356,12x36 Dia,Cirino S/A - Unidade 6
+VIG-10310,Dr. Vitor Hugo Aparecida,183.***.***-04,2026-06-29,"Escolta Armada, Transporte de Valores, Monitoramento de CFTV",6.6,11937701,12x36 Noite,Vasconcelos - Unidade 7
+VIG-10311,Dra. Rebeca Sousa,273.***.***-50,2026-05-06,Transporte de Valores,9.4,74597219,5x2 Comercial,da Rocha Rocha - EI - Unidade 3
+VIG-10312,Eduarda Borges,398.***.***-21,2026-07-06,Monitoramento de CFTV,9.9,70360-133,12x36 Dia,Garcia - Unidade 5
+VIG-10313,Fernanda Almeida,143.***.***-57,2027-08-10,Vigilância Patrimonial,8.1,51622-996,12x36 Noite,Oliveira da Rosa - ME - Unidade 6
+VIG-10314,Ana Clara Borges,967.***.***-68,2026-03-30,Transporte de Valores,8.9,95464-229,12x36 Dia,Dias Borges - EI - Unidade 10
+VIG-10315,Sr. João Vitor Guerra,610.***.***-03,2027-12-12,Monitoramento de CFTV,7.0,45772053,12x36 Noite,Siqueira Rezende Ltda. - Unidade 6
+VIG-10316,Ester Pacheco,982.***.***-30,2025-06-01,"Escolta Armada, Vigilância Patrimonial, Segurança Pessoal (VSPP)",9.4,98255-686,5x2 Comercial,Barros - Unidade 10
+VIG-10317,Marina Cassiano,235.***.***-07,2026-08-06,"Escolta Armada, Grandes Eventos",8.6,45498-775,12x36 Dia,da Rosa Machado - ME - Unidade 3
+VIG-10318,Luiz Otávio Barros,129.***.***-85,2027-11-18,"Grandes Eventos, Segurança Pessoal (VSPP)",8.9,62337293,12x36 Noite,Souza S.A. - Unidade 2
+VIG-10319,Caroline Mendes,368.***.***-00,2027-11-08,"Monitoramento de CFTV, Segurança Pessoal (VSPP)",9.8,61165-284,12x36 Dia,Pacheco - Unidade 7
+VIG-10320,Sra. Amanda Jesus,736.***.***-16,2026-01-23,Vigilância Patrimonial,7.1,54500-065,12x36 Noite,Pimenta Caldeira Ltda. - Unidade 2
+VIG-10321,Hellena Dias,516.***.***-03,2026-10-22,"Grandes Eventos, Monitoramento de CFTV, Escolta Armada",7.5,27904-040,12x36 Dia,Borges Campos - EI - Unidade 4
+VIG-10322,Yan Jesus,782.***.***-12,2025-08-30,Escolta Armada,8.7,13211370,5x2 Comercial,Ribeiro - Unidade 4
+VIG-10323,Vicente Santos,913.***.***-60,2026-11-11,Escolta Armada,9.6,27064281,5x2 Comercial,Barros - Unidade 6
+VIG-10324,Dom Sousa,243.***.***-19,2025-08-23,Escolta Armada,9.2,02371011,12x36 Noite,Albuquerque Albuquerque - EI - Unidade 3
+VIG-10325,Emanuel Rios,068.***.***-86,2026-01-19,"Vigilância Patrimonial, Grandes Eventos",9.9,72425142,12x36 Noite,Carvalho - Unidade 3
+VIG-10326,Sra. Sara Sá,628.***.***-68,2027-07-20,"Transporte de Valores, Segurança Pessoal (VSPP)",9.2,86108083,5x2 Comercial,Peixoto - Unidade 4
+VIG-10327,Antônio Farias,156.***.***-57,2025-09-10,Vigilância Patrimonial,9.0,67105540,12x36 Noite,Cassiano - Unidade 3
+VIG-10328,Ana Lívia Marques,431.***.***-04,2027-04-16,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Monitoramento de CFTV",9.8,73207-677,12x36 Dia,Cassiano Abreu S.A. - Unidade 5
+VIG-10329,José Pedro Marques,536.***.***-90,2025-07-08,"Grandes Eventos, Segurança Pessoal (VSPP)",9.5,32740-095,5x2 Comercial,Silva S/A - Unidade 8
+VIG-10330,Sra. Ágatha Cavalcanti,013.***.***-35,2026-10-19,"Monitoramento de CFTV, Transporte de Valores",6.9,77953-090,5x2 Comercial,Ferreira Fernandes - ME - Unidade 8
+VIG-10331,Renan Ribeiro,231.***.***-21,2027-11-16,Segurança Pessoal (VSPP),8.6,07972293,12x36 Dia,Abreu - Unidade 7
+VIG-10332,Alexia Cavalcanti,850.***.***-76,2027-09-22,"Monitoramento de CFTV, Vigilância Patrimonial, Transporte de Valores",7.8,95254-527,5x2 Comercial,da Paz Costela - EI - Unidade 5
+VIG-10333,Ravi Lucca Teixeira,507.***.***-76,2027-11-29,Segurança Pessoal (VSPP),6.9,93262479,12x36 Dia,Ferreira - Unidade 1
+VIG-10334,Camila Almeida,451.***.***-79,2027-08-29,Grandes Eventos,6.7,92900-648,12x36 Noite,Pimenta - Unidade 6
+VIG-10335,Vitor Hugo Freitas,267.***.***-07,2025-12-05,Segurança Pessoal (VSPP),7.5,23041-803,12x36 Noite,Caldeira Melo - EI - Unidade 6
+VIG-10336,Aurora Azevedo,074.***.***-00,2026-06-04,"Escolta Armada, Monitoramento de CFTV",8.3,66867433,12x36 Dia,Gomes S.A. - Unidade 5
+VIG-10337,Dra. Eloah Pastor,352.***.***-80,2026-11-12,Transporte de Valores,9.6,27902-027,5x2 Comercial,Santos das Neves e Filhos - Unidade 2
+VIG-10338,Diego Andrade,526.***.***-49,2027-06-09,Escolta Armada,6.5,61820005,12x36 Noite,Rezende - Unidade 1
+VIG-10339,Dra. Aylla Nascimento,079.***.***-05,2027-08-16,"Segurança Pessoal (VSPP), Escolta Armada",9.6,73138980,5x2 Comercial,Santos Moraes Ltda. - Unidade 6
+VIG-10340,Julia Moraes,071.***.***-86,2026-07-11,"Segurança Pessoal (VSPP), Vigilância Patrimonial",6.7,39851779,12x36 Noite,Casa Grande - EI - Unidade 6
+VIG-10341,Sara Alves,203.***.***-05,2026-10-16,"Vigilância Patrimonial, Escolta Armada",7.7,80066366,12x36 Noite,Azevedo - Unidade 10
+VIG-10342,Fernanda Cavalcante,056.***.***-10,2027-05-08,Grandes Eventos,7.4,63156-839,12x36 Dia,Aragão Cavalcanti S/A - Unidade 1
+VIG-10343,Melissa Alves,976.***.***-22,2027-12-18,"Monitoramento de CFTV, Vigilância Patrimonial",7.6,85041359,12x36 Dia,Freitas Vargas e Filhos - Unidade 3
+VIG-10344,Ana Cecília Santos,095.***.***-75,2028-02-12,Segurança Pessoal (VSPP),9.1,46494-390,12x36 Noite,Garcia S/A - Unidade 9
+VIG-10345,Ryan Teixeira,981.***.***-98,2027-06-30,"Grandes Eventos, Transporte de Valores",9.7,37879587,5x2 Comercial,Alves - Unidade 3
+VIG-10346,Maria Clara Rios,746.***.***-10,2025-12-15,Vigilância Patrimonial,7.3,88676-205,12x36 Dia,Pires Melo S.A. - Unidade 9
+VIG-10347,Melina Rocha,147.***.***-30,2025-08-30,"Vigilância Patrimonial, Grandes Eventos, Transporte de Valores",9.4,19895438,12x36 Noite,da Cunha Caldeira S/A - Unidade 3
+VIG-10348,Apollo Costela,629.***.***-07,2027-11-06,"Grandes Eventos, Monitoramento de CFTV",7.8,39626-194,5x2 Comercial,da Cunha - Unidade 3
+VIG-10349,Agatha das Neves,437.***.***-60,2026-01-15,"Grandes Eventos, Monitoramento de CFTV, Segurança Pessoal (VSPP)",6.6,26515029,12x36 Dia,Nunes - Unidade 4
+VIG-10350,Murilo Freitas,893.***.***-97,2025-04-07,"Grandes Eventos, Segurança Pessoal (VSPP)",7.1,54947-962,12x36 Noite,Nunes - Unidade 10
+VIG-10351,Bruna Cardoso,679.***.***-68,2025-12-15,"Vigilância Patrimonial, Grandes Eventos, Escolta Armada",9.6,24729261,5x2 Comercial,Vargas - Unidade 5
+VIG-10352,Enzo Fonseca,879.***.***-94,2027-01-16,"Grandes Eventos, Transporte de Valores, Vigilância Patrimonial",9.7,48864020,12x36 Noite,Moreira Nogueira S.A. - Unidade 5
+VIG-10353,João Ramos,901.***.***-67,2027-10-05,"Escolta Armada, Transporte de Valores",9.8,43630-490,5x2 Comercial,Nogueira Martins Ltda. - Unidade 6
+VIG-10354,Maria Cecília Alves,063.***.***-04,2027-11-18,"Escolta Armada, Transporte de Valores, Segurança Pessoal (VSPP)",8.5,08987-852,5x2 Comercial,Cunha S.A. - Unidade 8
+VIG-10355,Maitê Siqueira,301.***.***-32,2025-05-10,"Grandes Eventos, Vigilância Patrimonial",7.0,04434242,5x2 Comercial,Viana e Filhos - Unidade 1
+VIG-10356,Pedro Lucas Ferreira,651.***.***-94,2026-12-30,Monitoramento de CFTV,7.5,07118-992,12x36 Dia,da Conceição Brito Ltda. - Unidade 4
+VIG-10357,Maria Laura Freitas,761.***.***-94,2027-05-13,"Grandes Eventos, Transporte de Valores",9.3,33061008,12x36 Noite,Garcia - Unidade 4
+VIG-10358,Natália Câmara,926.***.***-06,2027-03-29,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Grandes Eventos",8.5,12742351,12x36 Noite,Caldeira S.A. - Unidade 8
+VIG-10359,Yuri Rios,426.***.***-46,2027-09-04,"Segurança Pessoal (VSPP), Grandes Eventos",8.6,16847-012,12x36 Noite,da Paz - Unidade 9
+VIG-10360,Dom da Costa,142.***.***-22,2027-04-28,Segurança Pessoal (VSPP),8.3,29929217,12x36 Noite,Cardoso - Unidade 5
+VIG-10361,Isis Albuquerque,849.***.***-20,2026-04-03,Vigilância Patrimonial,6.5,90419-003,12x36 Dia,Novais Gomes Ltda. - Unidade 10
+VIG-10362,Raul Silveira,945.***.***-64,2026-11-27,Vigilância Patrimonial,9.2,04218508,12x36 Dia,Caldeira Almeida Ltda. - Unidade 2
+VIG-10363,Giovanna Ribeiro,910.***.***-48,2028-01-05,Transporte de Valores,8.1,82001-174,5x2 Comercial,Azevedo - Unidade 6
+VIG-10364,Yan Oliveira,935.***.***-70,2027-05-03,"Grandes Eventos, Segurança Pessoal (VSPP), Transporte de Valores",6.9,45534-534,5x2 Comercial,Costela S/A - Unidade 6
+VIG-10365,Rafael Albuquerque,014.***.***-15,2028-01-23,"Monitoramento de CFTV, Vigilância Patrimonial",9.7,19669-732,12x36 Noite,Sousa Araújo Ltda. - Unidade 4
+VIG-10366,Davi Duarte,563.***.***-05,2025-09-27,Grandes Eventos,6.8,63668-535,12x36 Dia,da Mota da Luz Ltda. - Unidade 7
+VIG-10367,Ana Cecília Monteiro,726.***.***-73,2027-02-17,"Monitoramento de CFTV, Grandes Eventos, Vigilância Patrimonial",6.8,89127-544,5x2 Comercial,Vasconcelos - Unidade 5
+VIG-10368,Kamilly Sales,021.***.***-96,2026-11-14,"Grandes Eventos, Transporte de Valores",8.2,11260-008,5x2 Comercial,Alves - Unidade 9
+VIG-10369,Kevin Câmara,283.***.***-55,2026-07-22,Monitoramento de CFTV,7.8,09553583,12x36 Noite,da Mata Cassiano Ltda. - Unidade 4
+VIG-10370,Renan Rezende,018.***.***-31,2025-06-04,Transporte de Valores,6.6,14363308,12x36 Noite,Mendonça Monteiro - ME - Unidade 4
+VIG-10371,Bárbara Nogueira,925.***.***-38,2028-01-03,"Transporte de Valores, Escolta Armada, Monitoramento de CFTV",8.7,73536-481,5x2 Comercial,Cavalcanti Costela e Filhos - Unidade 5
+VIG-10372,Kaique da Costa,742.***.***-07,2026-07-16,"Vigilância Patrimonial, Transporte de Valores",7.5,88534-621,12x36 Noite,Camargo S.A. - Unidade 2
+VIG-10373,Dr. Ravi Lucca da Conceição,031.***.***-00,2027-05-27,"Monitoramento de CFTV, Grandes Eventos",7.8,78331-947,12x36 Noite,da Mata - Unidade 5
+VIG-10374,Juan Nunes,567.***.***-49,2026-04-17,Escolta Armada,9.6,57271759,12x36 Dia,Cavalcante - Unidade 3
+VIG-10375,Camila Rios,205.***.***-56,2025-03-28,"Monitoramento de CFTV, Vigilância Patrimonial",7.9,24149-899,5x2 Comercial,Oliveira - Unidade 8
+VIG-10376,Isabelly Cirino,245.***.***-35,2027-05-02,Segurança Pessoal (VSPP),7.3,53734454,12x36 Noite,Ferreira Ltda. - Unidade 8
+VIG-10377,Maria Eduarda da Rosa,517.***.***-80,2026-07-07,"Monitoramento de CFTV, Grandes Eventos, Segurança Pessoal (VSPP)",8.9,06161201,12x36 Dia,Câmara - Unidade 9
+VIG-10378,Raquel Rezende,078.***.***-14,2028-02-15,"Vigilância Patrimonial, Escolta Armada",8.6,35833212,5x2 Comercial,Aragão Costa S.A. - Unidade 8
+VIG-10379,Brayan Correia,398.***.***-14,2026-05-31,"Segurança Pessoal (VSPP), Vigilância Patrimonial, Escolta Armada",8.0,65862-013,12x36 Noite,da Costa - Unidade 8
+VIG-10380,Eloah Viana,941.***.***-16,2027-06-11,"Segurança Pessoal (VSPP), Vigilância Patrimonial",7.0,79615-155,12x36 Dia,Abreu Ltda. - Unidade 8
+VIG-10381,Yuri Mendes,741.***.***-40,2025-08-17,"Vigilância Patrimonial, Transporte de Valores, Monitoramento de CFTV",6.5,98390-515,5x2 Comercial,Cardoso - Unidade 7
+VIG-10382,Luiz Fernando Vieira,063.***.***-83,2025-04-08,Vigilância Patrimonial,9.0,07841-147,12x36 Noite,Nogueira - Unidade 5
+VIG-10383,Ana Lívia Azevedo,316.***.***-40,2027-03-07,"Vigilância Patrimonial, Escolta Armada",9.6,43561-723,5x2 Comercial,Jesus - Unidade 5
+VIG-10384,Anthony Cavalcante,036.***.***-99,2027-07-21,"Transporte de Valores, Segurança Pessoal (VSPP)",9.7,16234610,12x36 Dia,Pires - Unidade 6
+VIG-10385,Sra. Brenda Sousa,830.***.***-87,2026-05-20,"Vigilância Patrimonial, Grandes Eventos",9.0,13675-792,12x36 Dia,Novaes - Unidade 5
+VIG-10386,Sra. Daniela Casa Grande,195.***.***-43,2025-09-28,"Escolta Armada, Monitoramento de CFTV, Segurança Pessoal (VSPP)",7.8,11211-654,12x36 Noite,Cavalcante Guerra e Filhos - Unidade 4
+VIG-10387,Arthur Miguel Peixoto,976.***.***-55,2026-05-26,Escolta Armada,6.6,61382564,12x36 Dia,Vieira - Unidade 8
+VIG-10388,Anna Liz Melo,571.***.***-82,2027-04-04,Escolta Armada,9.5,34727509,12x36 Noite,Pinto - Unidade 10
+VIG-10389,Murilo Duarte,396.***.***-20,2027-01-11,Escolta Armada,9.5,19265-976,5x2 Comercial,Correia - Unidade 1
+VIG-10390,Maria Alice Gomes,317.***.***-31,2028-01-02,"Transporte de Valores, Grandes Eventos, Vigilância Patrimonial",7.3,25900-132,5x2 Comercial,Martins - Unidade 8
+VIG-10391,Allana Câmara,501.***.***-34,2026-03-20,"Monitoramento de CFTV, Grandes Eventos",6.9,10805-859,5x2 Comercial,Ribeiro Rezende S.A. - Unidade 7
+VIG-10392,Maysa Fernandes,643.***.***-34,2027-03-14,"Transporte de Valores, Segurança Pessoal (VSPP), Grandes Eventos",7.1,64267491,12x36 Dia,Sales - Unidade 2
+VIG-10393,Sofia Vieira,907.***.***-38,2027-05-06,"Vigilância Patrimonial, Segurança Pessoal (VSPP), Monitoramento de CFTV",6.5,48489093,12x36 Noite,Gonçalves Machado S.A. - Unidade 4
+VIG-10394,Mirella Siqueira,591.***.***-76,2026-08-28,"Monitoramento de CFTV, Vigilância Patrimonial, Transporte de Valores",7.2,12990435,12x36 Dia,da Paz - Unidade 6
+VIG-10395,Dr. Thiago Guerra,806.***.***-84,2026-08-17,"Segurança Pessoal (VSPP), Monitoramento de CFTV",7.5,35679-984,12x36 Dia,Machado - Unidade 10
+VIG-10396,Laís Novaes,235.***.***-34,2026-08-03,"Vigilância Patrimonial, Escolta Armada, Segurança Pessoal (VSPP)",7.0,59468238,12x36 Noite,Freitas - Unidade 10
+VIG-10397,Agatha Camargo,203.***.***-95,2025-10-05,Escolta Armada,7.5,46278-324,5x2 Comercial,Vieira Novais e Filhos - Unidade 1
+VIG-10398,Luiz Otávio Correia,584.***.***-04,2027-05-27,Segurança Pessoal (VSPP),7.9,47595-016,5x2 Comercial,Caldeira e Filhos - Unidade 9
+VIG-10399,Sra. Laura Casa Grande,172.***.***-50,2026-03-01,Segurança Pessoal (VSPP),7.3,48813-879,5x2 Comercial,Araújo e Filhos - Unidade 8
