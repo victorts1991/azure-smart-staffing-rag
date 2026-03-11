@@ -1,5 +1,7 @@
 # Azure Smart Staffing RAG 🛡️
 
+![Status: Work In Progress](https://img.shields.io/badge/Status-Work%20In%20Progress-orange?style=for-the-badge&logo=github)
+
 Sistema Inteligente de Alocação de Vigilantes e Gestão de Férias utilizando arquitetura **RAG (Retrieval-Augmented Generation)**, focado em conformidade legal e otimização logística para o setor de segurança armada.
 
 ## 🚀 Objetivo
