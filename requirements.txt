@@ -1,0 +1,18 @@
+# Geração de Dados e Manipulação
+
+pandas
+faker
+
+# Azure e IA (O coração do projeto)
+
+azure-storage-blob
+azure-search-documents
+azure-identity
+openai
+langchain
+python-dotenv
+
+# API e Servidor
+
+fastapi
+uvicorn
