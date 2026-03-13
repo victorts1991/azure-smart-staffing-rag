@@ -50,7 +50,7 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele proces
 ### 4. Engine RAG & API (FastAPI & LangChain)
 
 * [ ] **Containerização:** Criação de Dockerfile multi-stage para otimização de imagem da API.
-* [ ] **Kubernetes Manifests:** Configuração de Deployments, Services e HPA (Horizontal Pod Autoscaler).
+* [ ] **Kubernetes Manifests:** Configuração de Deployments e Services.
 * [ ] **Orquestração com LangChain:** Implementação de **Chains** para fluxo Pergunta -> Retrieval -> Prompt -> GPT-4o.
 * [ ] **Retrieval Strategy:** Implementação de **Busca Híbrida** (Vetorial + Keyword) e Re-ranking semântico.
 * [ ] **Setup de API (FastAPI):** Endpoints para solicitação de substituição e integração com Workload Identity.
