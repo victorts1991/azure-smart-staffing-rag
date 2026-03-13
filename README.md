@@ -23,66 +23,111 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele proces
 
 ## 🗺️ Roadmap de Desenvolvimento
 
-### 1. Engenharia de Dados & Dataset (Camada Zero)
+### 1. Criação do Dataset
 
 * [x] **Setup de Gerador Sintético:** Script Python utilizando biblioteca `Faker` para criação de massa de dados.
 * [x] **Compliance LGPD (Data Masking):** Implementação de máscara em campos sensíveis (CPF: `785.***.***-30`) para proteção de PII.
 * [x] **Dicionário de Dados:** Definição de atributos críticos (Certificações, Reciclagem PF, Soft Skills e CEP).
-* [x] **Cenários de Teste:** Geração de arquivos `base_vigilantes_ativos.csv` (substitutos) e `escala_atual.csv` (operacional).
+* [x] **Cenários de Teste:** Geração de arquivos `base_vigilantes_ativos.csv` e `escala_atual.csv`.
 
 ### 2. Infraestrutura como Código (Terraform Modular)
 
-* [ ] **Setup de Provedores:** Configuração do Azure Provider e Backend Remoto para `.tfstate`.
-* [ ] **Módulo de Cluster:** Provisionamento do **Azure Kubernetes Service (AKS)** e Container Registry (ACR).
-* [ ] **Módulo de Storage:** Provisionamento de Blob Storage e Containers de Ingestão (`rh-uploads`).
-* [ ] **Módulo de IA:** Deployment do Azure OpenAI e Azure AI Search (SKU Standard).
-* [ ] **Módulo de Networking:** Configuração de VNet e Private Endpoints (Zero Trust).
-* [ ] **Segurança RBAC:** Implementação de Managed Identities para acesso passwordless.
+* [x] **Setup de Provedores:** Configuração do Azure Provider e Backend Remoto para `.tfstate`.
+* [x] **Módulo de Cluster:** Provisionamento do **Azure Kubernetes Service (AKS)** e Container Registry (ACR).
+* [x] **Módulo de Storage:** Provisionamento de Blob Storage e Containers de Ingestão (`rh-uploads`).
+* [x] **Módulo de IA:** Deployment do Azure OpenAI e Azure AI Search (SKU Standard).
+* [x] **Módulo de Networking:** Configuração de VNet e isolamento de rede.
+* [x] **Segurança RBAC:** Implementação de Managed Identities para acesso passwordless.
+* [x] **Módulo de Serverless:** Provisionamento de **Azure Functions** para pipeline de enriquecimento.
 
-### 3. Ingestão e Enriquecimento (AI Pipeline) 
+### 3. Ingestão e Enriquecimento (AI Pipeline)
 
-* [ ] **Azure Function (Custom Skill):** Desenvolvimento de função Serverless para geocodificação (CEP -> Lat/Long).
-* [ ] **AI Search Skillset:** Configuração do pipeline de enriquecimento para processar dados geoespaciais e vetoriais.
-* [ ] **Index Design:** Configuração de campos filtráveis, facetáveis e tipo `Edm.GeographyPoint`.
-* [ ] **Scoring Profiles:** Regras de negócio para priorizar proximidade e aderência ao perfil (Soft Skills).
+* [ ] **Azure Function (Event-Driven):** Desenvolvimento de função Serverless para geocodificação (CEP -> Lat/Long).
+* [ ] **Vectorization Pipeline:** Integração com `text-embedding-3-small` para processamento de Soft Skills.
+* [ ] **Index Design:** Configuração de campos `Edm.GeographyPoint` e busca vetorial (HNSW).
+* [ ] **Data Ingestion Script:** Automação do upload de CSVs e monitoramento de triggers no Storage.
 
-### 4. Engine RAG & API (FastAPI no AKS)
+### 4. Engine RAG & API (FastAPI & LangChain)
 
-* [ ] **Containerização:** Criação de Dockerfile otimizado para a API de orquestração.
-* [ ] **Setup de API:** Servidor FastAPI com documentação Swagger e integração LangChain.
-* [ ] **Retrieval Strategy:** Implementação de Busca Híbrida (Vetor + Keyword).
-* [ ] **Orquestração LLM:** Síntese de resposta com GPT-4o e justificativa de escolha.
+* [ ] **Containerização:** Criação de Dockerfile multi-stage para otimização de imagem da API.
+* [ ] **Kubernetes Manifests:** Configuração de Deployments, Services e HPA (Horizontal Pod Autoscaler).
+* [ ] **Orquestração com LangChain:** Implementação de **Chains** para fluxo Pergunta -> Retrieval -> Prompt -> GPT-4o.
+* [ ] **Retrieval Strategy:** Implementação de **Busca Híbrida** (Vetorial + Keyword) e Re-ranking semântico.
+* [ ] **Setup de API (FastAPI):** Endpoints para solicitação de substituição e integração com Workload Identity.
 
-### 5. Automação e DevOps (GitHub Actions)
+### 5. Automação, DevOps & Observabilidade
 
-* [ ] **CI Pipeline:** Linting, Docker Build e Push para o ACR.
-* [ ] **CD Pipeline:** Deploy automatizado no AKS com atualização de imagem.
+* [ ] **ConfigMaps & Secrets:** Injeção de variáveis de ambiente seguras via Kubernetes.
+* [ ] **CI Pipeline:** Automação de Linting, Docker Build e Push para o ACR via GitHub Actions.
+* [ ] **CD Pipeline:** Deploy automatizado no AKS (GitOps approach).
 * [ ] **IaC Pipeline:** Automação do ciclo de vida da infraestrutura via Terraform.
 
 ---
 
 ## 🏗️ Arquitetura do Sistema
 
-1. **Ingestão (Serverless):** O upload do CSV para o **Blob Storage** dispara uma **Azure Function**. Esta função processa o arquivo e alimenta o índice do **Azure AI Search**.
-2. **Orquestração (Containers):** A aplicação **FastAPI** roda em **Azure Kubernetes Service (AKS)**, garantindo escalabilidade e baixa latência para as consultas.
-3. **Processo RAG:**
-* O usuário solicita uma substituição via API.
-* A API consulta o **AI Search** (Busca Híbrida) filtrando por compliance e relevância.
-* Os resultados são enviados ao **Azure OpenAI** que gera a resposta final fundamentada.
+1. **Ingestão e Enriquecimento (Event-Driven):**
+* O upload do CSV dispara uma **Azure Function**.
+* Durante a indexação no **AI Search**, uma **Custom Skill** converte o CEP em coordenadas geográficas, enriquecendo o perfil do vigilante sem intervenção manual do RH.
 
-## 🏗️ Arquitetura do Sistema
 
-1. **Ingestão e Enriquecimento:** O upload do CSV dispara uma **Azure Function**. Durante a indexação no **AI Search**, uma **Custom Skill** converte o CEP em coordenadas geográficas, enriquecendo o perfil do vigilante sem intervenção manual do RH. 
-2. **Orquestração:** A aplicação **FastAPI** (AKS) recebe a solicitação de substituição.
-3. **Processo RAG:**
-* A API consulta o **AI Search** buscando por: 
-    1. Validade de Reciclagem (Filtro);
-    2. Proximidade (Geo);
-    3. Perfil Comportamental (Vetor);
-* Os resultados (ex: Top 3 candidatos) são enviados ao **Azure OpenAI**.
-* O GPT-4o gera uma justificativa humanizada, explicando por que aquele colaborador é o melhor para aquele posto específico (ex: "Perfil comunicativo ideal para posto escolar"). 
+2. **Orquestração e Runtime (Kubernetes):**
+* A aplicação **FastAPI** é executada em **Azure Kubernetes Service (AKS)**, utilizando manifestos de **Deployment** e **HPA** para garantir alta disponibilidade.
+* A segurança é garantida via **Workload Identity**, permitindo que o Pod se autentique nos serviços de IA sem chaves de API.
+
+
+3. **Processo RAG Inteligente (LangChain):**
+* O **LangChain** atua como o motor de orquestração:
+* **Retrieval:** Realiza a Busca Híbrida no **AI Search** aplicando filtros de compliance (Reciclagem), geolocalização (Geo-filtering) e relevância (Busca Vetorial por Soft Skills).
+* **Augmentation:** Monta um prompt contextualizado injetando o perfil dos candidatos encontrados.
+* **Generation:** O **GPT-4o** gera uma justificativa humanizada, comparando as Soft Skills do colaborador com os requisitos do posto (ex: "Perfil comunicativo ideal para posto escolar").
+
 
 ---
+
+## 🛠️ Guia de Configuração da Infraestrutura (Início Rápido)
+
+Este guia detalha como subir toda a infraestrutura na Azure utilizando Terraform.
+
+### 1. Pré-requisitos
+* **Azure CLI** instalado e logado (`az login`).
+* **Terraform** (v1.0+) instalado.
+* **Docker Desktop** rodando.
+* **Assinatura Azure** ativa.
+
+### 2. Passo a Passo Inicial
+
+#### A. Bootstrap (Preparação do Cofre)
+O Terraform precisa de um lugar seguro para guardar o estado da sua infraestrutura. Execute o script de automação inicial:
+
+```bash
+chmod +x bootstrap.sh
+./bootstrap.sh
+```
+
+*Este script criará um Resource Group chamado `rg-terraform-state`. **Anote o nome da Storage Account gerada no final.***
+
+#### B. Configuração do Backend
+Abra o arquivo `terraform/main.tf` e atualize o bloco `backend "azurerm"` com o nome da Storage Account gerada:
+
+```hcl
+backend "azurerm" {
+  resource_group_name  = "rg-terraform-state"
+  storage_account_name = "ST_GERADA_AQUI"
+  container_name       = "tfstate"
+  key                  = "smart-staffing.terraform.tfstate"
+}
+```
+
+#### C. Provisionamento (Deploy)
+Agora, dispare a criação de todos os recursos:
+
+```bash
+cd terraform
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
 
 ## 🛠️ Guia de Execução Local
 
@@ -93,15 +138,6 @@ python -m venv venv
 source venv/bin/activate  # venv\Scripts\activate no Windows
 pip install -r requirements.txt
 python scripts/data_generator.py
-
-```
-
-### 2. Provisionamento da Infraestrutura
-
-```bash
-cd terraform
-terraform init
-terraform apply -auto-approve
 
 ```
 
@@ -119,7 +155,16 @@ terraform apply -auto-approve
 
 ```text
 ├── .github/workflows/          # Automação de Infra e Deploy
-├── terraform/                  # Módulos IaC (AKS, Storage, AI, Network)
+terraform/
+├── main.tf            # Orquestrador dos módulos
+├── variables.tf       # Variáveis globais
+├── outputs.tf         # Outputs principais
+├── modules/
+│   ├── network/       # VNet, Subnets, Private Endpoints
+│   ├── storage/       # Blob Storage
+│   ├── aks/           # Azure Kubernetes Service
+│   └── ai/            # Azure OpenAI e Azure AI Search
+│   └── functions/     # Azure Functions
 ├── scripts/
 │   └── data_generator.py       # Gerador de massa de dados sintéticos
 ├── azure_functions/            # Ingestão assíncrona (Blob -> Search)
