@@ -42,10 +42,10 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele proces
 
 ### 3. Ingestão e Enriquecimento (AI Pipeline)
 
-* [ ] **Azure Function (Event-Driven):** Desenvolvimento de função Serverless para geocodificação (CEP -> Lat/Long).
-* [ ] **Vectorization Pipeline:** Integração com `text-embedding-3-small` para processamento de Soft Skills.
-* [ ] **Index Design:** Configuração de campos `Edm.GeographyPoint` e busca vetorial (HNSW).
-* [ ] **Data Ingestion Script:** Automação do upload de CSVs e monitoramento de triggers no Storage.
+* [ ] **Azure Function (Custom Skill):** Desenvolvimento de API Serverless para geocodificação (CEP -> Lat/Long) seguindo o contrato de interface do AI Search.
+* [ ] **AI Search Skillset:** Configuração do pipeline de enriquecimento que orquestra a chamada da Function e a extração de metadados.
+* [ ] **Index Design (Geospatial & Vector):** Configuração de campos `Edm.GeographyPoint` para busca por proximidade e `Collection(Single)` para busca vetorial de Soft Skills.
+* [ ] **Indexer & DataSource:** Automação da varredura do Blob Storage (`rh-uploads`) para sincronização e vetorização automática de novos perfis.
 
 ### 4. Engine RAG & API (FastAPI & LangChain)
 
