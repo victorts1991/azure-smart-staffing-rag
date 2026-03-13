@@ -72,7 +72,7 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele proces
 
 
 2. **Orquestração e Runtime (Kubernetes):**
-* A aplicação **FastAPI** é executada em **Azure Kubernetes Service (AKS)**, utilizando manifestos de **Deployment** e **HPA** para garantir alta disponibilidade.
+* A aplicação **FastAPI** é executada em **Azure Kubernetes Service (AKS)**, utilizando manifestos de **Deployment** para garantir alta disponibilidade.
 * A segurança é garantida via **Workload Identity**, permitindo que o Pod se autentique nos serviços de IA sem chaves de API.
 
 
