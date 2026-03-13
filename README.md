@@ -6,14 +6,14 @@ Sistema Inteligente de Alocação de Vigilantes e Gestão de Férias utilizando 
 
 ## 🚀 Objetivo
 
-O projeto resolve o gargalo de realocação tática de colaboradores. Ele utiliza busca híbrida para encontrar o substituto ideal baseado em geolocalização, validade de reciclagem da Polícia Federal e cursos de extensão, utilizando o **GPT-4o** para justificar a escolha ao gestor de operações.
+O projeto resolve o gargalo de realocação tática de colaboradores. Ele processa dados brutos de RH e utiliza AI Enrichment para converter CEPs em coordenadas geográficas, permitindo buscas híbridas que combinam conformidade legal (Polícia Federal), proximidade logística e análise de Soft Skills (perfil comportamental) para encontrar o substituto ideal. O GPT-4o é utilizado para justificar a escolha ao gestor de operações com base em dados técnicos e qualitativos.
 
 ## 🛠️ Stack Tecnológica
 
 * **Linguagem:** Python 3.11+
 * **Framework:** FastAPI & LangChain
 * **IA Generativa:** Azure OpenAI (GPT-4o & Text-Embeddings)
-* **Busca Inteligente:** Azure AI Search (Hybrid Search & Scoring Profiles)
+* **Busca Inteligente**: Azure AI Search (Hybrid Search, Skillsets & Scoring Profiles)
 * **Infraestrutura:** Terraform (Modular Design) & Kubernetes (AKS)
 * **Segurança:** Azure RBAC (Managed Identities) & Private Endpoints
 * **CI/CD:** GitHub Actions
@@ -27,7 +27,7 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele utiliz
 
 * [x] **Setup de Gerador Sintético:** Script Python utilizando biblioteca `Faker` para criação de massa de dados.
 * [x] **Compliance LGPD (Data Masking):** Implementação de máscara em campos sensíveis (CPF: `785.***.***-30`) para proteção de PII.
-* [x] **Dicionário de Dados:** Definição de atributos críticos (Certificações, Reciclagem PF e Geolocalização).
+* [x] **Dicionário de Dados:** Definição de atributos críticos (Certificações, Reciclagem PF, Soft Skills e CEP).
 * [x] **Cenários de Teste:** Geração de arquivos `base_vigilantes_ativos.csv` (substitutos) e `escala_atual.csv` (operacional).
 
 ### 2. Infraestrutura como Código (Terraform Modular)
@@ -39,12 +39,12 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele utiliz
 * [ ] **Módulo de Networking:** Configuração de VNet e Private Endpoints (Zero Trust).
 * [ ] **Segurança RBAC:** Implementação de Managed Identities para acesso passwordless.
 
-### 3. Ingestão e Processamento (Event-Driven ETL)
+### 3. Ingestão e Enriquecimento (AI Pipeline) 
 
-* [ ] **Azure Function (Blob Trigger):** Função Serverless para captura e processamento automático de CSVs.
-* [ ] **Normalização:** Lógica de tratamento de dados brutos para formato JSON compatível com o Search.
-* [ ] **Index Design:** Configuração de campos filtráveis, facetáveis e vetoriais (Embeddings).
-* [ ] **Scoring Profiles:** Regras de negócio para boost de performance e proximidade.
+* [ ] **Azure Function (Custom Skill):** Desenvolvimento de função Serverless para geocodificação (CEP -> Lat/Long).
+* [ ] **AI Search Skillset:** Configuração do pipeline de enriquecimento para processar dados geoespaciais e vetoriais.
+* [ ] **Index Design:** Configuração de campos filtráveis, facetáveis e tipo `Edm.GeographyPoint`.
+* [ ] **Scoring Profiles:** Regras de negócio para priorizar proximidade e aderência ao perfil (Soft Skills).
 
 ### 4. Engine RAG & API (FastAPI no AKS)
 
@@ -69,6 +69,18 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele utiliz
 * O usuário solicita uma substituição via API.
 * A API consulta o **AI Search** (Busca Híbrida) filtrando por compliance e relevância.
 * Os resultados são enviados ao **Azure OpenAI** que gera a resposta final fundamentada.
+
+## 🏗️ Arquitetura do Sistema
+
+1. **Ingestão e Enriquecimento:** O upload do CSV dispara uma **Azure Function**. Durante a indexação no **AI Search**, uma **Custom Skill** converte o CEP em coordenadas geográficas, enriquecendo o perfil do vigilante sem intervenção manual do RH. 
+2. **Orquestração:** A aplicação **FastAPI** (AKS) recebe a solicitação de substituição.
+3. **Processo RAG:**
+* A API consulta o **AI Search** buscando por: 
+    1. Validade de Reciclagem (Filtro);
+    2. Proximidade (Geo);
+    3. Perfil Comportamental (Vetor);
+* Os resultados (ex: Top 3 candidatos) são enviados ao **Azure OpenAI**.
+* O GPT-4o gera uma justificativa humanizada, explicando por que aquele colaborador é o melhor para aquele posto específico (ex: "Perfil comunicativo ideal para posto escolar"). 
 
 ---
 
