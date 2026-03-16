@@ -1,0 +1,31 @@
+{
+  "name": "vigilantes-index",
+  "fields": [
+    { "name": "id", "type": "Edm.String", "key": true, "searchable": true, "retrievable": true },
+    { "name": "nome_completo", "type": "Edm.String", "searchable": true, "retrievable": true },
+    { "name": "cpf", "type": "Edm.String", "searchable": false, "retrievable": true },
+    { "name": "vencimento_reciclagem", "type": "Edm.String", "filterable": true, "sortable": true, "retrievable": true },
+    { "name": "certificacoes", "type": "Edm.String", "searchable": true, "retrievable": true },
+    { "name": "soft_skills", "type": "Edm.String", "searchable": true, "retrievable": true },
+    { "name": "perfil_comportamental", "type": "Edm.String", "searchable": true, "retrievable": true },
+    { "name": "nota_performance", "type": "Edm.Double", "filterable": true, "sortable": true },
+    { "name": "cep_base", "type": "Edm.String", "retrievable": true },
+    { "name": "escala_atual", "type": "Edm.String", "filterable": true },
+    { "name": "posicao_geografica", "type": "Edm.GeographyPoint", "filterable": true, "sortable": true },
+    { 
+      "name": "soft_skills_vector", 
+      "type": "Collection(Edm.Single)", 
+      "searchable": true, 
+      "dimensions": 1536, 
+      "vectorSearchProfile": "staffing-vector-profile" 
+    }
+  ],
+  "vectorSearch": {
+    "profiles": [
+      { "name": "staffing-vector-profile", "algorithm": "staffing-hnsw" }
+    ],
+    "algorithms": [
+      { "name": "staffing-hnsw", "kind": "hnsw" }
+    ]
+  }
+}

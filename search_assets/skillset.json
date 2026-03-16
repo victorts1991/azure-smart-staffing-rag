@@ -1,0 +1,35 @@
+{
+  "name": "staffing-skillset",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+      "name": "GeocodingSkill",
+      "uri": "<GEO_FUNCTION_URL>/api/geocode?code=<GEO_FUNCTION_KEY>",
+      "timeout": "PT90S",
+      "context": "/document",
+      "inputs": [
+        { 
+          "name": "cep", 
+          "source": "/document/cep_base" 
+        }
+      ],
+      "outputs": [
+        { "name": "location", "targetName": "posicao_geografica" }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.AzureOpenAIEmbeddingSkill",
+      "name": "VectorizeSkill",
+      "resourceUri": "<AZURE_OPENAI_ENDPOINT>",
+      "deploymentId": "text-embedding-3-small",
+      "modelName": "text-embedding-3-small",
+      "context": "/document",
+      "inputs": [
+        { "name": "text", "source": "/document/perfil_comportamental" }
+      ],
+      "outputs": [
+        { "name": "embedding", "targetName": "soft_skills_vector" }
+      ]
+    }
+  ]
+}

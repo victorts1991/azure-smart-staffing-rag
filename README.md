@@ -2,11 +2,47 @@
 
 ![Status: Work In Progress](https://img.shields.io/badge/Status-Work%20In%20Progress-orange?style=for-the-badge&logo=github)
 
-Sistema Inteligente de Alocação de Vigilantes e Gestão de Férias utilizando arquitetura **RAG (Retrieval-Augmented Generation)**, focado em conformidade legal e otimização logística para o setor de segurança armada.
+Sistema Inteligente de Alocação de Vigilantes utilizando arquitetura **RAG (Retrieval-Augmented Generation)**. O projeto combina busca vetorial, filtros geoespaciais e inteligência generativa para otimizar a logística de substituição de postos de segurança armada.
 
-## 🚀 Objetivo
+## 🚀 O Problema e a Solução
 
-O projeto resolve o gargalo de realocação tática de colaboradores. Ele processa dados brutos de RH e utiliza AI Enrichment para converter CEPs em coordenadas geográficas, permitindo buscas híbridas que combinam conformidade legal (Polícia Federal), proximidade logística e análise de Soft Skills (perfil comportamental) para encontrar o substituto ideal. O GPT-4o é utilizado para justificar a escolha ao gestor de operações com base em dados técnicos e qualitativos.
+A realocação de vigilantes é um desafio crítico que envolve:
+
+1. **Compliance PF:** O profissional precisa estar com a reciclagem em dia.
+2. **Logística:** O custo de deslocamento deve ser minimizado.
+3. **Fit Comportamental:** O perfil (Soft Skills) deve ser adequado ao tipo de posto (Ex: Escolar vs. Bancário).
+
+Este sistema utiliza **AI Enrichment** para converter endereços brutos em coordenadas e **Vector Embeddings** para analisar perfis comportamentais, entregando ao gestor uma lista de candidatos ideais com justificativas geradas por GPT-4o.
+
+---
+
+## 🏗️ Arquitetura do Sistema
+
+A arquitetura foi desenhada para ser escalável e segura, utilizando o padrão *Identity-First* (sem chaves expostas).
+
+### 🔄 Fluxo de Dados (Data Pipeline)
+
+1. **Ingestão**: Arquivos CSV são depositados no **Azure Blob Storage**.
+2. **Enriquecimento (AI Pipeline)**:
+* O **Azure AI Search Indexer** dispara chamadas para uma **Azure Function**.
+* A Function consome o **Azure Maps** para transformar CEP em `Edm.GeographyPoint`.
+* O **Azure OpenAI** (`text-embedding-3-small`) converte o perfil comportamental em vetores de 1536 dimensões.
+3. **Persistência**: Os dados enriquecidos são armazenados no **Vector Store**.
+
+```mermaid
+graph TD
+    A[CSV no Blob Storage] --> B[Indexer]
+    B --> C{Skillset}
+    C --> D[Azure Function + Maps]
+    C --> E[OpenAI Embeddings]
+    D --> F[Index: Coordenadas]
+    E --> G[Index: Vetores]
+    F --> H[Busca Híbrida / RAG]
+    G --> H
+    H --> I[GPT-4o: Justificativa Final]
+```
+
+---
 
 ## 🛠️ Stack Tecnológica
 
@@ -42,10 +78,10 @@ O projeto resolve o gargalo de realocação tática de colaboradores. Ele proces
 
 ### 3. Ingestão e Enriquecimento (AI Pipeline)
 
-* [ ] **Azure Function (Custom Skill):** Desenvolvimento de API Serverless para geocodificação (CEP -> Lat/Long) seguindo o contrato de interface do AI Search.
-* [ ] **AI Search Skillset:** Configuração do pipeline de enriquecimento que orquestra a chamada da Function e a extração de metadados.
-* [ ] **Index Design (Geospatial & Vector):** Configuração de campos `Edm.GeographyPoint` para busca por proximidade e `Collection(Single)` para busca vetorial de Soft Skills.
-* [ ] **Indexer & DataSource:** Automação da varredura do Blob Storage (`rh-uploads`) para sincronização e vetorização automática de novos perfis.
+* [x] **Azure Function (Custom Skill):** Desenvolvimento de API Serverless para geocodificação (CEP -> Lat/Long) seguindo o contrato de interface do AI Search.
+* [x] **AI Search Skillset:** Configuração do pipeline de enriquecimento que orquestra a chamada da Function e a extração de metadados.
+* [x] **Index Design (Geospatial & Vector):** Configuração de campos `Edm.GeographyPoint` para busca por proximidade e `Collection(Single)` para busca vetorial de Soft Skills.
+* [x] **Indexer & DataSource:** Automação da varredura do Blob Storage (`rh-uploads`) para sincronização e vetorização automática de novos perfis.
 
 ### 4. Engine RAG & API (FastAPI & LangChain)
 
@@ -129,6 +165,29 @@ terraform plan
 terraform apply -auto-approve
 ```
 
+
+### D. Extração de Credenciais (Pós-Deploy)
+
+Após o `terraform apply`, você pode recuperar as chaves e endpoints necessários para o seu arquivo `.env` utilizando a Azure CLI. Execute os comandos abaixo no terminal:
+
+```bash
+# 1. Credenciais do Azure AI Search
+export SEARCH_ENDPOINT=$(terraform output -raw search_endpoint)
+export SEARCH_KEY=$(az search admin-key show --resource-group rg-smart-staffing --service-name srch-smart-staffing-prod2 --query "primaryKey" --output tsv)
+
+# 2. Credenciais do Azure OpenAI
+export OPENAI_ENDPOINT=$(terraform output -raw openai_endpoint)
+export OPENAI_KEY=$(az cognitiveservices account keys list --name oai-smart-staffing --resource-group rg-smart-staffing --query "key1" --output tsv)
+
+# 3. Credenciais da Azure Function (Geocoding)
+export FUNC_URL=$(terraform output -raw function_url)
+export FUNC_KEY=$(az functionapp keys list --name func-geocoding-staffing --resource-group rg-smart-staffing --query "functionKeys.default" --output tsv)
+
+# Print para conferência (ou use para redirecionar para o .env)
+echo -e "AZURE_SEARCH_ENDPOINT=$SEARCH_ENDPOINT\nAZURE_SEARCH_KEY=$SEARCH_KEY\nAZURE_OPENAI_ENDPOINT=$OPENAI_ENDPOINT\nAZURE_OPENAI_KEY=$OPENAI_KEY\nGEO_FUNCTION_URL=$FUNC_URL\nGEO_FUNCTION_KEY=$FUNC_KEY"
+
+```
+
 ## 🛠️ Guia de Execução Local
 
 ### 1. Geração da Massa de Dados
@@ -138,6 +197,41 @@ python -m venv venv
 source venv/bin/activate  # venv\Scripts\activate no Windows
 pip install -r requirements.txt
 python scripts/data_generator.py
+```
+
+### 2. Configuração do Ambiente (.env)
+
+Crie um arquivo `.env` na raiz do projeto para que os scripts de sincronização e a API possam se autenticar nos serviços provisionados:
+
+```bash
+AZURE_SEARCH_ENDPOINT="https://srch-smart-staffing-prod2.search.windows.net"
+AZURE_SEARCH_KEY="Sua_Admin_Key_Aqui"
+AZURE_OPENAI_ENDPOINT="Seu_Endpoint_OpenAI"
+AZURE_OPENAI_KEY="Sua_Chave_OpenAI"
+GEO_FUNCTION_URL="Url_da_sua_Function"
+GEO_FUNCTION_KEY="Chave_da_sua_Function"
+
+```
+
+### 3. Sincronização do AI Search Pipeline
+
+Com a infraestrutura pronta e as variáveis configuradas, rode o script de sincronização para criar o Índice, o Skillset e o Indexador:
+
+```bash
+# Sincroniza as definições JSON locais com a Azure
+python scripts/sync_search.py
+
+```
+
+### 4. Gatilho do Indexador e Validação
+
+Após a sincronização, o indexador iniciará o processamento dos 400 documentos (IA Enrichment + Geocoding). Para validar se os dados foram indexados corretamente (contornando caches de interface do portal), execute:
+
+```bash
+# Teste via CLI (Substitua [KEY] pela sua Admin Key)
+curl -X GET "https://srch-smart-staffing-prod2.search.windows.net/indexes/vigilantes-index/docs?search=*&\$top=5&api-version=2024-07-01" \
+  -H "Content-Type: application/json" \
+  -H "api-key: [AZURE_SEARCH_ADMIN_KEY]"
 
 ```
 
@@ -154,21 +248,10 @@ python scripts/data_generator.py
 ## 📁 Estrutura do Repositório
 
 ```text
-├── .github/workflows/          # Automação de Infra e Deploy
-terraform/
-├── main.tf            # Orquestrador dos módulos
-├── variables.tf       # Variáveis globais
-├── outputs.tf         # Outputs principais
-├── modules/
-│   ├── network/       # VNet, Subnets, Private Endpoints
-│   ├── storage/       # Blob Storage
-│   ├── aks/           # Azure Kubernetes Service
-│   └── ai/            # Azure OpenAI e Azure AI Search
-│   └── functions/     # Azure Functions
-├── scripts/
-│   └── data_generator.py       # Gerador de massa de dados sintéticos
-├── azure_functions/            # Ingestão assíncrona (Blob -> Search)
-├── app/                        # FastAPI (Container): Lógica RAG e LangChain
+├── terraform/            # Módulos de Infraestrutura
+├── azure_functions/      # Custom Skills (Geocoding)
+├── scripts/              # Sync Scripts e Gerador de Dados
+├── search_assets/        # Definições JSON (Index, Skillset, Indexer)
+├── app/                  # Engine RAG (FastAPI + LangChain)
 └── README.md
-
 ```

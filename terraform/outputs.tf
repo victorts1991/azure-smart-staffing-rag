@@ -43,3 +43,7 @@ output "acr_login_server" {
   description = "Endpoint do Container Registry para o Docker Push"
   value       = module.aks.acr_login_server
 }
+
+output "function_app_name" {
+  value = module.functions.function_app_name
+}

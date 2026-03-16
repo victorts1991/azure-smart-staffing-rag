@@ -34,6 +34,7 @@ resource "azurerm_linux_function_app" "enrich_func" {
     "AI_SEARCH_ENDPOINT"       = var.ai_search_endpoint
     "OPENAI_ENDPOINT"          = var.openai_endpoint
     "PROJECT_NAME"             = var.project_name
+    "AZURE_MAPS_SUBSCRIPTION_KEY" = var.maps_subscription_key
   }
 
   identity {

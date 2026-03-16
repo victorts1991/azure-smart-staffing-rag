@@ -1,0 +1,39 @@
+{
+  "name": "vigilantes-indexer",
+  "dataSourceName": "vigilantes-blob-ds",
+  "targetIndexName": "vigilantes-index",
+  "skillsetName": "staffing-skillset",
+  "schedule": {
+    "interval": "PT5M",
+    "startTime": "2024-01-01T00:00:00Z"
+  },
+  "parameters": {
+    "configuration": {
+      "parsingMode": "delimitedText",
+      "firstLineContainsHeaders": true,
+      "extension": ".csv"
+    }
+  },
+  "fieldMappings": [
+    { "sourceFieldName": "id_funcional", "targetFieldName": "id" },
+    { "sourceFieldName": "nome_completo", "targetFieldName": "nome_completo" },
+    { "sourceFieldName": "cpf", "targetFieldName": "cpf" },
+    { "sourceFieldName": "vencimento_reciclagem", "targetFieldName": "vencimento_reciclagem" },
+    { "sourceFieldName": "certificacoes", "targetFieldName": "certificacoes" },
+    { "sourceFieldName": "soft_skills", "targetFieldName": "soft_skills" },
+    { "sourceFieldName": "perfil_comportamental", "targetFieldName": "perfil_comportamental" },
+    { "sourceFieldName": "nota_performance", "targetFieldName": "nota_performance" },
+    { "sourceFieldName": "cep_base", "targetFieldName": "cep_base" },
+    { "sourceFieldName": "escala_atual", "targetFieldName": "escala_atual" }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/posicao_geografica",
+      "targetFieldName": "posicao_geografica"
+    },
+    {
+      "sourceFieldName": "/document/soft_skills_vector",
+      "targetFieldName": "soft_skills_vector"
+    }
+  ]
+}

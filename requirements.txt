@@ -1,18 +1,26 @@
-# Geração de Dados e Manipulação
+# --- Geração de Dados e Manipulação ---
+pandas>=2.2.3
+faker>=20.0.0
 
-pandas
-faker
+# --- Azure SDKs ---
+azure-identity>=1.16.0
+azure-storage-blob>=12.20.0
+azure-search-documents>=11.5.0
+azure-functions>=1.18.0
 
-# Azure e IA (O coração do projeto)
+# --- IA e Orquestração RAG ---
+openai>=1.30.0
+langchain>=0.2.0
+langchain-openai>=0.1.7
+langchain-community>=0.2.0
 
-azure-storage-blob
-azure-search-documents
-azure-identity
-openai
-langchain
-python-dotenv
+# --- API e Web Server ---
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+python-dotenv>=1.0.1
+requests>=2.32.0
 
-# API e Servidor
-
-fastapi
-uvicorn
+# --- Extras ---
+# Versões cruciais para rodar no Python 3.13
+pydantic>=2.7.0
+pydantic-settings>=2.3.0

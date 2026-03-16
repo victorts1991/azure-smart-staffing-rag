@@ -17,7 +17,7 @@ terraform {
 
   backend "azurerm" {
     resource_group_name  = "rg-terraform-state"
-    storage_account_name = "ststaffingragtfa30a88"
+    storage_account_name = "ststaffingragtf93d25f"
     container_name       = "tfstate"
     key                  = "smart-staffing.terraform.tfstate"
     }
@@ -48,7 +48,14 @@ module "network" {
   location            = azurerm_resource_group.rg.location
 }
 
-# 5. Módulo de Inteligência Artificial (OpenAI & AI Search)
+# 5. NOVO: Módulo de Azure Maps
+module "maps" {
+  source              = "./modules/maps"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+}
+
+# 6. Módulo de Inteligência Artificial (OpenAI & AI Search)
 module "ai" {
   source              = "./modules/ai"
   resource_group_name = azurerm_resource_group.rg.name
@@ -57,7 +64,7 @@ module "ai" {
   principal_id        = azurerm_user_assigned_identity.main_id.principal_id
 }
 
-# 6. Módulo de Storage (Camada de Ingestão do RH)
+# 7. Módulo de Storage (Camada de Ingestão do RH)
 module "storage" {
   source              = "./modules/storage"
   resource_group_name = azurerm_resource_group.rg.name
@@ -68,7 +75,7 @@ module "storage" {
   principal_id        = azurerm_user_assigned_identity.main_id.principal_id
 }
 
-# 7. Módulo de Compute (AKS - Onde rodará o FastAPI)
+# 8. Módulo de Compute (AKS - Onde rodará o FastAPI)
 module "aks" {
   source              = "./modules/aks"
   resource_group_name = azurerm_resource_group.rg.name
@@ -83,7 +90,7 @@ module "aks" {
   
 }
 
-# 8. Módulo de Functions
+# 9. Módulo de Functions
 module "functions" {
   source                     = "./modules/functions"
   resource_group_name        = azurerm_resource_group.rg.name
@@ -97,9 +104,34 @@ module "functions" {
   
   ai_search_endpoint         = module.ai.search_endpoint
   openai_endpoint            = module.ai.openai_endpoint
+
+  maps_subscription_key        = module.maps.maps_primary_key
+}
+
+# 10. CONFIGURAÇÃO DE RBAC (PERMISSÕES DE ACESSO)
+# Estas permissões permitem que o AI Search use a Managed Identity para falar 
+# com o OpenAI e o Azure Maps sem precisar de chaves expostas.
+
+# Permissão para o AI Search gerar vetores (Embeddings) no OpenAI
+resource "azurerm_role_assignment" "search_to_openai" {
+  scope                = module.ai.openai_account_id
+  role_definition_name = "Cognitive Services OpenAI User"
+  principal_id         = module.ai.search_service_principal_id
+}
+
+# Permissão para o AI Search ler dados do Azure Maps (Geocodificação)
+resource "azurerm_role_assignment" "search_to_maps" {
+  scope                = module.maps.maps_account_id
+  role_definition_name = "Azure Maps Data Reader"
+  principal_id         = module.ai.search_service_principal_id
 }
 
 # --- OUTPUTS PARA O GITHUB ACTIONS / APP ---
+
+output "AZURE_MAPS_KEY" {
+  value     = module.maps.maps_primary_key
+  sensitive = true
+}
 
 output "AZURE_SEARCH_ENDPOINT" {
   value = module.ai.search_endpoint
