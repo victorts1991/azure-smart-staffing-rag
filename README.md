@@ -20,7 +20,7 @@ Este sistema utiliza **AI Enrichment** para converter endereços brutos em coord
 
 A arquitetura foi desenhada para ser escalável e segura, utilizando o padrão *Identity-First* (sem chaves expostas).
 
-### 🔄 Fluxo de Dados (Data Pipeline)
+## A. Fluxo de Dados (Data Pipeline)
 
 1. **Ingestão**: Arquivos CSV são depositados no **Azure Blob Storage**.
 2. **Enriquecimento (AI Pipeline)**:
@@ -41,6 +41,16 @@ graph TD
     G --> H
     H --> I[GPT-4o: Justificativa Final]
 ```
+
+## B. Orquestração e Runtime (Kubernetes):
+* A aplicação **FastAPI** é executada em **Azure Kubernetes Service (AKS)**, utilizando manifestos de **Deployment** para garantir alta disponibilidade.
+* A segurança é garantida via **Workload Identity**, permitindo que o Pod se autentique nos serviços de IA sem chaves de API.
+
+## C. Processo RAG Inteligente (LangChain):
+* O **LangChain** atua como o motor de orquestração:
+* **Retrieval:** Realiza a Busca Híbrida no **AI Search** aplicando filtros de compliance (Reciclagem), geolocalização (Geo-filtering) e relevância (Busca Vetorial por Soft Skills).
+* **Augmentation:** Monta um prompt contextualizado injetando o perfil dos candidatos encontrados.
+* **Generation:** O **GPT-4o** gera uma justificativa humanizada, comparando as Soft Skills do colaborador com os requisitos do posto (ex: "Perfil comunicativo ideal para posto escolar").
 
 ---
 
@@ -100,27 +110,6 @@ graph TD
 
 ---
 
-## 🏗️ Arquitetura do Sistema
-
-1. **Ingestão e Enriquecimento (Event-Driven):**
-* O upload do CSV dispara uma **Azure Function**.
-* Durante a indexação no **AI Search**, uma **Custom Skill** converte o CEP em coordenadas geográficas, enriquecendo o perfil do vigilante sem intervenção manual do RH.
-
-
-2. **Orquestração e Runtime (Kubernetes):**
-* A aplicação **FastAPI** é executada em **Azure Kubernetes Service (AKS)**, utilizando manifestos de **Deployment** para garantir alta disponibilidade.
-* A segurança é garantida via **Workload Identity**, permitindo que o Pod se autentique nos serviços de IA sem chaves de API.
-
-
-3. **Processo RAG Inteligente (LangChain):**
-* O **LangChain** atua como o motor de orquestração:
-* **Retrieval:** Realiza a Busca Híbrida no **AI Search** aplicando filtros de compliance (Reciclagem), geolocalização (Geo-filtering) e relevância (Busca Vetorial por Soft Skills).
-* **Augmentation:** Monta um prompt contextualizado injetando o perfil dos candidatos encontrados.
-* **Generation:** O **GPT-4o** gera uma justificativa humanizada, comparando as Soft Skills do colaborador com os requisitos do posto (ex: "Perfil comunicativo ideal para posto escolar").
-
-
----
-
 ## 🛠️ Guia de Configuração da Infraestrutura (Início Rápido)
 
 Este guia detalha como subir toda a infraestrutura na Azure utilizando Terraform.
@@ -128,8 +117,10 @@ Este guia detalha como subir toda a infraestrutura na Azure utilizando Terraform
 ### 1. Pré-requisitos
 * **Azure CLI** instalado e logado (`az login`).
 * **Terraform** (v1.0+) instalado.
+* **Azure Functions Core Tools** instalado (para deploy/teste da Custom Skill).
 * **Docker Desktop** rodando.
 * **Assinatura Azure** ativa.
+* **Python 3.11+** configurado.
 
 ### 2. Passo a Passo Inicial
 
@@ -190,7 +181,17 @@ echo -e "AZURE_SEARCH_ENDPOINT=$SEARCH_ENDPOINT\nAZURE_SEARCH_KEY=$SEARCH_KEY\nA
 
 ## 🛠️ Guia de Execução Local
 
-### 1. Geração da Massa de Dados
+#### 1. Deploy da Custom Skill (Azure Function)
+
+O Azure AI Search depende desta função para enriquecer os dados.
+
+```bash
+cd azure_functions
+func azure functionapp publish func-geocoding-staffing
+
+```
+
+### 2. Geração da Massa de Dados
 
 ```bash
 python -m venv venv
@@ -199,7 +200,7 @@ pip install -r requirements.txt
 python scripts/data_generator.py
 ```
 
-### 2. Configuração do Ambiente (.env)
+### 3. Configuração do Ambiente (.env)
 
 Crie um arquivo `.env` na raiz do projeto para que os scripts de sincronização e a API possam se autenticar nos serviços provisionados:
 
@@ -213,7 +214,7 @@ GEO_FUNCTION_KEY="Chave_da_sua_Function"
 
 ```
 
-### 3. Sincronização do AI Search Pipeline
+### 4. Sincronização do AI Search Pipeline
 
 Com a infraestrutura pronta e as variáveis configuradas, rode o script de sincronização para criar o Índice, o Skillset e o Indexador:
 
@@ -223,7 +224,7 @@ python scripts/sync_search.py
 
 ```
 
-### 4. Gatilho do Indexador e Validação
+### 5. Gatilho do Indexador e Validação
 
 Após a sincronização, o indexador iniciará o processamento dos 400 documentos (IA Enrichment + Geocoding). Para validar se os dados foram indexados corretamente (contornando caches de interface do portal), execute:
 
