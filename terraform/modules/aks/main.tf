@@ -49,3 +49,14 @@ resource "azurerm_role_assignment" "aks_acr_pull" {
   scope                            = azurerm_container_registry.acr.id
   skip_service_principal_aad_check = true
 }
+
+# Isso permite que o Pod na ServiceAccount 'smart-staffing-sa' assuma a identidade main_id
+resource "azurerm_federated_identity_credential" "aks_federated" {
+  name                = "fed-aks-${var.project_name}"
+  resource_group_name = var.resource_group_name
+  audience            = ["api://AzureADTokenExchange"]
+  issuer              = azurerm_kubernetes_cluster.aks.oidc_issuer_url
+  # O 'subject' abaixo vincula a ServiceAccount do K8s (namespace:nome-da-sa)
+  subject             = "system:serviceaccount:default:smart-staffing-sa"
+  parent_id           = var.identity_id # ID da Managed Identity (main_id)
+}

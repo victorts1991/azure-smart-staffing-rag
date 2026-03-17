@@ -58,12 +58,17 @@ resource "azurerm_search_service" "search" {
   # Habilita o ranking semântico (L2 Re-ranking) que você citou no Roadmap
   semantic_search_sku = "free"
 
+  local_authentication_enabled = false
+
   # Configuração Zero Trust: desabilita chaves de admin (usa apenas RBAC)
   local_authentication_enabled = false
 
   identity {
     type = "SystemAssigned"
   }
+
+  # (Isso ajuda em cenários onde o Search precisa de Managed Identity para acessar o Blob)
+  public_network_access_enabled = true
 }
 
 # 3. RBAC: Permite que a Managed Identity da App consulte o Search

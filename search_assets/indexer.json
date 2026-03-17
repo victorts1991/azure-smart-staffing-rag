@@ -3,6 +3,9 @@
   "dataSourceName": "vigilantes-blob-ds",
   "targetIndexName": "vigilantes-index",
   "skillsetName": "staffing-skillset",
+  "identity": { 
+    "@odata.type": "#Microsoft.Azure.Search.DataNoneIdentity" 
+  },
   "schedule": {
     "interval": "PT5M",
     "startTime": "2024-01-01T00:00:00Z"
