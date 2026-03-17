@@ -18,16 +18,16 @@ Este sistema utiliza **AI Enrichment** para converter endereços brutos em coord
 
 ## 🏗️ Arquitetura do Sistema
 
-A arquitetura foi desenhada para ser escalável e segura, utilizando o padrão *Identity-First* (sem chaves expostas).
+A arquitetura foi desenhada para ser escalável e segura, utilizando o padrão *Identity-First* (sem chaves expostas via **Azure RBAC**).
 
 ## A. Fluxo de Dados (Data Pipeline)
 
 1. **Ingestão**: Arquivos CSV são depositados no **Azure Blob Storage**.
 2. **Enriquecimento (AI Pipeline)**:
-* O **Azure AI Search Indexer** dispara chamadas para uma **Azure Function**.
+* O **Azure AI Search Indexer** dispara chamadas para uma **Azure Function** (Custom Skill).
 * A Function consome o **Azure Maps** para transformar CEP em `Edm.GeographyPoint`.
 * O **Azure OpenAI** (`text-embedding-3-small`) converte o perfil comportamental em vetores de 1536 dimensões.
-3. **Persistência**: Os dados enriquecidos são armazenados no **Vector Store**.
+3. **Persistência**: O **Azure AI Search** atua como o Vector Store unificado, armazenando metadados e embeddings.
 
 ```mermaid
 graph TD
@@ -44,11 +44,14 @@ graph TD
 
 ## B. Orquestração e Runtime (Kubernetes):
 * A aplicação **FastAPI** é executada em **Azure Kubernetes Service (AKS)**, utilizando manifestos de **Deployment** para garantir alta disponibilidade.
-* A segurança é garantida via **Workload Identity**, permitindo que o Pod se autentique nos serviços de IA sem chaves de API.
+* A segurança é garantida via **Workload Identity**, permitindo que o Pod se autentique nos serviços de IA sem chaves de API (Secretless Architecture). 
 
 ## C. Processo RAG Inteligente (LangChain):
 * O **LangChain** atua como o motor de orquestração:
-* **Retrieval:** Realiza a Busca Híbrida no **AI Search** aplicando filtros de compliance (Reciclagem), geolocalização (Geo-filtering) e relevância (Busca Vetorial por Soft Skills).
+* **Retrieval:** Realiza a **Busca Híbrida** no AI Search aplicando: 
+    * **Filtros OData:** Para compliance de reciclagem.
+    * **Geo-filtering:** Para proximidade geográfica.
+    * **Vector Search:** Para similaridade semântica de Soft Skills.
 * **Augmentation:** Monta um prompt contextualizado injetando o perfil dos candidatos encontrados.
 * **Generation:** O **GPT-4o** gera uma justificativa humanizada, comparando as Soft Skills do colaborador com os requisitos do posto (ex: "Perfil comunicativo ideal para posto escolar").
 
@@ -83,7 +86,7 @@ graph TD
 * [x] **Módulo de Storage:** Provisionamento de Blob Storage e Containers de Ingestão (`rh-uploads`).
 * [x] **Módulo de IA:** Deployment do Azure OpenAI e Azure AI Search (SKU Standard).
 * [x] **Módulo de Networking:** Configuração de VNet e isolamento de rede.
-* [x] **Segurança RBAC:** Implementação de Managed Identities para acesso passwordless.
+* [x] **Segurança RBAC:** Atribuição de roles (`Cognitive Services User`, `Search Index Data Contributor`).
 * [x] **Módulo de Serverless:** Provisionamento de **Azure Functions** para pipeline de enriquecimento.
 
 ### 3. Ingestão e Enriquecimento (AI Pipeline)
@@ -93,20 +96,15 @@ graph TD
 * [x] **Index Design (Geospatial & Vector):** Configuração de campos `Edm.GeographyPoint` para busca por proximidade e `Collection(Single)` para busca vetorial de Soft Skills.
 * [x] **Indexer & DataSource:** Automação da varredura do Blob Storage (`rh-uploads`) para sincronização e vetorização automática de novos perfis.
 
-### 4. Engine RAG & API (FastAPI & LangChain)
-
-* [ ] **Containerização:** Criação de Dockerfile multi-stage para otimização de imagem da API.
-* [ ] **Kubernetes Manifests:** Configuração de Deployments e Services.
-* [ ] **Orquestração com LangChain:** Implementação de **Chains** para fluxo Pergunta -> Retrieval -> Prompt -> GPT-4o.
-* [ ] **Retrieval Strategy:** Implementação de **Busca Híbrida** (Vetorial + Keyword) e Re-ranking semântico.
-* [ ] **Setup de API (FastAPI):** Endpoints para solicitação de substituição e integração com Workload Identity.
+### 4. Engine RAG & API (Fase Atual 🚧) 
+* [ ] **Containerização:** Dockerfile multi-stage.
+* [ ] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
+* [ ] **Retrieval Strategy:** Implementação de Busca Híbrida e Re-ranking semântico.
+* [ ] **FastAPI Endpoints:** Interface para solicitação de substituição.
 
 ### 5. Automação, DevOps & Observabilidade
-
-* [ ] **ConfigMaps & Secrets:** Injeção de variáveis de ambiente seguras via Kubernetes.
-* [ ] **CI Pipeline:** Automação de Linting, Docker Build e Push para o ACR via GitHub Actions.
-* [ ] **CD Pipeline:** Deploy automatizado no AKS (GitOps approach).
-* [ ] **IaC Pipeline:** Automação do ciclo de vida da infraestrutura via Terraform.
+* [ ] **CI/CD Pipeline:** Automação via GitHub Actions (Lint, Build, Push, Deploy).
+* [ ] **Observabilidade:** Integração com **Application Insights** para monitoramento de traces de IA. 
 
 ---
 
