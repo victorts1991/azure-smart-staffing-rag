@@ -22,12 +22,12 @@ A arquitetura foi desenhada para ser escalável e segura, utilizando o padrão *
 
 ## A. Fluxo de Dados (Data Pipeline)
 
-1. **Ingestão**: Arquivos CSV são depositados no **Azure Blob Storage**.
-2. **Enriquecimento (AI Pipeline)**:
-* O **Azure AI Search Indexer** dispara chamadas para uma **Azure Function** (Custom Skill).
-* A Function consome o **Azure Maps** para transformar CEP em `Edm.GeographyPoint`.
-* O **Azure OpenAI** (`text-embedding-3-small`) converte o perfil comportamental em vetores de 1536 dimensões.
-3. **Persistência**: O **Azure AI Search** atua como o Vector Store unificado, armazenando metadados e embeddings.
+1. **Ingestão**: O processo é disparado quando arquivos CSV são depositados no **Azure Blob Storage**.
+2. **Enriquecimento via Skillset (AI Pipeline)**:
+    * O **Indexer** lê os dados brutos e os submete a um **Skillset** (o motor de transformações).
+    * **Custom Skill**: O Skillset orquestra uma chamada para uma **Azure Function**, que integra com o **Azure Maps** para converter CEP em coordenadas geográficas (`Edm.GeographyPoint`).
+    * **Embedding Skill**: Em paralelo, o Skillset utiliza o **Azure OpenAI** (`text-embedding-3-small`) para converter as descrições de perfil comportamental em vetores de 1536 dimensões.
+3. **Persistência**: O **Indexer** consolida os dados enriquecidos (metadados, coordenadas e vetores) e os persiste no **Azure AI Search**, que atua como nosso **Vector Store** unificado.
 
 ```mermaid
 graph TD
