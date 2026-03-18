@@ -58,8 +58,6 @@ resource "azurerm_search_service" "search" {
   # Habilita o ranking semântico (L2 Re-ranking) que você citou no Roadmap
   semantic_search_sku = "free"
 
-  local_authentication_enabled = false
-
   # Configuração Zero Trust: desabilita chaves de admin (usa apenas RBAC)
   local_authentication_enabled = false
 

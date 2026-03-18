@@ -155,61 +155,37 @@ terraform apply -auto-approve
 ```
 
 
-### D. Extração de Credenciais (Pós-Deploy)
-
-Após o `terraform apply`, você pode recuperar as chaves e endpoints necessários para o seu arquivo `.env` utilizando a Azure CLI. Execute os comandos abaixo no terminal:
-
-```bash
-# 1. Credenciais do Azure AI Search
-export SEARCH_ENDPOINT=$(terraform output -raw search_endpoint)
-export SEARCH_KEY=$(az search admin-key show --resource-group rg-smart-staffing --service-name srch-smart-staffing-prod2 --query "primaryKey" --output tsv)
-
-# 2. Credenciais do Azure OpenAI
-export OPENAI_ENDPOINT=$(terraform output -raw openai_endpoint)
-export OPENAI_KEY=$(az cognitiveservices account keys list --name oai-smart-staffing --resource-group rg-smart-staffing --query "key1" --output tsv)
-
-# 3. Credenciais da Azure Function (Geocoding)
-export FUNC_URL=$(terraform output -raw function_url)
-export FUNC_KEY=$(az functionapp keys list --name func-geocoding-staffing --resource-group rg-smart-staffing --query "functionKeys.default" --output tsv)
-
-# Print para conferência (ou use para redirecionar para o .env)
-echo -e "AZURE_SEARCH_ENDPOINT=$SEARCH_ENDPOINT\nAZURE_SEARCH_KEY=$SEARCH_KEY\nAZURE_OPENAI_ENDPOINT=$OPENAI_ENDPOINT\nAZURE_OPENAI_KEY=$OPENAI_KEY\nGEO_FUNCTION_URL=$FUNC_URL\nGEO_FUNCTION_KEY=$FUNC_KEY"
-
-```
-
 ## 🛠️ Guia de Execução Local
 
 #### 1. Deploy da Custom Skill (Azure Function)
 
-O Azure AI Search depende desta função para enriquecer os dados.
+O Azure AI Search depende desta função para enriquecer os dados, esteja na raiz do projeto.
 
 ```bash
-cd azure_functions
-func azure functionapp publish func-geocoding-staffing
+cd azure_functions/geocoding
+func azure functionapp publish func-enrich-data-smart-staffing
 
 ```
 
-### 2. Geração da Massa de Dados
+### 2. Extração de Credenciais (Pós-Deploy)
+
+Após o `terraform apply`, execute o script em shell com os comandos abaixo, é necessário estar na raiz do projeto:
+
+```bash
+chmod +x setup-env.sh
+# Precisa ser executado com o comando source para funcionar corretamente
+source setup-env.sh 
+```
+
+### 3. Geração da Massa de Dados
+
+Esteja na raiz do projeto.
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # venv\Scripts\activate no Windows
 pip install -r requirements.txt
 python scripts/data_generator.py
-```
-
-### 3. Configuração do Ambiente (.env)
-
-Crie um arquivo `.env` na raiz do projeto para que os scripts de sincronização e a API possam se autenticar nos serviços provisionados:
-
-```bash
-AZURE_SEARCH_ENDPOINT="https://srch-smart-staffing-prod2.search.windows.net"
-AZURE_SEARCH_KEY="Sua_Admin_Key_Aqui"
-AZURE_OPENAI_ENDPOINT="Seu_Endpoint_OpenAI"
-AZURE_OPENAI_KEY="Sua_Chave_OpenAI"
-GEO_FUNCTION_URL="Url_da_sua_Function"
-GEO_FUNCTION_KEY="Chave_da_sua_Function"
-
 ```
 
 ### 4. Sincronização do AI Search Pipeline
