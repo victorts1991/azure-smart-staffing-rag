@@ -236,7 +236,7 @@ chmod +x scripts/verify_search_data.sh
 
 ---
 
-## 📁 Estrutura do Repositório
+## 📁 Estrutura do Repositório (Falta atualizar isso)
 
 ```text
 ├── terraform/            # Módulos de Infraestrutura
