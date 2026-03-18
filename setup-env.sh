@@ -9,6 +9,9 @@ echo "🔍 Coletando informações da infraestrutura no Azure..."
 # 2. Captura de Outputs do Terraform
 # Usa -chdir para garantir que o Terraform encontre o estado (.tfstate)
 export SEARCH_ENDPOINT=$(terraform -chdir=$TERRAFORM_DIR output -raw azure_search_endpoint)
+# Extrai apenas o nome do serviço da URL
+export SEARCH_NAME=$(echo $SEARCH_ENDPOINT | sed -e 's|https://||' -e 's|.search.windows.net.*||')
+export SEARCH_KEY=$(az search admin-key show --service-name srch-smart-staffing-prod2 -g $RG_NAME --query "primaryKey" -o tsv)
 export OPENAI_ENDPOINT=$(terraform -chdir=$TERRAFORM_DIR output -raw azure_openai_endpoint)
 export FUNC_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw function_app_name)
 export STG_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw storage_account_name)
@@ -17,7 +20,7 @@ export STG_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw storage_account_na
 echo "🔑 Recuperando chaves de acesso dinâmicas..."
 
 # URL da Function (Padrão Azure)
-export GEO_FUNCTION_URL="https://${FUNC_NAME}.azurewebsites.net/api"
+export GEO_FUNCTION_URL="https://${FUNC_NAME}.azurewebsites.net"
 
 # Chave da Function (Necessária para o Skillset do Search autenticar na Function)
 export GEO_FUNCTION_KEY=$(az functionapp keys list --name $FUNC_NAME -g $RG_NAME --query "functionKeys.default" -o tsv)

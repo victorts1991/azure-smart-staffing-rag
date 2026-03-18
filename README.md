@@ -195,22 +195,38 @@ Com a infraestrutura pronta e as variáveis configuradas, rode o script de sincr
 ```bash
 # Sincroniza as definições JSON locais com a Azure
 python scripts/sync_search.py
-
 ```
 
-### 5. Gatilho do Indexador e Validação
+### 5. Upload da Massa de Dados
 
-Após a sincronização, o indexador iniciará o processamento dos 400 documentos (IA Enrichment + Geocoding). Para validar se os dados foram indexados corretamente (contornando caches de interface do portal), execute:
+Esteja na raiz do projeto. O script envia diretamente para o container de ingestão que o Indexador monitora.
 
 ```bash
-# Teste via CLI (Substitua [KEY] pela sua Admin Key)
-curl -X GET "https://srch-smart-staffing-prod2.search.windows.net/indexes/vigilantes-index/docs?search=*&\$top=5&api-version=2024-07-01" \
-  -H "Content-Type: application/json" \
-  -H "api-key: [AZURE_SEARCH_ADMIN_KEY]"
-
+# Upload para o Azure Blob Storage (Usando a Connection String do setup-env)
+az storage blob upload --container-name "rh-uploads" --file "base_vigilantes_ativos.csv" --name "base_vigilantes_ativos.csv" --connection-string "$AZURE_STORAGE_CONNECTION_STRING" --overwrite
 ```
 
----
+### 6. Monitoramento da Indexação (Obrigatório) 🔍
+
+O processo de indexação consome os dados do Blob Storage, chama a **Azure Function** para Geocoding (CEP → Lat/Lon) e o **Azure OpenAI** para Embeddings (Vetorização das Soft Skills). 
+
+Como o ambiente utiliza **RBAC (Role-Based Access Control)** para máxima segurança, as chaves administrativas estão desativadas. Use o script de automação para garantir as permissões e validar o status:
+
+```bash
+# 1. Dê permissão de execução ao script
+chmod +x scripts/verify_search_data.sh
+
+# 2. Execute o monitoramento
+./scripts/verify_search_data.sh
+```
+
+**O que o script faz por você:**
+1.  **Atribuição Automática:** Identifica seu usuário logado e concede o papel `Search Index Data Reader`.
+2.  **Propagação de Segurança:** Aguarda os **2 minutos** necessários para o Azure atualizar as regras de acesso.
+3.  **Validação em Tempo Real:** Gera um token de identidade (Bearer) e consulta o índice via API REST.
+
+> **Status de Sucesso:** O processo estará concluído quando o campo `"@odata.count"` (ou `itemsProcessed`) for igual ao número de linhas do seu CSV (ex: 400) e o status for `success`.
+
 
 ## 🔐 Segurança e Compliance
 
