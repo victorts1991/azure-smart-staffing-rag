@@ -1,41 +1,49 @@
-from langchain_community.vectorstores.azuresearch import AzureSearch
-from langchain_openai import AzureOpenAIEmbeddings
-from app.core.config import settings, azure_credential
+import os
+from azure.identity import DefaultAzureCredential
+from azure.search.documents import SearchClient
+from langchain_core.documents import Document
 
-def get_retriever():
-    # 1. Configura o gerador de Embeddings (para busca vetorial)
-    embeddings = AzureOpenAIEmbeddings(
-        azure_deployment=settings.AZURE_OPENAI_EMBEDDING_DEPLOYMENT,
-        openai_api_version=settings.AZURE_OPENAI_API_VERSION,
-        azure_endpoint=settings.OPENAI_ENDPOINT,
-        credential=azure_credential
-    )
+def get_client():
+    endpoint = os.getenv("SEARCH_ENDPOINT")
+    credential = DefaultAzureCredential()
+    return SearchClient(endpoint=endpoint, index_name="vigilantes-index", credential=credential)
 
-    # 2. Conecta ao Azure AI Search como um Vector Store do LangChain
-    vector_store = AzureSearch(
-        azure_search_endpoint=settings.SEARCH_ENDPOINT,
-        azure_search_key=None, # Usando Credential via Identity
-        index_name=settings.SEARCH_INDEX_NAME,
-        embedding_function=embeddings.embed_query,
-        additional_search_client_options={"credential": azure_credential}
+def get_staff_retriever(lat, lon, query, max_dist_km=50):
+    client = get_client()
+    odata_filter = f"geo.distance(posicao_geografica, geography'POINT({lon} {lat})') le {max_dist_km}"
+    
+    try:
+        results = client.search(
+            search_text=query,
+            filter=odata_filter,
+            top=5,
+            select=["nome_completo", "perfil_comportamental", "certificacoes", "soft_skills", "nota_performance"]
+        )
+        
+        docs = []
+        for res in results:
+            content = (
+                f"Vigilante: {res.get('nome_completo')}\n"
+                f"Nota: {res.get('nota_performance')}\n"
+                f"Certificações: {res.get('certificacoes')}\n"
+                f"Skills: {res.get('soft_skills')}\n"
+                f"Perfil: {res.get('perfil_comportamental')}"
+            )
+            docs.append(Document(page_content=content, metadata=res))
+        return docs
+    except Exception as e:
+        print(f"❌ Erro Azure: {e}")
+        return []
+
+def get_missing_staff_data(nome_faltante: str):
+    client = get_client()
+    # Busca exata ou aproximada pelo nome
+    results = client.search(
+        search_text=nome_faltante,
+        select=["nome_completo", "posicao_geografica", "certificacoes", "soft_skills"],
+        top=1
     )
     
-    return vector_store
-
-def search_vigilantes(query_text, lat=None, lon=None, max_dist_km=20):
-    vector_store = get_retriever()
-    
-    # Filtro OData: Apenas vigilantes com reciclagem em dia (exemplo)
-    # E filtro geográfico se lat/lon forem passados
-    filters = "status_reciclagem eq 'Em dia'"
-    if lat and lon:
-        filters += f" and geo.distance(location, geography'POINT({lon} {lat})') le {max_dist_km}"
-
-    # Realiza a busca híbrida
-    docs = vector_store.similarity_search(
-        query=query_text,
-        k=5,
-        filters=filters,
-        search_type="hybrid"
-    )
-    return docs
+    for res in results:
+        return res # Retorna o primeiro match
+    return None

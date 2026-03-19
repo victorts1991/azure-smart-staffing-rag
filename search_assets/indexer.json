@@ -31,7 +31,7 @@
   ],
   "outputFieldMappings": [
     {
-      "sourceFieldName": "/document/posicao_geografica",
+      "sourceFieldName": "/document/resultado_geo",
       "targetFieldName": "posicao_geografica"
     },
     {

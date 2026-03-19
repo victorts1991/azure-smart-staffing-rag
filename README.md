@@ -214,10 +214,10 @@ Como o ambiente utiliza **RBAC (Role-Based Access Control)** para máxima segura
 
 ```bash
 # 1. Dê permissão de execução ao script
-chmod +x scripts/verify_search_data.sh
+chmod +x ./verify_search_data.sh
 
 # 2. Execute o monitoramento
-./scripts/verify_search_data.sh
+./verify_search_data.sh
 ```
 
 **O que o script faz por você:**
@@ -226,6 +226,9 @@ chmod +x scripts/verify_search_data.sh
 3.  **Validação em Tempo Real:** Gera um token de identidade (Bearer) e consulta o índice via API REST.
 
 > **Status de Sucesso:** O processo estará concluído quando o campo `"@odata.count"` (ou `itemsProcessed`) for igual ao número de linhas do seu CSV (ex: 400) e o status for `success`.
+
+
+---- ESTOU AQUI
 
 
 ## 🔐 Segurança e Compliance

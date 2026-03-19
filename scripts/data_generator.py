@@ -6,6 +6,12 @@ from datetime import datetime, timedelta
 # Inicializa o Faker para gerar nomes e endereços brasileiros
 fake = Faker('pt_BR')
 
+# LISTA DE CEPS REAIS PARA GARANTIR QUE A FUNCTION ENCONTRE
+CEPS_REAIS = [
+    "01001-000", "01013-001", "01202-001", "01310-100", "01415-000",
+    "04794-000", "04801-010", "08410-000", "05407-002", "02011-000"
+]
+
 def mask_cpf(cpf):
     # Transforma 785.069.142-30 em 785.***.***-30
     parts = cpf.split('.')
@@ -67,7 +73,7 @@ def generate_vigilante_data(n_records=400):
             "soft_skills": ", ".join(soft_skills), 
             "perfil_comportamental": random.choice(feedbacks),
             "nota_performance": round(random.uniform(6.5, 10.0), 1),
-            "cep_base": fake.postcode(),
+            "cep_base": random.choice(CEPS_REAIS),
             "escala_atual": random.choice(escalas_pool),
             "ultimo_posto": fake.company() + " - Unidade " + str(random.randint(1, 10))
         }

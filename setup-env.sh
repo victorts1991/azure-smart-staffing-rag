@@ -19,6 +19,9 @@ export STG_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw storage_account_na
 # 3. Credenciais e Endpoints via Azure CLI
 echo "🔑 Recuperando chaves de acesso dinâmicas..."
 
+OPENAI_NAME=$(az cognitiveservices account list -g $RG_NAME --query "[0].name" -o tsv)
+export AZURE_OPENAI_API_KEY=$(az cognitiveservices account keys list --name $OPENAI_NAME -g $RG_NAME --query "key1" -o tsv)
+
 # URL da Function (Padrão Azure)
 export GEO_FUNCTION_URL="https://${FUNC_NAME}.azurewebsites.net"
 
@@ -34,6 +37,21 @@ if [ -z "$AZURE_STORAGE_CONNECTION_STRING" ]; then
 else
     echo "Connection String configurada!"
 fi
+
+echo "📝 Gravando variáveis no arquivo .env..."
+cat <<EOF > .env
+SEARCH_ENDPOINT="$SEARCH_ENDPOINT"
+SEARCH_KEY="$SEARCH_KEY"
+AZURE_OPENAI_ENDPOINT="$OPENAI_ENDPOINT"
+AZURE_OPENAI_API_KEY="$AZURE_OPENAI_API_KEY"
+OPENAI_API_VERSION="2024-02-01"
+AZURE_STORAGE_CONNECTION_STRING="$AZURE_STORAGE_CONNECTION_STRING"
+EOF
+
+echo "--------------------------------------------------------"
+echo "✅ AMBIENTE CONFIGURADO E .ENV ATUALIZADO!"
+
+
 
 echo "--------------------------------------------------------"
 echo "✅ AMBIENTE CONFIGURADO COM SUCESSO!"

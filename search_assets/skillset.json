@@ -14,7 +14,10 @@
         }
       ],
       "outputs": [
-        { "name": "location", "targetName": "posicao_geografica" }
+        { 
+          "name": "location", 
+          "targetName": "resultado_geo" 
+        }
       ]
     },
     {
