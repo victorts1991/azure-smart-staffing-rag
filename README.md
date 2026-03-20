@@ -97,10 +97,10 @@ graph TD
 * [x] **Indexer & DataSource:** Automação da varredura do Blob Storage (`rh-uploads`) para sincronização e vetorização automática de novos perfis.
 
 ### 4. Engine RAG & API (Fase Atual 🚧) 
-* [ ] **Containerização:** Dockerfile multi-stage.
-* [ ] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
 * [x] **Retrieval Strategy:** Implementação de Busca Híbrida e Re-ranking semântico.
 * [x] **FastAPI Endpoints:** Interface para solicitação de substituição.
+* [ ] **Containerização:** Dockerfile multi-stage.
+* [ ] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
 
 ### 5. Automação, DevOps & Observabilidade
 * [ ] **CI/CD Pipeline:** Automação via GitHub Actions (Lint, Build, Push, Deploy).
