@@ -81,21 +81,11 @@ def generate_vigilante_data(n_records=400):
 
     return pd.DataFrame(vigilantes)
 
-def create_sample_scale(df_vigilantes):
-    escala = df_vigilantes.head(10).copy()
-    escala['posto_atual'] = "Posto Bancário Centro - Agência " + fake.city()
-    escala['data_inicio_ferias'] = (datetime.now() + timedelta(days=2)).strftime('%Y-%m-%d')
-    return escala[['id_funcional', 'nome_completo', 'posto_atual', 'data_inicio_ferias']]
-
 if __name__ == "__main__":
     print("⏳ Iniciando geração da massa de dados sintéticos...")
 
     df_total = generate_vigilante_data(400)
     df_total.to_csv('base_vigilantes_ativos.csv', index=False, encoding='utf-8-sig')
 
-    df_escala = create_sample_scale(df_total)
-    df_escala.to_csv('escala_atual.csv', index=False, encoding='utf-8-sig')
-
-    print(f"✅ Sucesso!")
-    print(f"📂 Arquivo 'base_vigilantes_ativos.csv' criado com {len(df_total)} registros.")
-    print(f"📂 Arquivo 'escala_atual.csv' criado para testes de substituição.")
+    print(f"Sucesso!")
+    print(f"Arquivo 'base_vigilantes_ativos.csv' criado com {len(df_total)} registros.")
