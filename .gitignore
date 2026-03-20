@@ -38,4 +38,8 @@ dist/
 test_images
 PoC_Proof_of_Concept.mov
 
+.pytest_cache
+
+azure_functions/geocoding/.python_packages
+
 TODO
