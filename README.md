@@ -99,8 +99,8 @@ graph TD
 ### 4. Engine RAG & API (Fase Atual 🚧) 
 * [ ] **Containerização:** Dockerfile multi-stage.
 * [ ] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
-* [ ] **Retrieval Strategy:** Implementação de Busca Híbrida e Re-ranking semântico.
-* [ ] **FastAPI Endpoints:** Interface para solicitação de substituição.
+* [x] **Retrieval Strategy:** Implementação de Busca Híbrida e Re-ranking semântico.
+* [x] **FastAPI Endpoints:** Interface para solicitação de substituição.
 
 ### 5. Automação, DevOps & Observabilidade
 * [ ] **CI/CD Pipeline:** Automação via GitHub Actions (Lint, Build, Push, Deploy).
@@ -235,8 +235,6 @@ chmod +x ./verify_search_data.sh
 Entendido. O problema do `ModuleNotFoundError` acontece porque o binário do `uvicorn` do Anaconda está atravessando o seu `venv`. Usar `python -m uvicorn` resolve isso na hora.
 
 Aqui está o **Passo 7** refatorado para o seu `README.md`, focando na experiência do usuário com o **Postman**, que é muito mais visual para ver a justificativa da IA.
-
----
 
 ### 7. Inicialização da API e Teste de Alocação (RAG) 🚀
 
