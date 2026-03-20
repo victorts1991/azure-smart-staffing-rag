@@ -9,7 +9,10 @@ from azure.search.documents.indexes.models import (
     SearchIndex,
     SearchIndexer, 
     SearchIndexerSkillset,
-    FieldMapping
+    FieldMapping,
+    HighWaterMarkChangeDetectionPolicy,
+    IndexingSchedule,
+    
 )
 
 def load_asset(name, replacements=None):
@@ -31,7 +34,10 @@ def setup_datasource(idr_client):
         name="vigilantes-blob-ds",
         type="azureblob",
         connection_string=connection_string,
-        container=SearchIndexerDataContainer(name="rh-uploads")
+        container=SearchIndexerDataContainer(name="rh-uploads"),
+        data_change_detection_policy=HighWaterMarkChangeDetectionPolicy(
+            high_water_mark_column_name="metadata_storage_last_modified"
+        )
     )
     idr_client.create_or_update_data_source_connection(ds_connection)
 
@@ -74,7 +80,8 @@ def sync():
         skillset_name=indexer_data.get("skillsetName"),
         field_mappings=f_mappings,
         output_field_mappings=o_mappings,
-        parameters=indexer_data.get("parameters")
+        parameters=indexer_data.get("parameters"),
+        schedule=IndexingSchedule(interval=indexer_data["schedule"]["interval"])
     )
     
     idr_client.create_or_update_indexer(indexer_obj)

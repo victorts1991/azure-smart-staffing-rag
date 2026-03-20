@@ -15,14 +15,14 @@ app = FastAPI(title="Azure Smart Staffing RAG")
 
 # DEFINIÇÃO DO SCHEMA (O segredo do erro 422/500 está aqui)
 class ReplacementRequest(BaseModel):
-    nome: str  # Deve ser IGUAL à chave do JSON no Postman
+    nome: str  # Nome do vigilante ausente
     perfil_extra: Optional[str] = "Vigilante padrão para posto bancário"
 
 @app.post("/v1/find-replacement")
 async def find_replacement(request: ReplacementRequest):
     # 1. Identifica quem é o colaborador ausente
     alvo = request.nome
-    print(f"🚀 Iniciando busca de substituto para: {alvo}")
+    print(f"Iniciando busca de substituto para: {alvo}")
 
     # 2. Busca os dados geográficos e técnicos do faltante no Azure
     faltante_data = get_missing_staff_data(alvo)
@@ -52,7 +52,7 @@ async def find_replacement(request: ReplacementRequest):
         }
 
     # 6. O CÉREBRO: A IA analisa a lista e escreve a justificativa real
-    print(f"🧠 Enviando {len(candidatos_filtrados)} candidatos para análise da IA...")
+    print(f"Enviando {len(candidatos_filtrados)} candidatos para análise da IA...")
     analise_final = get_justification_chain(
         alvo, 
         request.perfil_extra, 

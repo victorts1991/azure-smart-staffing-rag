@@ -8,7 +8,7 @@ def get_client():
     credential = DefaultAzureCredential()
     return SearchClient(endpoint=endpoint, index_name="vigilantes-index", credential=credential)
 
-def get_staff_retriever(lat, lon, query, max_dist_km=50):
+def get_staff_retriever(lat, lon, query, max_dist_km=30):
     client = get_client()
     odata_filter = f"geo.distance(posicao_geografica, geography'POINT({lon} {lat})') le {max_dist_km}"
     
@@ -32,7 +32,7 @@ def get_staff_retriever(lat, lon, query, max_dist_km=50):
             docs.append(Document(page_content=content, metadata=res))
         return docs
     except Exception as e:
-        print(f"❌ Erro Azure: {e}")
+        print(f"Erro Azure: {e}")
         return []
 
 def get_missing_staff_data(nome_faltante: str):

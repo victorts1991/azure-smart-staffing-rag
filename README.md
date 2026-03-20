@@ -132,7 +132,7 @@ chmod +x bootstrap.sh
 
 *Este script criará um Resource Group chamado `rg-terraform-state`. **Anote o nome da Storage Account gerada no final.***
 
-#### B. Configuração do Backend
+#### B. Configuração do Backend 
 Abra o arquivo `terraform/main.tf` e atualize o bloco `backend "azurerm"` com o nome da Storage Account gerada:
 
 ```hcl
@@ -169,7 +169,7 @@ func azure functionapp publish func-enrich-data-smart-staffing
 
 ### 2. Extração de Credenciais (Pós-Deploy)
 
-Após o `terraform apply`, execute o script em shell com os comandos abaixo, é necessário estar na raiz do projeto:
+Após o `terraform apply` e a criação da **Azure Function**, execute o script em shell com os comandos abaixo, é necessário estar na raiz do projeto:
 
 ```bash
 chmod +x setup-env.sh
@@ -208,6 +208,8 @@ az storage blob upload --container-name "rh-uploads" --file "base_vigilantes_ati
 
 ### 6. Monitoramento da Indexação (Obrigatório) 🔍
 
+O **Azure AI Search** está programado para ler a cada 5 minutos mudanças no **Azure Blob Storage**.
+
 O processo de indexação consome os dados do Blob Storage, chama a **Azure Function** para Geocoding (CEP → Lat/Lon) e o **Azure OpenAI** para Embeddings (Vetorização das Soft Skills). 
 
 Como o ambiente utiliza **RBAC (Role-Based Access Control)** para máxima segurança, as chaves administrativas estão desativadas. Use o script de automação para garantir as permissões e validar o status:
@@ -228,8 +230,82 @@ chmod +x ./verify_search_data.sh
 > **Status de Sucesso:** O processo estará concluído quando o campo `"@odata.count"` (ou `itemsProcessed`) for igual ao número de linhas do seu CSV (ex: 400) e o status for `success`.
 
 
----- ESTOU AQUI
 
+
+Entendido. O problema do `ModuleNotFoundError` acontece porque o binário do `uvicorn` do Anaconda está atravessando o seu `venv`. Usar `python -m uvicorn` resolve isso na hora.
+
+Aqui está o **Passo 7** refatorado para o seu `README.md`, focando na experiência do usuário com o **Postman**, que é muito mais visual para ver a justificativa da IA.
+
+---
+
+### 7. Inicialização da API e Teste de Alocação (RAG) 🚀
+
+Com os dados indexados e enriquecidos, agora você pode rodar o motor de busca híbrida e geração de justificativas.
+
+#### A. Rodar o Servidor FastAPI
+Certifique-se de estar na raiz do projeto e com o ambiente virtual ativo. Utilize o prefixo `python -m` para garantir que o Uvicorn utilize as dependências do seu `venv` e não do Python global/Anaconda.
+
+```bash
+# Ative o ambiente (se ainda não estiver)
+source venv/bin/activate 
+
+# Inicie a API
+python -m uvicorn app.main:app --reload --port 8000
+```
+
+#### B. Teste de Fluxo via Postman
+Para validar o sistema, simule uma falta de um vigilante e peça para a IA encontrar o melhor substituto.
+
+1.  **Abra o Postman** e crie uma nova requisição **POST**.
+2.  **URL:** `http://localhost:8000/v1/find-replacement`
+3.  **Headers:** Adicione `Content-Type: application/json`.
+4.  **Body (raw JSON):**
+    ```json
+    {
+      "nome": "NOME_DE_UM_VIGILANTE_DO_CSV",
+      "perfil_extra": "Preciso de um perfil extremamente calmo e vigilante para posto em maternidade, com foco em atendimento humanizado."
+    }
+    ```
+    *(Dica: Pegue qualquer nome da coluna `nome_completo` do seu arquivo `base_vigilantes_ativos.csv` para testar).*
+
+#### C. Entendendo o Retorno
+A API retornará um objeto contendo:
+* **`faltante`**: Confirmação do colaborador que está sendo substituído.
+* **`ranking_proximidade`**: Uma lista dos nomes encontrados num raio de 30km, ordenados por distância e relevância técnica.
+* **`decisao_do_coordenador_ia`**: A justificativa gerada pelo **GPT-4o**, comparando o perfil dos candidatos com o `perfil_extra` solicitado.
+
+
+#### D. Exemplo Real de Uso (RAG em Ação)
+
+Para entender o poder da solução, veja este cenário real processado pelo sistema:
+
+**1. Requisição (O que o Coordenador pede):**
+```json
+{
+  "nome": "Francisco Barros",
+  "perfil_extra": "Preciso de um perfil extremamente calmo e vigilante para posto em maternidade, com foco em atendimento humanizado."
+}
+```
+
+**2. Resposta da API (O que a IA decide):**
+```json
+{
+    "status": "Processado com Sucesso",
+    "faltante": "Francisco Barros",
+    "decisao_do_coordenador_ia": "Para o posto na maternidade, onde é essencial um perfil extremamente calmo e focado em atendimento humanizado, o melhor candidato é o Dr. Benjamin Brito. \n\nJustificativa:\n- Nota mais alta (9.9), indicando alto desempenho.\n- Skills de empatia e inteligência emocional são cruciais para atendimento humanizado.\n- Experiência e certificações adequadas para o posto.\n- Demonstra facilidade em lidar com público diverso, essencial para o ambiente de maternidade.",
+    "ranking_proximidade": [
+        "Isabelly Silveira",
+        "Dr. Bryan Ramos",
+        "Maria Fernanda Moraes",
+        "Dr. Benjamin Brito",
+        "João Azevedo"
+    ]
+}
+```
+
+> **Nota Técnica:** Observe que o `ranking_proximidade` listou os vizinhos geográficos, mas a `decisao_do_coordenador_ia` foi capaz de filtrar e escolher o **Dr. Benjamin Brito** baseado no cruzamento vetorial das *Soft Skills* (Empatia/Inteligência Emocional) com a necessidade do posto (Maternidade), mesmo ele não sendo o primeiro da lista de distância.
+
+---
 
 ## 🔐 Segurança e Compliance
 

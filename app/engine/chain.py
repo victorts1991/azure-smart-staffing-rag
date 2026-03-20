@@ -6,7 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 def get_justification_chain(faltante_nome, perfil_requerido, candidatos_docs):
     # O LangChain vai ler as variáveis que o script colocou no .env
     llm = AzureChatOpenAI(
-        azure_deployment="gpt-4o", # O nome que você deu ao deployment no Azure OpenAI
+        azure_deployment="gpt-4o",
         api_key=os.getenv("AZURE_OPENAI_API_KEY"),
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
         api_version="2024-02-01"
