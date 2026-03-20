@@ -1,4 +1,13 @@
-# 1. Azure Container Registry (Onde ficarão as imagens da API)
+# 1. Monitoramento (Métricas para o HPA)
+resource "azurerm_log_analytics_workspace" "aks_monitor" {
+  name                = "law-aks-${var.project_name}"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
+# 2. Azure Container Registry (Onde ficarão as imagens da API)
 resource "azurerm_container_registry" "acr" {
   name                = "acr${replace(var.project_name, "-", "")}"
   resource_group_name = var.resource_group_name
@@ -7,7 +16,7 @@ resource "azurerm_container_registry" "acr" {
   admin_enabled       = false # Segurança: Acesso via Entra ID/RBAC
 }
 
-# 2. Azure Kubernetes Service (Cluster)
+# 3. Azure Kubernetes Service (Cluster)
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = "aks-${var.project_name}"
   location            = var.location
@@ -27,6 +36,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 
+  # Habilita o agente de monitoramento que garante a coleta de métricas para o Metrics Server/HPA
+  oms_agent {
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.aks_monitor.id
+  }
+
   # Integração com a Network (Azure CNI)
   network_profile {
     network_plugin    = "azure"
@@ -42,7 +56,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   workload_identity_enabled = true
 }
 
-# 3. Permissão para o AKS puxar imagens do ACR (AcrPull)
+# 4. Permissão para o AKS puxar imagens do ACR (AcrPull)
 resource "azurerm_role_assignment" "aks_acr_pull" {
   principal_id                     = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
   role_definition_name             = "AcrPull"

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-staffing-api
+  labels:
+    app: smart-staffing
+    azure.workload.identity/use: "true" # Habilita a identidade da Azure
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: smart-staffing
+  template:
+    metadata:
+      labels:
+        app: smart-staffing
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: smart-staffing-sa
+      containers:
+      - name: api-container
+        image: ${ACR_LOGIN_SERVER}/smart-staffing-api:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        env:
+          - name: AZURE_OPENAI_ENDPOINT
+            value: "${OPENAI_ENDPOINT}"
+          - name: AZURE_SEARCH_ENDPOINT
+            value: "${SEARCH_ENDPOINT}"
+          - name: AZURE_OPENAI_API_KEY
+            value: "${AZURE_OPENAI_API_KEY}"
+        livenessProbe:
+          httpGet:
+            path: /health # Recomendo criar um endpoint /health simples
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20

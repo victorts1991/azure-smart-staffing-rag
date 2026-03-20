@@ -13,6 +13,15 @@ load_dotenv()
 
 app = FastAPI(title="Azure Smart Staffing RAG")
 
+@app.get("/health")
+async def health_check():
+    """Verifica se a API está online para o Liveness/Readiness Probe do AKS"""
+    return {
+        "status": "healthy",
+        "service": "smart-staffing-api",
+        "version": "1.0.0"
+    }
+
 # DEFINIÇÃO DO SCHEMA (O segredo do erro 422/500 está aqui)
 class ReplacementRequest(BaseModel):
     nome: str  # Nome do vigilante ausente
@@ -29,6 +38,8 @@ async def find_replacement(request: ReplacementRequest):
     
     if not faltante_data:
         raise HTTPException(status_code=404, detail=f"Vigilante '{alvo}' não encontrado no banco de dados.")
+    
+    alvo_real = faltante_data.get("nome_completo")
 
     # 3. Extrai as coordenadas do "vigilante" para buscar vizinhos
     pos = faltante_data.get("posicao_geografica")
@@ -54,7 +65,7 @@ async def find_replacement(request: ReplacementRequest):
     # 6. O CÉREBRO: A IA analisa a lista e escreve a justificativa real
     print(f"Enviando {len(candidatos_filtrados)} candidatos para análise da IA...")
     analise_final = get_justification_chain(
-        alvo, 
+        alvo_real,
         request.perfil_extra, 
         candidatos_filtrados
     )
@@ -62,7 +73,7 @@ async def find_replacement(request: ReplacementRequest):
     # 7. RETORNO FINAL
     return {
         "status": "Processado com Sucesso",
-        "faltante": alvo,
+        "faltante": alvo_real,
         "decisao_do_coordenador_ia": analise_final,
         "ranking_proximidade": [c.metadata['nome_completo'] for c in candidatos_filtrados]
     }

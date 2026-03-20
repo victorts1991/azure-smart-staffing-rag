@@ -5,7 +5,7 @@ from langchain_core.documents import Document
 def mock_search_result():
     return {
         "nome_completo": "Vigilante Teste",
-        "posicao_geografica": {"coordinates": [-46.6, -23.5]},
+        "posicao_geografica": {"type": "Point", "coordinates": [-46.6, -23.5]},
         "certificacoes": "Vigilância Patrimonial",
         "soft_skills": "Proatividade",
         "perfil_comportamental": "Perfil calmo",

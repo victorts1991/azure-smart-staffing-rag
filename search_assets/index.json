@@ -2,7 +2,13 @@
   "name": "vigilantes-index",
   "fields": [
     { "name": "id", "type": "Edm.String", "key": true, "searchable": true, "retrievable": true },
-    { "name": "nome_completo", "type": "Edm.String", "searchable": true, "retrievable": true },
+    { 
+      "name": "nome_completo", 
+      "type": "Edm.String", 
+      "searchable": true, 
+      "retrievable": true,
+      "analyzer": "nome-analyzer" 
+    },
     { "name": "cpf", "type": "Edm.String", "searchable": false, "retrievable": true },
     { "name": "vencimento_reciclagem", "type": "Edm.String", "filterable": true, "sortable": true, "retrievable": true },
     { "name": "certificacoes", "type": "Edm.String", "searchable": true, "retrievable": true },
@@ -18,6 +24,17 @@
       "searchable": true, 
       "dimensions": 1536, 
       "vectorSearchProfile": "staffing-vector-profile" 
+    }
+  ],
+  "analyzers": [
+    {
+      "name": "nome-analyzer",
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "tokenizer": "standard_v2",
+      "tokenFilters": [
+        "lowercase",
+        "asciifolding"
+      ]
     }
   ],
   "vectorSearch": {

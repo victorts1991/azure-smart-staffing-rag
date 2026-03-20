@@ -20,14 +20,18 @@ Este sistema utiliza **AI Enrichment** para converter endereços brutos em coord
 
 A arquitetura foi desenhada para ser escalável e segura, utilizando o padrão *Identity-First* (sem chaves expostas via **Azure RBAC**).
 
-## A. Fluxo de Dados (Data Pipeline)
+### A. Fluxo de Dados (Data Pipeline)
 
-1. **Ingestão**: O processo é disparado quando arquivos CSV são depositados no **Azure Blob Storage**.
-2. **Enriquecimento via Skillset (AI Pipeline)**:
-    * O **Indexer** lê os dados brutos e os submete a um **Skillset** (o motor de transformações).
-    * **Custom Skill**: O Skillset orquestra uma chamada para uma **Azure Function**, que integra com o **Azure Maps** para converter CEP em coordenadas geográficas (`Edm.GeographyPoint`).
-    * **Embedding Skill**: Em paralelo, o Skillset utiliza o **Azure OpenAI** (`text-embedding-3-small`) para converter as descrições de perfil comportamental em vetores de 1536 dimensões.
-3. **Persistência**: O **Indexer** consolida os dados enriquecidos (metadados, coordenadas e vetores) e os persiste no **Azure AI Search**, que atua como nosso **Vector Store** unificado.
+O pipeline de dados é totalmente orientado a eventos e automatizado, garantindo que qualquer novo vigilante cadastrado no RH seja vetorizado e geolocalizado em minutos.
+
+1.  **Ingestão**: O processo é disparado quando arquivos CSV são depositados no **Azure Blob Storage**.
+2.  **Enriquecimento via Skillset (AI Pipeline)**:
+    * O **Indexer** extrai os dados brutos e os submete a um **Skillset** (o motor de transformações cognitivas).
+    * **Custom Skill (Geocoding)**: O Skillset orquestra uma chamada para uma **Azure Function**, que consome o **Azure Maps API** para converter o campo `cep_base` em coordenadas geográficas reais (`Edm.GeographyPoint`).
+    * **Embedding Skill**: Simultaneamente, o Skillset utiliza o **Azure OpenAI** (`text-embedding-3-small`) para converter as descrições do `perfil_comportamental` em vetores de 1536 dimensões, permitindo buscas por similaridade semântica.
+3.  **Normalização e Indexação**:
+    * **Custom Analyzer**: Durante a indexação, aplicamos um analisador customizado no campo `nome_completo`. Utilizando os filtros `lowercase` e `asciifolding`, o sistema normaliza nomes com acentuação (ex: `Maitê` vira `maite`), garantindo que a busca por texto seja resiliente a erros de digitação e variações regionais.
+4.  **Persistência**: O **Indexer** consolida os metadados, coordenadas e vetores, persistindo-os no **Azure AI Search**, que atua como nosso **Vector Store** e motor de busca geoespacial unificado.
 
 ```mermaid
 graph TD
@@ -37,9 +41,10 @@ graph TD
     C --> E[OpenAI Embeddings]
     D --> F[Index: Coordenadas]
     E --> G[Index: Vetores]
-    F --> H[Busca Híbrida / RAG]
+    F --> H[Normalização: Custom Analyzer]
     G --> H
-    H --> I[GPT-4o: Justificativa Final]
+    H --> I[Busca Híbrida / RAG]
+    I --> J[GPT-4o: Justificativa Final]
 ```
 
 ## B. Orquestração e Runtime (Kubernetes):
@@ -55,18 +60,27 @@ graph TD
 * **Augmentation:** Monta um prompt contextualizado injetando o perfil dos candidatos encontrados.
 * **Generation:** O **GPT-4o** gera uma justificativa humanizada, comparando as Soft Skills do colaborador com os requisitos do posto (ex: "Perfil comunicativo ideal para posto escolar").
 
+### D. Resiliência e Validação de Identidade (Fuzzy Match)
+Para evitar falhas na identificação do vigilante faltante (ex: `Maitê` vs `Maite`) e impedir falsos positivos (ex: buscar `Ue da Silva` e o sistema trazer `Dante Silva`), implementei uma camada de validação híbrida no `retriever.py`:
+
+* **Normalização ASCII:** Limpeza de títulos (`Sr.`, `Dra.`), remoção de acentos e padronização de case.
+* **Algoritmo de Similaridade (Gestalt Pattern Matching):** Utilizei a biblioteca `difflib` para calcular o ratio de semelhança entre a entrada do usuário e o retorno do banco.
+* **Threshold de Segurança:** Defini um corte de **0.8 (80%)**. Se o Azure Search sugerir um nome com similaridade inferior a essa, o sistema bloqueia o match e retorna `404 Not Found`, garantindo que a IA não gere justificativas baseadas em colaboradores errados.
+
 ---
 
-## 🛠️ Stack Tecnológica
+## 🛠️ Stack Tecnológica (Revisada)
 
 * **Linguagem:** Python 3.11+
-* **Framework:** FastAPI & LangChain
-* **IA Generativa:** Azure OpenAI (GPT-4o & Text-Embeddings)
-* **Busca Inteligente**: Azure AI Search (Hybrid Search, Skillsets & Scoring Profiles)
-* **Infraestrutura:** Terraform (Modular Design) & Kubernetes (AKS)
-* **Segurança:** Azure RBAC (Managed Identities) & Private Endpoints
-* **CI/CD:** GitHub Actions
-* **Dados:** Azure Blob Storage & Azure Functions (Event-Driven Ingestion)
+* **Framework:** FastAPI & LangChain (Orquestração RAG)
+* **Qualidade de Código:** Pytest 
+* **IA Generativa:** Azure OpenAI (**GPT-4o** para decisão & **text-embedding-3-small** para busca semântica)
+* **Busca Inteligente:** Azure AI Search (**Hybrid Search**, **Vector Store**, **Custom Analyzers** com *ASCII Folding* e filtros **OData**)
+* **Resiliência de Dados:** Processamento de similaridade de strings com `difflib` (**Gestalt Pattern Matching**) e normalização Unicode.
+* **Infraestrutura:** Terraform (Modular/IaC) & Kubernetes (AKS com **Horizontal Pod Autoscaling**)
+* **Segurança:** Azure RBAC (**Managed Identities / Workload Identity** para arquitetura *Secretless*) & Private Endpoints
+* **CI/CD:** GitHub Actions (Build, Push e Rollout automatizados)
+* **Dados:** Azure Blob Storage & Azure Functions (Geocoding via **Azure Maps API**)
 
 ---
 
@@ -96,11 +110,12 @@ graph TD
 * [x] **Index Design (Geospatial & Vector):** Configuração de campos `Edm.GeographyPoint` para busca por proximidade e `Collection(Single)` para busca vetorial de Soft Skills.
 * [x] **Indexer & DataSource:** Automação da varredura do Blob Storage (`rh-uploads`) para sincronização e vetorização automática de novos perfis.
 
-### 4. Engine RAG & API (Fase Atual 🚧) 
-* [x] **Retrieval Strategy:** Implementação de Busca Híbrida e Re-ranking semântico.
+### 4. Engine RAG & API
+* [x] **Retrieval Strategy:** Busca Híbrida e Re-ranking semântico.
+* [x] **Resiliência de Busca:** Validação Fuzzy e normalização ASCII.
 * [x] **FastAPI Endpoints:** Interface para solicitação de substituição.
-* [ ] **Containerização:** Dockerfile multi-stage.
-* [ ] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
+* [x] **Containerização:** Dockerfile multi-stage.
+* [x] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
 
 ### 5. Automação, DevOps & Observabilidade
 * [ ] **CI/CD Pipeline:** Automação via GitHub Actions (Lint, Build, Push, Deploy).
@@ -230,12 +245,6 @@ chmod +x ./verify_search_data.sh
 > **Status de Sucesso:** O processo estará concluído quando o campo `"@odata.count"` (ou `itemsProcessed`) for igual ao número de linhas do seu CSV (ex: 400) e o status for `success`.
 
 
-
-
-Entendido. O problema do `ModuleNotFoundError` acontece porque o binário do `uvicorn` do Anaconda está atravessando o seu `venv`. Usar `python -m uvicorn` resolve isso na hora.
-
-Aqui está o **Passo 7** refatorado para o seu `README.md`, focando na experiência do usuário com o **Postman**, que é muito mais visual para ver a justificativa da IA.
-
 ### 7. Inicialização da API e Teste de Alocação (RAG) 🚀
 
 Com os dados indexados e enriquecidos, agora você pode rodar o motor de busca híbrida e geração de justificativas.
@@ -280,7 +289,7 @@ A API retornará um objeto contendo:
 
 Para entender o poder da solução, veja este cenário real processado pelo sistema:
 
-**1. Requisição (O que o Coordenador pede):**
+**Requisição (O que o Coordenador pede):**
 ```json
 {
   "nome": "Francisco Barros",
@@ -288,7 +297,7 @@ Para entender o poder da solução, veja este cenário real processado pelo sist
 }
 ```
 
-**2. Resposta da API (O que a IA decide):**
+**Resposta da API (O que a IA decide):**
 ```json
 {
     "status": "Processado com Sucesso",
@@ -305,6 +314,76 @@ Para entender o poder da solução, veja este cenário real processado pelo sist
 ```
 
 > **Nota Técnica:** Observe que o `ranking_proximidade` listou os vizinhos geográficos, mas a `decisao_do_coordenador_ia` foi capaz de filtrar e escolher o **Dr. Benjamin Brito** baseado no cruzamento vetorial das *Soft Skills* (Empatia/Inteligência Emocional) com a necessidade do posto (Maternidade), mesmo ele não sendo o primeiro da lista de distância.
+
+## 🛠️ Guia de Execução pelo Kubernetes (AKS) ☸️
+
+Nesta etapa, transformamos a API em uma imagem Docker, enviamos para o **Azure Container Registry (ACR)** e realizamos o deploy no cluster **AKS** utilizando **Workload Identity** (acesso sem senhas).
+
+#### A. Autenticação e Vínculo Docker
+Antes de começar, certifique-se de que seu Docker local consegue falar com a Azure.
+
+```bash
+# 1. Login na Azure
+az login
+
+# 2. Configurar o contexto do AKS (Substitua pelos nomes do seu Terraform)
+az aks get-credentials --resource-group $RG_NAME --name $AKS_NAME
+
+# 3. Login no ACR (Vincula o Docker local ao registro da Azure)
+az acr login --name $ACR_NAME
+```
+
+#### B. Build e Push da Imagem
+```bash
+# Build da imagem a partir da raiz do projeto
+docker build -t ${ACR_LOGIN_SERVER}/smart-staffing-api:latest .
+
+# Upload para o Azure Container Registry
+docker push ${ACR_LOGIN_SERVER}/smart-staffing-api:latest
+```
+
+#### C. Deploy via Kubectl (Injeção de Variáveis)
+Para evitar "achismos" e erros de configuração, utilizamos o `envsubst` para preencher os manifestos YAML em tempo de execução antes de enviá-los ao cluster.
+
+```bash
+# 1. Criar/Atualizar a Service Account com o ClientID da Identidade
+envsubst < k8s/service-account.yaml | kubectl apply -f -
+
+# 2. Realizar o Deploy da API (Injeta a imagem correta do ACR)
+envsubst < k8s/deployment.yaml | kubectl apply -f -
+
+# 3. Aplicar Service (LoadBalancer) e HPA (Escalonamento Automático)
+kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/hpa.yaml
+```
+
+#### D. Validação do Ambiente e Teste de Alocação (RAG)
+Com os manifestos aplicados, verifique se os Pods estão saudáveis e obtenha o endereço IP gerado pela Azure para realizar o teste real.
+
+```bash
+# 1. Verifique se os pods estão com status 'Running'
+kubectl get pods
+
+# 2. Verifique o status do HPA (pode demorar a coletar a 1ª métrica)
+kubectl get hpa
+
+# 3. Obtenha o EXTERNAL-IP do serviço
+kubectl get service smart-staffing-service
+```
+
+> **Atenção:** O HPA (Horizontal Pod Autoscaler) baseia-se em métricas de CPU/Memória. Ele pode levar de 1 a 2 minutos para exibir o status de consumo real (`0%/70%`) após o primeiro deploy.
+
+#### E. Teste de Fluxo via Postman (Cloud)
+Agora que sua API está rodando no **AKS**, repita o teste do **Passo 7** do Guia de Execução Local, mas substitua o `localhost:8000` pelo **EXTERNAL-IP** obtido acima.
+
+1.  **URL:** `http://<SEU_EXTERNAL_IP>/v1/find-replacement`
+2.  **Body (raw JSON):**
+    ```json
+    {
+      "nome": "NOME_DE_UM_VIGILANTE_DO_CSV",
+      "perfil_extra": "Preciso de um perfil extremamente calmo para posto em maternidade."
+    }
+    ```
 
 ---
 

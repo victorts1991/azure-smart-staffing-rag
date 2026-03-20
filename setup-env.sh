@@ -31,6 +31,13 @@ export GEO_FUNCTION_KEY=$(az functionapp keys list --name $FUNC_NAME -g $RG_NAME
 # Connection String do Storage (Necessária para o Indexador ler os Blobs)
 export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string --name $STG_NAME -g $RG_NAME --query connectionString -o tsv)
 
+export AKS_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw aks_cluster_name)
+export ACR_LOGIN_SERVER=$(terraform -chdir=$TERRAFORM_DIR output -raw acr_login_server)
+export ACR_NAME=$(echo $ACR_LOGIN_SERVER | cut -d'.' -f1)
+
+# 3. Coleta o Client ID da Identidade para o Workload Identity
+export MANAGED_IDENTITY_CLIENT_ID=$(terraform -chdir=./terraform output -raw managed_identity_client_id)
+
 # Verificação de segurança no terminal
 if [ -z "$AZURE_STORAGE_CONNECTION_STRING" ]; then
     echo "FALHA: Não foi possível obter a Connection String do Storage."
