@@ -77,7 +77,7 @@ graph TD
 * [x] **Setup de Gerador Sintético:** Script Python utilizando biblioteca `Faker` para criação de massa de dados.
 * [x] **Compliance LGPD (Data Masking):** Implementação de máscara em campos sensíveis (CPF: `785.***.***-30`) para proteção de PII.
 * [x] **Dicionário de Dados:** Definição de atributos críticos (Certificações, Reciclagem PF, Soft Skills e CEP).
-* [x] **Cenários de Teste:** Geração de arquivos `base_vigilantes_ativos.csv` e `escala_atual.csv`.
+* [x] **Cenários de Teste:** Geração de arquivo `base_vigilantes_ativos.csv`.
 
 ### 2. Infraestrutura como Código (Terraform Modular)
 
