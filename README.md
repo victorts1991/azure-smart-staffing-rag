@@ -247,6 +247,9 @@ Certifique-se de estar na raiz do projeto e com o ambiente virtual ativo. Utiliz
 # Ative o ambiente (se ainda não estiver)
 source venv/bin/activate 
 
+# Execute os testes via módulo python (evita conflitos de PATH/Anaconda)
+python -m pytest
+
 # Inicie a API
 python -m uvicorn app.main:app --reload --port 8000
 ```
