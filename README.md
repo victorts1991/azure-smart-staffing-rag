@@ -395,13 +395,56 @@ Agora que sua API está rodando no **AKS**, repita o teste do **Passo 7** do Gui
 
 ---
 
-## 📁 Estrutura do Repositório (Falta atualizar isso)
+Perfeito, agora temos visibilidade total do "cérebro" da aplicação. Com base nos arquivos que você passou, a estrutura da pasta `app/` deve refletir não apenas os arquivos, mas as responsabilidades de cada um (Orquestração, Recuperação, Inteligência e Qualidade).
+
+Aqui está a atualização da seção de estrutura, focada na pasta `app/`:
+
+---
+
+## 📁 Estrutura do Repositório: Backend & Engine RAG
 
 ```text
-├── terraform/            # Módulos de Infraestrutura
-├── azure_functions/      # Custom Skills (Geocoding)
-├── scripts/              # Sync Scripts e Gerador de Dados
-├── search_assets/        # Definições JSON (Index, Skillset, Indexer)
-├── app/                  # Engine RAG (FastAPI + LangChain)
-└── README.md
+├── app/
+│   ├── engine/
+│   │   ├── chain.py          # 🧠 Orquestração LangChain: Define o Prompt Template e a integração com GPT-4o para gerar as justificativas.
+│   │   └── retriever.py      # 🔍 Camada de Recuperação: Gerencia buscas no Azure AI Search,filtros geoespaciais e o algoritmo Fuzzy Match (difflib).
+│   ├── tests/
+│   │   ├── conftest.py       # 🛠️ Configurações de Mock: Define fixtures de dados sintéticos para testes unitários e de integração.
+│   │   ├── test_main.py      # 🚦 Testes de API: Valida os endpoints do FastAPI, códigos de erro (404/400) e fluxos de sucesso.
+│   │   └── test_retriever.py # 🧪 Testes de Busca: Garante a resiliência do algoritmo de similaridade e tratamento de erros da Azure.
+│   └── main.py               # 🚀 Entrypoint FastAPI: Define as rotas, schemas Pydantic e a lógica de negócio principal do sistema.
+├── azure_functions/
+│   └── geocoding/            # 📍 Custom Skill de Geocodificação
+│       ├── function_app.py   # ⚡ Lógica Serverless: Recebe o CEP do Indexador, consulta a API do Azure Maps e retorna coordenadas [Lon, Lat].
+│       ├── host.json         # ⚙️ Configurações do Runtime: Define extensões e logs do Application Insights.
+│       ├── requirements.txt  # 📦 Dependências: `azure-functions` e `requests`.
+│       └── local.settings.json # 🔑 Ambiente Local: Variáveis para desenvolvimento sem afetar a nuvem.
+├── k8s/                      # ☸️ Manifestos Kubernetes (AKS)
+│   ├── deployment.yaml       # 🏗️ Definição dos Pods: Configura réplicas, limites de recursos (CPU/RAM) e Probes de integridade (Liveness).
+│   ├── hpa.yaml              # 📈 Autoscaling: Configura o escalonamento automático baseado no consumo de CPU (70% de utilização).
+│   ├── service.yaml          # 🌐 Exposição: Define o LoadBalancer que gera o IP público para acesso à API na porta 80.
+│   └── service-account.yaml  # 🔐 Identidade: Vincula o Pod à Managed Identity da Azure via Workload Identity (Arquitetura Secretless).
+├── scripts/                  # 🛠️ Scripts de Automação e Ciclo de Vida
+│   ├── data_generator.py     # 🧪 Gerador de Dados Sintéticos: Cria um dataset de 400 vigilantes com nomes reais, CPFs mascarados (LGPD) e perfis comportamentais variados para o RAG.
+│   └── sync_search.py        # 🔄 Orquestrador de Busca: Script principal que lê os JSONs da pasta 'search_assets' e configura o Índice, Skillset e Indexer no Azure AI Search.
+├── search_assets/            # 📝 Definições do Pipeline de IA (Blueprints JSON)
+│   ├── index.json            # 🗄️ Esquema do Banco: Define campos, tipos (GeographyPoint, Vectors) e o 'Custom Analyzer' para normalização de nomes.
+│   ├── indexer.json          # ⚙️ Orquestrador de Carga: Mapeia colunas do CSV para o Índice e define a frequência de atualização (PT5M - 5 min).
+│   └── skillset.json         # 🧠 Motor de Enriquecimento: Conecta a Azure Function para Geocoding e o OpenAI para conversão vetorial (Embeddings).
+├── terraform/                # 🏗️ Infraestrutura como Código (IaC)
+│   ├── modules/              # 🧩 Módulos Reutilizáveis
+│   │   ├── ai/               #    - OpenAI (GPT-4o/Embeddings) e AI Search (Vector Store).
+│   │   ├── aks/              #    - Cluster Kubernetes, ACR e Workload Identity.
+│   │   ├── functions/        #    - Serverless p/ Enriquecimento e App Settings.
+│   │   ├── maps/             #    - Azure Maps API para Geocoding.
+│   │   ├── network/          #    - VNet, Subnets isoladas e Network Policies.
+│   │   └── storage/          #    - Blob Storage para ingestão de CSVs (RH).
+│   ├── main.tf               # 🎛️ Orquestrador: Conecta os módulos e gerencia o RBAC.
+│   ├── variables.tf          # 📋 Variáveis Globais: Região, Nomes e Tags.
+│   └── outputs.tf            # 📤 Saídas: Dados para o GitHub Actions e App (.env).
+├── Dockerfile                # 🐳 Containerização Multi-stage da API.
+├── bootstrap.sh              # 🏁 Setup Inicial: Cria o State do Terraform e SP.
+├── setup-env.sh              # 🔑 Bridge: Conecta a infra Azure ao seu .env local.
+├── verify_search_data.sh     # 🔍 Monitor: Valida a indexação via RBAC e tokens Bearer.
+├── requirements.txt          # 📦 Dependências do ecossistema Python/AI.
 ```
