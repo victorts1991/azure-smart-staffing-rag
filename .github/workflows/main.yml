@@ -108,6 +108,8 @@ jobs:
           
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_wrapper: false
 
       - name: Get Resources Data
         id: get_data
@@ -115,29 +117,28 @@ jobs:
           cd terraform
           terraform init
           
-          # 1. Captura os outputs e remove QUALQUER linha que comece com "::" ou seja lixo do GitHub
-          # O grep -v filtra as tags de debug do Actions
-          MSI_ID=$(terraform output -raw managed_identity_client_id | grep -v "^::" | tail -n 1)
-          OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint | grep -v "^::" | tail -n 1)
-          SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint | grep -v "^::" | tail -n 1)
-          ACR_SERVER=$(terraform output -raw acr_login_server | grep -v "^::" | tail -n 1)
-          ST_NAME=$(terraform output -raw storage_account_name | grep -v "^::" | tail -n 1)
-          FUNC_NAME=$(terraform output -raw function_app_name | grep -v "^::" | tail -n 1)
+          # 1. Captura os outputs (agora virão limpos sem o wrapper)
+          # Adicionamos um sed extra só por segurança extrema
+          MSI_ID=$(terraform output -raw managed_identity_client_id | sed 's/::.*//' | tr -d '\r' | xargs)
+          OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint | sed 's/::.*//' | tr -d '\r' | xargs)
+          SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint | sed 's/::.*//' | tr -d '\r' | xargs)
+          ACR_SERVER=$(terraform output -raw acr_login_server | sed 's/::.*//' | tr -d '\r' | xargs)
+          ST_NAME=$(terraform output -raw storage_account_name | sed 's/::.*//' | tr -d '\r' | xargs)
+          FUNC_NAME=$(terraform output -raw function_app_name | sed 's/::.*//' | tr -d '\r' | xargs)
           RG="rg-${{ secrets.PREFIX }}-prod"
 
           # 2. Extrai o nome LIMPO da conta OpenAI
-          # Remove https, sufixos e qualquer espaço em branco
           OPENAI_NAME=$(echo "$OPENAI_ENDPOINT" | sed 's|https://||;s|\.openai\.azure\.com/||;s|\.openai\.azure\.com||' | tr -d '[:space:]')
 
           echo "Buscando chaves para o recurso real: '$OPENAI_NAME'"
 
-          # 3. Captura as Chaves (agora o $OPENAI_NAME vai estar puro)
-          OPENAI_KEY=$(az cognitiveservices account keys list --name "$OPENAI_NAME" --resource-group "$RG" --query "key1" -o tsv)
-          ST_CONN=$(az storage account show-connection-string --name "$ST_NAME" --resource-group "$RG" --query "connectionString" -o tsv)
-          FUNC_KEY=$(az functionapp keys list --name "$FUNC_NAME" --resource-group "$RG" --query "masterKey" -o tsv)
+          # 3. Captura as Chaves via AZ CLI
+          OPENAI_KEY=$(az cognitiveservices account keys list --name "$OPENAI_NAME" --resource-group "$RG" --query "key1" -o tsv | tr -d '\r')
+          ST_CONN=$(az storage account show-connection-string --name "$ST_NAME" --resource-group "$RG" --query "connectionString" -o tsv | tr -d '\r')
+          FUNC_KEY=$(az functionapp keys list --name "$FUNC_NAME" --resource-group "$RG" --query "masterKey" -o tsv | tr -d '\r')
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
 
-          # 4. Escrita no arquivo
+          # 4. Escrita no arquivo (SEM ASPAS PARA NÃO VIRAR STRING LITERAL)
           echo "OPENAI_ENDPOINT=$OPENAI_ENDPOINT" > ../azure.env
           echo "SEARCH_ENDPOINT=$SEARCH_ENDPOINT" >> ../azure.env
           echo "AZURE_OPENAI_API_KEY=$OPENAI_KEY" >> ../azure.env
