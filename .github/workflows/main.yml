@@ -125,8 +125,12 @@ jobs:
           RG="rg-${{ secrets.PREFIX }}-prod"
 
           # 2. Captura as Chaves usando as variáveis acima
-          # Adicionei o --name e --resource-group de forma explícita e simples
-          OPENAI_KEY=$(az cognitiveservices account keys list --name $(az cognitiveservices account list -g $RG --query "[0].name" -o tsv) --resource-group $RG --query "key1" -o tsv)
+          # Extrai o nome da conta OpenAI direto da URL (ex: https://nome-openai.openai.azure.com/ -> nome-openai)
+          OPENAI_NAME=$(echo "$OPENAI_ENDPOINT" | sed 's|https://||;s|\.openai\.azure\.com/||;s|\.openai\.azure\.com||')
+
+          echo "Buscando chaves para: $OPENAI_NAME no grupo $RG"
+
+          OPENAI_KEY=$(az cognitiveservices account keys list --name "$OPENAI_NAME" --resource-group "$RG" --query "key1" -o tsv)
           ST_CONN=$(az storage account show-connection-string --name "$ST_NAME" --resource-group "$RG" --query "connectionString" -o tsv)
           FUNC_KEY=$(az functionapp keys list --name "$FUNC_NAME" --resource-group "$RG" --query "masterKey" -o tsv)
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
