@@ -117,9 +117,14 @@ Para evitar falhas na identificação do vigilante faltante (ex: `Maitê` vs `Ma
 * [x] **Containerização:** Dockerfile multi-stage.
 * [x] **Kubernetes Manifests:** Deployments, Services e ServiceAccounts para Workload Identity.
 
-### 5. Automação, DevOps & Observabilidade
-* [ ] **CI/CD Pipeline:** Automação via GitHub Actions (Lint, Build, Push, Deploy).
-* [ ] **Observabilidade:** Integração com **Application Insights** para monitoramento de traces de IA. 
+### 5. Automação & DevOps (CI/CD Profissional)
+* [x] **Infraestrutura como Código (IaC):** Provisionamento automatizado com Terraform e State remoto.
+* [x] **Pipeline de Auto-Discovery:** Captura dinâmica de segredos e endpoints (Service Discovery) via Azure CLI.
+* [x] **QA & CI:** Execução de testes unitários com Pytest e Build de imagens Docker multi-estágio.
+* [x] **AI Search Sync:** Sincronização automatizada de Índices, Skillsets e Indexadores.
+* [x] **Serverless Deploy:** Deployment automatizado do código das Azure Functions (Geocoding API).
+* [x] **GitOps no AKS:** Deploy automatizado em Kubernetes com injeção de variáveis via `envsubst`.
+
 
 ---
 
@@ -432,7 +437,7 @@ A partir daqui, você não precisa mais rodar comandos complexos no terminal. **
 #### 5. Verificação do Sucesso
 Após o sinal verde (✅) no GitHub Actions:
 1.  **Pegue o IP**: `kubectl get service smart-staffing-service`.
-2.  **Teste a IA**: Envie um POST para o endpoint `/v1/find-replacement` e veja a mágica do RAG acontecer.
+2.  **Teste a IA**: Envie um POST para o endpoint `/v1/find-replacement`.
 
 ---
 
@@ -441,12 +446,6 @@ Após o sinal verde (✅) no GitHub Actions:
 * **Zero Trust:** Comunicação entre AKS, Functions e Serviços de IA via **Managed Identities**.
 * **Isolamento:** Uso de Private Endpoints para garantir que o tráfego de dados não transite pela internet pública.
 * **LGPD:** Mascaramento de dados sensíveis na camada de geração de dataset sintético.
-
----
-
-Perfeito, agora temos visibilidade total do "cérebro" da aplicação. Com base nos arquivos que você passou, a estrutura da pasta `app/` deve refletir não apenas os arquivos, mas as responsabilidades de cada um (Orquestração, Recuperação, Inteligência e Qualidade).
-
-Aqui está a atualização da seção de estrutura, focada na pasta `app/`:
 
 ---
 

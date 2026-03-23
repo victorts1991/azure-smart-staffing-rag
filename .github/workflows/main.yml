@@ -53,6 +53,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 'Wait for Azure Propagation'
+        run: sleep 30
+
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -127,7 +130,7 @@ jobs:
 
   ai-search-sync:
     name: '5. AI Search: Sync Pipeline'
-    needs: [setup-env, changes]
+    needs: [setup-env, changes, deploy-functions]
     if: needs.setup-env.result == 'success' && (needs.changes.outputs.search == 'true' || github.run_number == 1)    
     runs-on: ubuntu-latest
     steps:
