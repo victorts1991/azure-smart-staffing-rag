@@ -44,6 +44,6 @@
     "algorithms": [
       { "name": "staffing-hnsw", "kind": "hnsw" }
     ]
-  }
-  
+    
+  } 
 }

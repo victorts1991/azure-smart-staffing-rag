@@ -62,20 +62,30 @@ jobs:
         id: get_data
         run: |
           RG="rg-${{ secrets.PREFIX }}-prod"
-          echo "Descobrindo recursos no RG: $RG"
-
-          ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
-          ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
-          SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
-          # Coletamos o Endpoint para o script de sync
-          SEARCH_ENDPOINT="https://$SEARCH_NAME.search.windows.net"
-
-          echo "ACR_NAME='$ACR_NAME'" > azure.env
-          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
-          echo "SEARCH_NAME='$SEARCH_NAME'" >> azure.env
-          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" >> azure.env
+          PREFIX="${{ secrets.PREFIX }}"
           
-          # Passa o ACR Server para o output do job
+          # 1. Busca Nomes dos Recursos
+          SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
+          OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[?kind=='OpenAI'].name" -o tsv)
+          ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
+          FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
+          
+          # 2. Coleta Endpoints e Chaves
+          SEARCH_ENDPOINT="https://$SEARCH_NAME.search.windows.net"
+          OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
+          ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
+          FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding" # Ajuste o final se o nome da rota for diferente
+          
+          # 3. Salva no arquivo para o Job 4 usar
+          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" > azure.env
+          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
+          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
+          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
+          
+          # Export para o próximo Job (Docker Build)
+          ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
+          echo "ACR_NAME='$(az acr list -g $RG --query "[0].name" -o tsv)'" >> azure.env
+          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
       - name: Upload das Variáveis
@@ -106,7 +116,11 @@ jobs:
           python-version: '3.11'
       - name: Sync Search Assets
         run: |
+          # Carrega as variáveis do arquivo gerado no Job 3
+          set -a
           source azure.env
+          set +a
+          
           pip install azure-search-documents azure-identity requests
           python scripts/sync_search.py
 
