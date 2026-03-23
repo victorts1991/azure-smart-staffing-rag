@@ -93,6 +93,9 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: 'Wait for Services Ready'
+        run: sleep 40
       
       - name: Get Resources Data
         id: get_data
