@@ -99,6 +99,7 @@ jobs:
     name: '4. AI Search: Sync Pipeline'
     needs: [setup-env]
     # if: needs.changes.outputs.search == 'true' || github.run_number == 1
+    if: always() && needs.setup-env.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
