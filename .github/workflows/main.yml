@@ -109,13 +109,13 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Get Resources Data from Terraform Outputs
+      - name: Get Resources Data
         id: get_data
         run: |
           cd terraform
-          # INICIALIZA (Para ele conectar no Backend e ler os outputs)
           terraform init
           
+          # 1. Captura os outputs com segurança
           MSI_ID=$(terraform output -raw managed_identity_client_id)
           OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint)
           SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint)
@@ -123,22 +123,23 @@ jobs:
           ST_NAME=$(terraform output -raw storage_account_name)
           FUNC_NAME=$(terraform output -raw function_app_name)
           RG="rg-${{ secrets.PREFIX }}-prod"
-          
-          # Captura Chaves via AZ CLI
-          OPENAI_KEY=$(az cognitiveservices account keys list -n $(az cognitiveservices account list -g $RG --query "[0].name" -o tsv) -g $RG --query "key1" -o tsv)
-          ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
-          FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
+
+          # 2. Captura as Chaves usando as variáveis acima
+          # Adicionei o --name e --resource-group de forma explícita e simples
+          OPENAI_KEY=$(az cognitiveservices account keys list --name $(az cognitiveservices account list -g $RG --query "[0].name" -o tsv) --resource-group $RG --query "key1" -o tsv)
+          ST_CONN=$(az storage account show-connection-string --name "$ST_NAME" --resource-group "$RG" --query "connectionString" -o tsv)
+          FUNC_KEY=$(az functionapp keys list --name "$FUNC_NAME" --resource-group "$RG" --query "masterKey" -o tsv)
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
 
-          # Escrita no arquivo (Nível acima para o artefato pegar)
-          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" > ../azure.env
-          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" >> ../azure.env
-          echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> ../azure.env
-          echo "AZURE_CLIENT_ID='$MSI_ID'" >> ../azure.env
-          echo "ACR_SERVER='$ACR_SERVER'" >> ../azure.env
-          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> ../azure.env
-          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> ../azure.env
-          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> ../azure.env
+          # 3. Escrita no arquivo (Voltando um nível para a raiz)
+          echo "OPENAI_ENDPOINT=$OPENAI_ENDPOINT" > ../azure.env
+          echo "SEARCH_ENDPOINT=$SEARCH_ENDPOINT" >> ../azure.env
+          echo "AZURE_OPENAI_API_KEY=$OPENAI_KEY" >> ../azure.env
+          echo "AZURE_CLIENT_ID=$MSI_ID" >> ../azure.env
+          echo "ACR_SERVER=$ACR_SERVER" >> ../azure.env
+          echo "AZURE_STORAGE_CONNECTION_STRING=$ST_CONN" >> ../azure.env
+          echo "GEO_FUNCTION_URL=$FUNC_URL" >> ../azure.env
+          echo "GEO_FUNCTION_KEY=$FUNC_KEY" >> ../azure.env
           
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
