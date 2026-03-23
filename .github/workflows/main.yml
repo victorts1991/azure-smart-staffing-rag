@@ -62,30 +62,34 @@ jobs:
         id: get_data
         run: |
           RG="rg-${{ secrets.PREFIX }}-prod"
-          PREFIX="${{ secrets.PREFIX }}"
           
-          # 1. Busca Nomes dos Recursos
+          # 1. Captura os nomes dos recursos
           SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
-          OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[?kind=='OpenAI'].name" -o tsv)
           ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
           FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
-          
-          # 2. Coleta Endpoints e Chaves
+          OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
+
+          # 2. Captura as chaves e endpoints (AUTOMATIZADO)
           SEARCH_ENDPOINT="https://$SEARCH_NAME.search.windows.net"
-          OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
           ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
-          FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding" # Ajuste o final se o nome da rota for diferente
+          OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
           
-          # 3. Salva no arquivo para o Job 4 usar
-          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" > azure.env
-          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
-          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
-          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
+          # Captura a URL da Function e a Master Key dela para o Skillset
+          FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
+          FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
+
+          # 3. Injeta no arquivo que o Job 4 vai ler
+          echo "SEARCH_ENDPOINT=$SEARCH_ENDPOINT" > azure.env
+          echo "AZURE_STORAGE_CONNECTION_STRING=$ST_CONN" >> azure.env
+          echo "OPENAI_ENDPOINT=$OPENAI_ENDPOINT" >> azure.env
+          echo "GEO_FUNCTION_URL=$FUNC_URL" >> azure.env
+          echo "GEO_FUNCTION_KEY=$FUNC_KEY" >> azure.env
           
-          # Export para o próximo Job (Docker Build)
+          # Dados para o Docker Build (Job 5)
+          ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
           ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
-          echo "ACR_NAME='$(az acr list -g $RG --query "[0].name" -o tsv)'" >> azure.env
-          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          echo "ACR_NAME=$ACR_NAME" >> azure.env
+          echo "ACR_SERVER=$ACR_SERVER" >> azure.env
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
       - name: Upload das Variáveis
