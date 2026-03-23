@@ -106,47 +106,42 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_wrapper: false
-
       - name: Get Resources Data
         id: get_data
         run: |
-          cd terraform
-          terraform init
-          
-          # 1. Captura os outputs (agora virão limpos sem o wrapper)
-          # Adicionamos um sed extra só por segurança extrema
-          MSI_ID=$(terraform output -raw managed_identity_client_id | sed 's/::.*//' | tr -d '\r' | xargs)
-          OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint | sed 's/::.*//' | tr -d '\r' | xargs)
-          SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint | sed 's/::.*//' | tr -d '\r' | xargs)
-          ACR_SERVER=$(terraform output -raw acr_login_server | sed 's/::.*//' | tr -d '\r' | xargs)
-          ST_NAME=$(terraform output -raw storage_account_name | sed 's/::.*//' | tr -d '\r' | xargs)
-          FUNC_NAME=$(terraform output -raw function_app_name | sed 's/::.*//' | tr -d '\r' | xargs)
           RG="rg-${{ secrets.PREFIX }}-prod"
+          echo "Buscando recursos no RG: $RG"
 
-          # 2. Extrai o nome LIMPO da conta OpenAI
-          OPENAI_NAME=$(echo "$OPENAI_ENDPOINT" | sed 's|https://||;s|\.openai\.azure\.com/||;s|\.openai\.azure\.com||' | tr -d '[:space:]')
+          # 1. Coleta de Nomes e Endpoints (Via CLI, sem erro de terraform)
+          ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
+          ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
+          
+          ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
+          ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
+          
+          # Pega o primeiro serviço de IA do grupo (OpenAI)
+          OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
+          OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
+          OPENAI_KEY=$(az cognitiveservices account keys list -n $OPENAI_NAME -g $RG --query key1 -o tsv)
 
-          echo "Buscando chaves para o recurso real: '$OPENAI_NAME'"
+          # Pega o Client ID da Identidade Gerenciada (Para o Workload Identity)
+          MSI_ID=$(az identity list -g $RG --query "[0].clientId" -o tsv)
 
-          # 3. Captura as Chaves via AZ CLI
-          OPENAI_KEY=$(az cognitiveservices account keys list --name "$OPENAI_NAME" --resource-group "$RG" --query "key1" -o tsv | tr -d '\r')
-          ST_CONN=$(az storage account show-connection-string --name "$ST_NAME" --resource-group "$RG" --query "connectionString" -o tsv | tr -d '\r')
-          FUNC_KEY=$(az functionapp keys list --name "$FUNC_NAME" --resource-group "$RG" --query "masterKey" -o tsv | tr -d '\r')
+          # Pega a Function
+          FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
+          FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
 
-          # 4. Escrita no arquivo (SEM ASPAS PARA NÃO VIRAR STRING LITERAL)
-          echo "OPENAI_ENDPOINT=$OPENAI_ENDPOINT" > ../azure.env
-          echo "SEARCH_ENDPOINT=$SEARCH_ENDPOINT" >> ../azure.env
-          echo "AZURE_OPENAI_API_KEY=$OPENAI_KEY" >> ../azure.env
-          echo "AZURE_CLIENT_ID=$MSI_ID" >> ../azure.env
-          echo "ACR_SERVER=$ACR_SERVER" >> ../azure.env
-          echo "AZURE_STORAGE_CONNECTION_STRING=$ST_CONN" >> ../azure.env
-          echo "GEO_FUNCTION_URL=$FUNC_URL" >> ../azure.env
-          echo "GEO_FUNCTION_KEY=$FUNC_KEY" >> ../azure.env
+          # 2. Geração do arquivo azure.env com aspas simples (O Pulo do Gato)
+          echo "ACR_NAME='$ACR_NAME'" > azure.env
+          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
+          echo "SEARCH_ENDPOINT='https://$(az search service list -g $RG --query "[0].name" -o tsv).search.windows.net'" >> azure.env
+          echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> azure.env
+          echo "AZURE_CLIENT_ID='$MSI_ID'" >> azure.env
+          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
+          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
+          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
           
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
