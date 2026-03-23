@@ -254,20 +254,23 @@ jobs:
           cluster-name: "${{ secrets.PREFIX }}-aks"
       - name: Deploy to AKS
         run: |
+          set -a
           source azure.env
+          set +a
+          
           export ACR_LOGIN_SERVER=$ACR_SERVER
           
-          # 1. Aplicar a Service Account Primeiro (Crucial!)
+          # 1. Aplicar a Service Account (Agora o envsubst vai ver o MANAGED_IDENTITY_CLIENT_ID)
           envsubst < k8s/service-account.yaml | kubectl apply -f -
           
           # 2. Aplicar o Service
           kubectl apply -f k8s/service.yaml
           
-          # 3. Aplicar o Deployment (com as variáveis substituídas)
+          # 3. Aplicar o Deployment
           envsubst < k8s/deployment.yaml | kubectl apply -f -
           
-          # 4. Aplicar o HPA (Escalabilidade)
+          # 4. Aplicar o HPA
           kubectl apply -f k8s/hpa.yaml
           
-          # 5. Forçar o restart para garantir que pegou as configs novas
+          # 5. Reiniciar
           kubectl rollout restart deployment smart-staffing-api

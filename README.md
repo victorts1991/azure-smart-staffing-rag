@@ -394,81 +394,97 @@ Agora que sua API está rodando no **AKS**, repita o teste do **Passo 7** do Gui
 
 ### 🚀 Guia de Automação (CI/CD)
 
-Este projeto utiliza uma esteira automatizada de 6 estágios. Siga os passos abaixo para configurar o ambiente do zero.
+Este projeto utiliza uma esteira de **GitOps** com 7 estágios, garantindo que a infraestrutura e o código estejam sempre sincronizados.
 
-#### 1. Bootstrap (Preparação do Cofre)
-O Terraform precisa de um lugar seguro para guardar o estado da sua infraestrutura. Execute o script de automação inicial:
+#### 1. Bootstrap (O Alicerce)
+O Terraform utiliza um **Backend Remoto** para gerenciar o estado. Execute o script inicial para criar o cofre de estado na Azure:
 
 ```bash
 chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
-
-*Este script criará um Resource Group chamado `rg-terraform-state`. **Anote o nome da Storage Account gerada no final.***
+> **Importante:** Anote o `storage_account_name` exibido no final do script.
 
 #### 2. Configuração do Backend 
-Abra o arquivo `terraform/main.tf` e atualize o bloco `backend "azurerm"` com o nome da Storage Account gerada:
+No arquivo `terraform/main.tf`, atualize o bloco `backend "azurerm"` com os dados gerados:
 
 ```hcl
 backend "azurerm" {
   resource_group_name  = "rg-terraform-state"
-  storage_account_name = "ST_GERADA_AQUI"
+  storage_account_name = "ST_GERADA_PELO_BOOTSTRAP"
   container_name       = "tfstate"
-  key                  = "smart-staffing.terraform.tfstate"
+  key                  = "smart-staffing.tfstate"
 }
 ```
 
-#### 3. Configuração do GitHub
-Vá em **Settings > Secrets and variables > Actions** do seu repositório e adicione:
+#### 3. Secrets do GitHub (O Coração do Pipeline)
+Vá em **Settings > Secrets and variables > Actions** e configure:
 
-| Secret Name | Descrição 
-| :--- | :--- | :--- |
-| `PREFIX` | Um nome curto para seus recursos (Exemplo: `staffrag`).
-| `AZURE_CREDENTIALS` | JSON gerado na saída do comando anterior.
+| Secret Name | Descrição |
+| :--- | :--- |
+| `PREFIX` | Identificador único dos recursos (ex: `staffrag`). |
+| `AZURE_CREDENTIALS` | JSON do Service Principal gerado no passo 1. |
 
-#### 4. O Fluxo de Trabalho (Push to Deploy) ⚡
-A partir daqui, você não precisa mais rodar comandos complexos no terminal. **Basta fazer um `git push` para a branch `main`** e o GitHub Actions fará o resto:
+#### 4. O Fluxo GitOps (Push-to-Deploy) ⚡
+Esqueça comandos manuais. O ciclo de vida é gerido pelo **GitHub Actions**:
 
-* **Infraestrutura Automática**: Se você alterar algo na pasta `terraform/`, o pipeline atualiza a Azure automaticamente.
-* **Sincronização do Cérebro (AI Search)**: Se você mudar o esquema do índice ou as habilidades da IA (`search_assets/`), o pipeline reconfigura o Azure AI Search antes do deploy.
-* **Auto-Discovery**: O pipeline descobre sozinho os nomes dos recursos criados, você não precisa copiar URLs de banco de dados ou chaves.
-* **Zero Downtime**: O Kubernetes recebe a nova imagem e faz o rollout sem derrubar o serviço.
+* **Infra-as-Code**: Alterações em `terraform/` disparam o `terraform apply`.
+* **Identidade Segura**: O pipeline configura automaticamente o **Azure Workload Identity**, eliminando a necessidade de senhas fixas entre o AKS e a IA.
+* **Auto-Discovery**: O estágio `setup-env` descobre URLs, Client IDs e chaves dinamicamente, injetando-as nos manifestos via `envsubst`.
+* **IA Search Sync**: Alterações em `search_assets/` reconfiguram o índice vetorial antes do deploy da API.
 
 ---
 
-#### 5. Verificação do Sucesso e Troubleshooting
-Após o sinal verde (✅) no GitHub Actions, siga estes passos para validar o deploy:
+### 5. Ingestão de Dados (RAG)
 
-**1. Sincronize seu contexto local com o novo cluster:**
+Para alimentar o "cérebro" da IA, faça o upload do CSV para o container de processamento. O Azure AI Search detectará o novo arquivo e iniciará a indexação vetorial automaticamente.
+
 ```bash
-az aks get-credentials \
-  --resource-group rg-staffrag-prod \
-  --name staffrag-aks \
-  --overwrite-existing
+# 1. Obtenha a Connection String gerada pelo pipeline
+# (Ou verifique no estágio 'Auto-Discovery' do GitHub Actions)
+
+# 2. Upload da base
+az storage blob upload \
+  --account-name "st${PREFIX}prod" \
+  --container-name "rh-uploads" \
+  --file "base_vigilantes_ativos.csv" \
+  --name "base_vigilantes_ativos.csv" \
+  --overwrite
 ```
 
-**2. Verifique se os Pods estão rodando:**
+---
+
+#### 6. Verificação e Diagnóstico (Troubleshooting)
+Após o sinal verde (✅) no GitHub:
+
+**1. Conecte ao Cluster:**
 ```bash
-kubectl get pods
+az aks get-credentials -g "rg-${PREFIX}-prod" -n "${PREFIX}-aks" --overwrite-existing
 ```
 
-**3. Pegue o IP Externo da API:**
+**2. Valide a Identidade (O "Crachá" do Pod):**
+Verifique se a ServiceAccount recebeu o Client ID da Azure corretamente:
 ```bash
-kubectl get service smart-staffing-service
+kubectl describe sa smart-staffing-sa | grep client-id
 ```
-Aguarde até que o campo `EXTERNAL-IP` mude de `<pending>` para um endereço IP real.
 
-**5. Teste a IA:**
-Envie um POST para o endpoint `/v1/find-replacement` usando o IP obtido:
+**3. Verifique os Logs em Tempo Real:**
+```bash
+kubectl logs -l app=smart-staffing -f
+```
 
-A.  **URL:** `http://<SEU_EXTERNAL_IP>/v1/find-replacement`
-B.  **Body (raw JSON):**
-    ```json
-    {
-      "nome": "NOME_DE_UM_VIGILANTE_DO_CSV",
-      "perfil_extra": "Preciso de um perfil extremamente calmo para posto em maternidade."
-    }
-    ```
+**4. Teste o Endpoint:**
+Pegue o `EXTERNAL-IP` com `kubectl get svc` e dispare o teste:
+
+```bash
+curl -X POST http://<EXTERNAL_IP>/v1/find-replacement \
+-H "Content-Type: application/json" \
+-d '{
+  "nome": "NOME_DO_VIGILANTE",
+  "perfil_extra": "Busco alguém com perfil calmo para recepção hospitalar."
+}'
+```
+
 
 ---
 
