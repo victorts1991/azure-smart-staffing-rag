@@ -99,45 +99,36 @@ jobs:
       - name: 'Wait for Services Ready'
         run: sleep 40
       
-      - name: Get Resources Data
+      - name: Get Resources Data from Terraform Outputs
         id: get_data
         run: |
+          # 1. Entra na pasta do terraform para ler os outputs
+          cd terraform
+          
+          # Captura os dados reais do Terraform
+          MSI_ID=$(terraform output -raw managed_identity_client_id)
+          OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint)
+          SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint)
+          ACR_SERVER=$(terraform output -raw acr_login_server)
+          ST_NAME=$(terraform output -raw storage_account_name)
+          FUNC_NAME=$(terraform output -raw function_app_name)
           RG="rg-${{ secrets.PREFIX }}-prod"
           
-          # 1. Captura de Nomes e Identidade
-          SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
-          ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
-          OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
-          FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
-          # Captura o ID da Identidade Gerenciada para o Workload Identity
-          MSI_ID=$(az identity show -g $RG -n staffrag-identity --query clientId -o tsv)
-
-          # 2. Captura de Endpoints e Chaves
-          SEARCH_ENDPOINT="https://$SEARCH_NAME.search.windows.net"
-          OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
-          OPENAI_KEY=$(az cognitiveservices account keys list -n $OPENAI_NAME -g $RG --query "key1" -o tsv)
-          
+          # 2. Captura as Chaves (Terraform não costuma exportar segredos por padrão no log)
+          OPENAI_KEY=$(az cognitiveservices account keys list -n $(az cognitiveservices account list -g $RG --query "[0].name" -o tsv) -g $RG --query "key1" -o tsv)
           ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
-          
-          FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
           FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
+          FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
 
-          # 3. Escrita no arquivo de ambiente para os próximos jobs e para o output do Job
-          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" > azure.env
-          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" >> azure.env
-          echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> azure.env
-          echo "AZURE_CLIENT_ID='$MSI_ID'" >> azure.env
-          
-          # Dados para o ACR (Docker Build)
-          ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
-          ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
-          echo "ACR_NAME='$ACR_NAME'" >> azure.env
-          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
-          
-          # Variáveis para as Functions/Sync
-          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
-          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
-          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
+          # 3. Escrita no arquivo de ambiente para os próximos jobs consumirem
+          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" > ../azure.env
+          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" >> ../azure.env
+          echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> ../azure.env
+          echo "AZURE_CLIENT_ID='$MSI_ID'" >> ../azure.env
+          echo "ACR_SERVER='$ACR_SERVER'" >> ../azure.env
+          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> ../azure.env
+          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> ../azure.env
+          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> ../azure.env
           
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
