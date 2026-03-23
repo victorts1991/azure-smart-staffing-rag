@@ -138,7 +138,7 @@ jobs:
           echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
           echo "SEARCH_ENDPOINT='https://$(az search service list -g $RG --query "[0].name" -o tsv).search.windows.net'" >> azure.env
           echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> azure.env
-          echo "AZURE_CLIENT_ID='$MSI_ID'" >> azure.env
+          echo "MANAGED_IDENTITY_CLIENT_ID='$MSI_ID'" >> azure.env
           echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
           echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
           echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
