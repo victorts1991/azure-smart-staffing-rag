@@ -45,8 +45,33 @@ jobs:
           terraform init
           terraform apply -auto-approve -var="prefix=${{ secrets.PREFIX }}"
 
+  deploy-functions:
+    name: '3. Deploy: Azure Functions'
+    needs: [terraform, changes]
+    if: (needs.changes.outputs.terraform == 'true' || github.run_number == 1) && needs.terraform.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 'Deploy Function Code'
+        uses: Azure/functions-action@v1
+        with:
+          # Aqui ele busca o nome dinamicamente usando o prefixo
+          app-name: "func-${{ secrets.PREFIX }}-prod" 
+          package: './azure_functions/geocoding'
+
   setup-env:
-    name: '3. Auto-Discovery & Secrets'
+    name: '4. Auto-Discovery & Secrets'
     needs: [terraform]
     if: always() && (needs.terraform.result == 'success' || needs.terraform.result == 'skipped')
     runs-on: ubuntu-latest
@@ -101,10 +126,9 @@ jobs:
           retention-days: 1
 
   ai-search-sync:
-    name: '4. AI Search: Sync Pipeline'
-    needs: [setup-env]
-    # if: needs.changes.outputs.search == 'true' || github.run_number == 1
-    if: always() && needs.setup-env.result == 'success'
+    name: '5. AI Search: Sync Pipeline'
+    needs: [setup-env, changes]
+    if: needs.setup-env.result == 'success' && (needs.changes.outputs.search == 'true' || github.run_number == 1)    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -130,29 +154,56 @@ jobs:
           pip install azure-search-documents azure-identity requests
           python scripts/sync_search.py
 
-  ci-build:
-    name: '5. CI: Docker Build'
+  ci-qa-build:
+    name: '6. CI: QA & Docker Build'
     needs: [setup-env]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Download das Variáveis
         uses: actions/download-artifact@v4
         with:
           name: azure-vars
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar Dependências de Teste
+        run: |
+          pip install pytest pytest-asyncio httpx -r requirements.txt
+          # Se o seu requirements não tiver os de teste, instale manualmente:
+          # pip install pytest pytest-asyncio httpx
+
+      - name: Executar Testes Unitários
+        env:
+          # Variáveis fictícias apenas para o Pydantic/FastAPI inicializar nos testes
+          AZURE_SEARCH_ENDPOINT: "https://dummy.search.windows.net"
+          AZURE_OPENAI_ENDPOINT: "https://dummy.openai.azure.com"
+          AZURE_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=dummy;AccountKey=dummykey;EndpointSuffix=core.windows.net"
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          python -m pytest app/tests/
+
       - name: Azure Login
+        if: success() # Só loga na Azure se os testes passarem
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Build and Push
+        if: success()
         run: |
+          # Carrega as variáveis reais para o Docker Tag
           source azure.env
           az acr login --name "$ACR_NAME"
           docker build -t "$ACR_SERVER/smart-staffing-api:latest" .
           docker push "$ACR_SERVER/smart-staffing-api:latest"
 
   cd-deploy:
-    name: '6. CD: Deploy AKS'
+    name: '7. CD: Deploy AKS'
     needs: [ci-build, setup-env]
     runs-on: ubuntu-latest
     steps:
