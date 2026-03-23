@@ -61,6 +61,14 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: 'Discover Real Function Name'
+        id: discover
+        run: |
+          RG="rg-${{ secrets.PREFIX }}-prod"
+          # Captura o nome real que está na Azure agora (func-enrich-data-staffrag)
+          REAL_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
+          echo "nome_da_funcao=$REAL_NAME" >> $GITHUB_OUTPUT
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -69,8 +77,8 @@ jobs:
       - name: 'Deploy Function Code'
         uses: Azure/functions-action@v1
         with:
-          # Aqui ele busca o nome dinamicamente usando o prefixo
-          app-name: "func-${{ secrets.PREFIX }}-prod" 
+          # Usa o output do step de descoberta acima
+          app-name: ${{ steps.discover.outputs.nome_da_funcao }}
           package: './azure_functions/geocoding'
 
   setup-env:
