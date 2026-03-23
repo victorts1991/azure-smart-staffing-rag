@@ -29,14 +29,14 @@ provider "azurerm" {
 
 # 2. Grupo de Recursos Principal do Projeto
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-smart-staffing-prod"
+  name     = "rg-${var.prefix}-prod"
   location = "eastus2" 
 }
 
 # 3. Identidade Gerenciada Única (Zero Trust)
 # Esta identidade será usada pelo AKS e pelas Azure Functions para acesso passwordless
 resource "azurerm_user_assigned_identity" "main_id" {
-  name                = "id-smart-staffing-prod"
+  name                = "id-${var.prefix}-prod"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 }
@@ -81,7 +81,7 @@ module "aks" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
-  project_name        = var.project_name
+  project_name = var.prefix
   
   # Rede e Segurança
   vnet_subnet_id      = module.network.aks_subnet_id
@@ -95,7 +95,7 @@ module "functions" {
   source                     = "./modules/functions"
   resource_group_name        = azurerm_resource_group.rg.name
   location                   = azurerm_resource_group.rg.location
-  project_name               = var.project_name
+  project_name = var.prefix
   
   storage_account_name       = module.storage.account_name
   storage_account_id         = module.storage.account_id

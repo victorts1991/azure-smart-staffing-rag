@@ -55,3 +55,8 @@ variable "tags" {
     Owner     = "DataEngineering"
   }
 }
+
+variable "prefix" {
+  type        = string
+  description = "Prefixo único para os recursos da Azure"
+}
