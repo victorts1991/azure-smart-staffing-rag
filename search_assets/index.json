@@ -45,4 +45,5 @@
       { "name": "staffing-hnsw", "kind": "hnsw" }
     ]
   }
+  
 }

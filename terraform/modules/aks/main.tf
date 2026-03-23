@@ -18,7 +18,7 @@ resource "azurerm_container_registry" "acr" {
 
 # 3. Azure Kubernetes Service (Cluster)
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "aks-${var.project_name}"
+  name                = "${var.project_name}-aks"
   location            = var.location
   resource_group_name = var.resource_group_name
   dns_prefix          = "smartstaffing"
