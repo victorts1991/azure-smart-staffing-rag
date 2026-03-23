@@ -104,34 +104,41 @@ jobs:
         run: |
           RG="rg-${{ secrets.PREFIX }}-prod"
           
-          # 1. Captura de Nomes
+          # 1. Captura de Nomes e Identidade
           SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
           ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
           OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
           FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
+          # Captura o ID da Identidade Gerenciada para o Workload Identity
+          MSI_ID=$(az identity show -g $RG -n staffrag-identity --query clientId -o tsv)
 
           # 2. Captura de Endpoints e Chaves
           SEARCH_ENDPOINT="https://$SEARCH_NAME.search.windows.net"
           OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
+          OPENAI_KEY=$(az cognitiveservices account keys list -n $OPENAI_NAME -g $RG --query "key1" -o tsv)
           
-          # O mais importante: Aspas simples para proteger a Connection String
           ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
           
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
           FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
 
-          # 3. Escrita no arquivo (SEM CORTES)
-          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" > azure.env
-          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
-          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
-          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
-          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
+          # 3. Escrita no arquivo de ambiente para os próximos jobs e para o output do Job
+          echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" > azure.env
+          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" >> azure.env
+          echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> azure.env
+          echo "AZURE_CLIENT_ID='$MSI_ID'" >> azure.env
           
           # Dados para o ACR (Docker Build)
           ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
           ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
           echo "ACR_NAME='$ACR_NAME'" >> azure.env
           echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          
+          # Variáveis para as Functions/Sync
+          echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
+          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
+          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
+          
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
       - name: Upload das Variáveis
