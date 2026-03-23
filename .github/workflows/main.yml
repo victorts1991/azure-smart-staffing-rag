@@ -174,8 +174,7 @@ jobs:
       - name: Instalar Dependências de Teste
         run: |
           pip install pytest pytest-asyncio httpx -r requirements.txt
-          # Se o seu requirements não tiver os de teste, instale manualmente:
-          # pip install pytest pytest-asyncio httpx
+          
 
       - name: Executar Testes Unitários
         env:
@@ -196,7 +195,6 @@ jobs:
       - name: Build and Push
         if: success()
         run: |
-          # Carrega as variáveis reais para o Docker Tag
           source azure.env
           az acr login --name "$ACR_NAME"
           docker build -t "$ACR_SERVER/smart-staffing-api:latest" .
@@ -204,7 +202,7 @@ jobs:
 
   cd-deploy:
     name: '7. CD: Deploy AKS'
-    needs: [ci-build, setup-env]
+    needs: [ci-qa-build, setup-env]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
