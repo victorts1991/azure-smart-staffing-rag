@@ -238,7 +238,18 @@ jobs:
         run: |
           source azure.env
           export ACR_LOGIN_SERVER=$ACR_SERVER
-          # Substitui variáveis no manifesto e aplica
-          envsubst < k8s/deployment.yaml | kubectl apply -f -
+          
+          # 1. Aplicar a Service Account Primeiro (Crucial!)
+          envsubst < k8s/service-account.yaml | kubectl apply -f -
+          
+          # 2. Aplicar o Service
           kubectl apply -f k8s/service.yaml
+          
+          # 3. Aplicar o Deployment (com as variáveis substituídas)
+          envsubst < k8s/deployment.yaml | kubectl apply -f -
+          
+          # 4. Aplicar o HPA (Escalabilidade)
+          kubectl apply -f k8s/hpa.yaml
+          
+          # 5. Forçar o restart para garantir que pegou as configs novas
           kubectl rollout restart deployment smart-staffing-api

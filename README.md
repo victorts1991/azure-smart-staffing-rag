@@ -434,10 +434,41 @@ A partir daqui, você não precisa mais rodar comandos complexos no terminal. **
 * **Auto-Discovery**: O pipeline descobre sozinho os nomes dos recursos criados, você não precisa copiar URLs de banco de dados ou chaves.
 * **Zero Downtime**: O Kubernetes recebe a nova imagem e faz o rollout sem derrubar o serviço.
 
-#### 5. Verificação do Sucesso
-Após o sinal verde (✅) no GitHub Actions:
-1.  **Pegue o IP**: `kubectl get service smart-staffing-service`.
-2.  **Teste a IA**: Envie um POST para o endpoint `/v1/find-replacement`.
+---
+
+#### 5. Verificação do Sucesso e Troubleshooting
+Após o sinal verde (✅) no GitHub Actions, siga estes passos para validar o deploy:
+
+**1. Sincronize seu contexto local com o novo cluster:**
+```bash
+az aks get-credentials \
+  --resource-group rg-staffrag-prod \
+  --name staffrag-aks \
+  --overwrite-existing
+```
+
+**2. Verifique se os Pods estão rodando:**
+```bash
+kubectl get pods
+```
+
+**3. Pegue o IP Externo da API:**
+```bash
+kubectl get service smart-staffing-service
+```
+Aguarde até que o campo `EXTERNAL-IP` mude de `<pending>` para um endereço IP real.
+
+**5. Teste a IA:**
+Envie um POST para o endpoint `/v1/find-replacement` usando o IP obtido:
+
+A.  **URL:** `http://<SEU_EXTERNAL_IP>/v1/find-replacement`
+B.  **Body (raw JSON):**
+    ```json
+    {
+      "nome": "NOME_DE_UM_VIGILANTE_DO_CSV",
+      "perfil_extra": "Preciso de um perfil extremamente calmo para posto em maternidade."
+    }
+    ```
 
 ---
 
