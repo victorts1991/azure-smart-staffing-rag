@@ -48,7 +48,7 @@ jobs:
   deploy-functions:
     name: '3. Deploy: Azure Functions'
     needs: [terraform, changes]
-    if: (needs.changes.outputs.terraform == 'true' || github.run_number == 1) && needs.terraform.result == 'success'
+    if: always() && (needs.terraform.result == 'success' || needs.terraform.result == 'skipped') && (needs.changes.outputs.terraform == 'true' || github.run_number == 1 || contains(github.event.head_commit.message, 'force-deploy'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
