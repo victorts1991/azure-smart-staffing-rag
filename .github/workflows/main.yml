@@ -132,9 +132,10 @@ jobs:
           FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
 
-          # 2. Geração do arquivo azure.env com aspas simples (O Pulo do Gato)
+          # 2. Geração do arquivo azure.env com aspas simples (Nomes Ajustados)
           echo "ACR_NAME='$ACR_NAME'" > azure.env
           echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          echo "ACR_LOGIN_SERVER='$ACR_SERVER'" >> azure.env
           echo "OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
           echo "SEARCH_ENDPOINT='https://$(az search service list -g $RG --query "[0].name" -o tsv).search.windows.net'" >> azure.env
           echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> azure.env
@@ -142,6 +143,7 @@ jobs:
           echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
           echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
           echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
+          echo "OPENAI_API_VERSION='2024-02-01'" >> azure.env
           
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 

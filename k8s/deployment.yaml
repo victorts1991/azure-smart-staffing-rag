@@ -30,8 +30,8 @@ spec:
             cpu: "500m"
             memory: "512Mi"
         env:
-          - name: AZURE_OPENAI_ENDPOINT
-            value: "${OPENAI_ENDPOINT}"
+          - name: SEARCH_ENDPOINT  
+            value: "${SEARCH_ENDPOINT}"
           - name: AZURE_SEARCH_ENDPOINT
             value: "${SEARCH_ENDPOINT}"
           - name: AZURE_OPENAI_API_KEY
