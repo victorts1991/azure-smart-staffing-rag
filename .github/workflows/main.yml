@@ -113,29 +113,31 @@ jobs:
         id: get_data
         run: |
           cd terraform
+          # Desativa o wrapper que suja o output
           terraform init
           
-          # 1. Captura os outputs com segurança
-          MSI_ID=$(terraform output -raw managed_identity_client_id)
-          OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint)
-          SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint)
-          ACR_SERVER=$(terraform output -raw acr_login_server)
-          ST_NAME=$(terraform output -raw storage_account_name)
-          FUNC_NAME=$(terraform output -raw function_app_name)
+          # 1. Captura os outputs e limpa lixo de log/debug do GitHub
+          MSI_ID=$(terraform output -raw managed_identity_client_id | tail -n 1)
+          OPENAI_ENDPOINT=$(terraform output -raw azure_openai_endpoint | tail -n 1)
+          SEARCH_ENDPOINT=$(terraform output -raw azure_search_endpoint | tail -n 1)
+          ACR_SERVER=$(terraform output -raw acr_login_server | tail -n 1)
+          ST_NAME=$(terraform output -raw storage_account_name | tail -n 1)
+          FUNC_NAME=$(terraform output -raw function_app_name | tail -n 1)
           RG="rg-${{ secrets.PREFIX }}-prod"
 
-          # 2. Captura as Chaves usando as variáveis acima
-          # Extrai o nome da conta OpenAI direto da URL (ex: https://nome-openai.openai.azure.com/ -> nome-openai)
-          OPENAI_NAME=$(echo "$OPENAI_ENDPOINT" | sed 's|https://||;s|\.openai\.azure\.com/||;s|\.openai\.azure\.com||')
+          # 2. Extrai o nome LIMPO da conta OpenAI (sem https e sem o sufixo da url)
+          # O tail -n 1 garante que pega a última linha caso o terraform cuspa lixo antes
+          OPENAI_NAME=$(echo "$OPENAI_ENDPOINT" | sed 's|https://||;s|\.openai\.azure\.com/||;s|\.openai\.azure\.com||' | tail -n 1)
 
-          echo "Buscando chaves para: $OPENAI_NAME no grupo $RG"
+          echo "Buscando chaves para o recurso: '$OPENAI_NAME' no grupo '$RG'"
 
+          # 3. Captura as Chaves via AZ CLI usando as variáveis limpas
           OPENAI_KEY=$(az cognitiveservices account keys list --name "$OPENAI_NAME" --resource-group "$RG" --query "key1" -o tsv)
           ST_CONN=$(az storage account show-connection-string --name "$ST_NAME" --resource-group "$RG" --query "connectionString" -o tsv)
           FUNC_KEY=$(az functionapp keys list --name "$FUNC_NAME" --resource-group "$RG" --query "masterKey" -o tsv)
           FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
 
-          # 3. Escrita no arquivo (Voltando um nível para a raiz)
+          # 4. Escrita no arquivo de ambiente (na raiz do projeto)
           echo "OPENAI_ENDPOINT=$OPENAI_ENDPOINT" > ../azure.env
           echo "SEARCH_ENDPOINT=$SEARCH_ENDPOINT" >> ../azure.env
           echo "AZURE_OPENAI_API_KEY=$OPENAI_KEY" >> ../azure.env
@@ -145,6 +147,7 @@ jobs:
           echo "GEO_FUNCTION_URL=$FUNC_URL" >> ../azure.env
           echo "GEO_FUNCTION_KEY=$FUNC_KEY" >> ../azure.env
           
+          # Output para o GitHub Actions
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
       - name: Upload das Variáveis
