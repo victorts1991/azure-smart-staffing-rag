@@ -1,0 +1,161 @@
+name: 'Full CI/CD: Azure Smart Staffing RAG'
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  changes:
+    name: '1. Detectar Alterações'
+    runs-on: ubuntu-latest
+    outputs:
+      terraform: ${{ steps.filter.outputs.terraform }}
+      k8s: ${{ steps.filter.outputs.k8s }}
+      search: ${{ steps.filter.outputs.search }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            terraform: ['terraform/**']
+            k8s: ['k8s/**']
+            search: ['search_assets/**', 'scripts/sync_search.py']
+
+  terraform:
+    name: '2. Infraestrutura'
+    needs: [changes]
+    if: needs.changes.outputs.terraform == 'true' || github.run_number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: |
+          terraform init
+          terraform apply -auto-approve -var="prefix=${{ secrets.PREFIX }}"
+
+  setup-env:
+    name: '3. Auto-Discovery & Secrets'
+    needs: [terraform]
+    if: always() && (needs.terraform.result == 'success' || needs.terraform.result == 'skipped')
+    runs-on: ubuntu-latest
+    outputs:
+      acrserver: ${{ steps.get_data.outputs.acrserver }}
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Get Resources Data
+        id: get_data
+        run: |
+          RG="rg-${{ secrets.PREFIX }}-prod"
+          echo "Descobrindo recursos no RG: $RG"
+
+          ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
+          ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
+          SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
+          # Coletamos o Endpoint para o script de sync
+          SEARCH_ENDPOINT="https://$SEARCH_NAME.search.windows.net"
+
+          echo "ACR_NAME='$ACR_NAME'" > azure.env
+          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          echo "SEARCH_NAME='$SEARCH_NAME'" >> azure.env
+          echo "SEARCH_ENDPOINT='$SEARCH_ENDPOINT'" >> azure.env
+          
+          # Passa o ACR Server para o output do job
+          echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
+
+      - name: Upload das Variáveis
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-vars
+          path: azure.env
+          retention-days: 1
+
+  ai-search-sync:
+    name: '4. AI Search: Sync Pipeline'
+    needs: [setup-env, changes]
+    if: needs.changes.outputs.search == 'true' || github.run_number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download das Variáveis
+        uses: actions/download-artifact@v4
+        with:
+          name: azure-vars
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Sync Search Assets
+        run: |
+          source azure.env
+          pip install azure-search-documents azure-identity requests
+          python scripts/sync_search.py
+
+  ci-build:
+    name: '5. CI: Docker Build'
+    needs: [setup-env]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download das Variáveis
+        uses: actions/download-artifact@v4
+        with:
+          name: azure-vars
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Build and Push
+        run: |
+          source azure.env
+          az acr login --name "$ACR_NAME"
+          docker build -t "$ACR_SERVER/smart-staffing-api:latest" .
+          docker push "$ACR_SERVER/smart-staffing-api:latest"
+
+  cd-deploy:
+    name: '6. CD: Deploy AKS'
+    needs: [ci-build, setup-env]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download das Variáveis
+        uses: actions/download-artifact@v4
+        with:
+          name: azure-vars
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Set AKS Context
+        uses: azure/aks-set-context@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resource-group: "rg-${{ secrets.PREFIX }}-prod"
+          cluster-name: "${{ secrets.PREFIX }}-aks"
+      - name: Deploy to AKS
+        run: |
+          source azure.env
+          export ACR_LOGIN_SERVER=$ACR_SERVER
+          # Substitui variáveis no manifesto e aplica
+          envsubst < k8s/deployment.yaml | kubectl apply -f -
+          kubectl apply -f k8s/service.yaml
+          kubectl rollout restart deployment smart-staffing-api

@@ -387,6 +387,55 @@ Agora que sua API está rodando no **AKS**, repita o teste do **Passo 7** do Gui
 
 ---
 
+### 🚀 Guia de Automação (CI/CD)
+
+Este projeto utiliza uma esteira automatizada de 6 estágios. Siga os passos abaixo para configurar o ambiente do zero.
+
+#### 1. Bootstrap (Preparação do Cofre)
+O Terraform precisa de um lugar seguro para guardar o estado da sua infraestrutura. Execute o script de automação inicial:
+
+```bash
+chmod +x bootstrap.sh
+./bootstrap.sh
+```
+
+*Este script criará um Resource Group chamado `rg-terraform-state`. **Anote o nome da Storage Account gerada no final.***
+
+#### 2. Configuração do Backend 
+Abra o arquivo `terraform/main.tf` e atualize o bloco `backend "azurerm"` com o nome da Storage Account gerada:
+
+```hcl
+backend "azurerm" {
+  resource_group_name  = "rg-terraform-state"
+  storage_account_name = "ST_GERADA_AQUI"
+  container_name       = "tfstate"
+  key                  = "smart-staffing.terraform.tfstate"
+}
+```
+
+#### 3. Configuração do GitHub
+Vá em **Settings > Secrets and variables > Actions** do seu repositório e adicione:
+
+| Secret Name | Descrição 
+| :--- | :--- | :--- |
+| `PREFIX` | Um nome curto para seus recursos (Exemplo: `staffrag`).
+| `AZURE_CREDENTIALS` | JSON gerado na saída do comando anterior.
+
+#### 4. O Fluxo de Trabalho (Push to Deploy) ⚡
+A partir daqui, você não precisa mais rodar comandos complexos no terminal. **Basta fazer um `git push` para a branch `main`** e o GitHub Actions fará o resto:
+
+* **Infraestrutura Automática**: Se você alterar algo na pasta `terraform/`, o pipeline atualiza a Azure automaticamente.
+* **Sincronização do Cérebro (AI Search)**: Se você mudar o esquema do índice ou as habilidades da IA (`search_assets/`), o pipeline reconfigura o Azure AI Search antes do deploy.
+* **Auto-Discovery**: O pipeline descobre sozinho os nomes dos recursos criados, você não precisa copiar URLs de banco de dados ou chaves.
+* **Zero Downtime**: O Kubernetes recebe a nova imagem e faz o rollout sem derrubar o serviço.
+
+#### 5. Verificação do Sucesso
+Após o sinal verde (✅) no GitHub Actions:
+1.  **Pegue o IP**: `kubectl get service smart-staffing-service`.
+2.  **Teste a IA**: Envie um POST para o endpoint `/v1/find-replacement` e veja a mágica do RAG acontecer.
+
+---
+
 ## 🔐 Segurança e Compliance
 
 * **Zero Trust:** Comunicação entre AKS, Functions e Serviços de IA via **Managed Identities**.
