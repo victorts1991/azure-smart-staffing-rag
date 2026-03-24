@@ -138,10 +138,15 @@ jobs:
         run: |
           RG="rg-${{ secrets.PREFIX }}-prod"
           
-          # Coleta de dados básicos
+          # --- PADRONIZAÇÃO DAS VARIÁVEIS ---
+          # 1. Nome limpo para o 'az acr login' (ex: acrstaffing)
+          ACR_NAME_ONLY=$(az acr list -g $RG --query "[0].name" -o tsv)
+          # 2. Server completo para o Docker (ex: acrstaffing.azurecr.io)
           ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
-          ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
-          ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
+
+          echo "ACR_NAME='$ACR_NAME_ONLY'" > azure.env
+          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          echo "ACR_LOGIN_SERVER='$ACR_SERVER'" >> azure.env
           
           OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
           OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
