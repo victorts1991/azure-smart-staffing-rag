@@ -91,7 +91,7 @@ jobs:
           cd ./azure_functions/geocoding
           
           # 2. Cria o pacote ZIP com o conteúdo da pasta (o ponto indica a raiz)
-          zip -r ../../deploy.zip .
+          zip -r ../../deploy.zip ./*
           
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
@@ -99,6 +99,8 @@ jobs:
           app-name: ${{ steps.discover.outputs.nome_da_funcao }}
           # 3. Aponta para o arquivo ZIP gerado na raiz do workspace
           package: './deploy.zip'
+          scm-do-build-during-deployment: true
+          enable-oryx-build: true
 
   setup-env:
     name: '4. Auto-Discovery & Secrets'
