@@ -137,44 +137,50 @@ jobs:
         id: get_data
         run: |
           RG="rg-${{ secrets.PREFIX }}-prod"
-          
-          # --- PADRONIZAÇÃO DAS VARIÁVEIS ---
-          # 1. Nome limpo para o 'az acr login' (ex: acrstaffing)
+          echo "Buscando recursos no RG: $RG"
+
+          # 1. Coleta de dados do ACR (Login vs Server)
+          # O [0].name traz o nome limpo (ex: acrstafreg)
           ACR_NAME_ONLY=$(az acr list -g $RG --query "[0].name" -o tsv)
-          # 2. Server completo para o Docker (ex: acrstaffing.azurecr.io)
+          # O [0].loginServer traz o endereço completo (ex: acrstafreg.azurecr.io)
           ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
 
-          echo "ACR_NAME='$ACR_NAME_ONLY'" > azure.env
-          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
-          echo "ACR_LOGIN_SERVER='$ACR_SERVER'" >> azure.env
-          
+          # 2. Coleta de dados do OpenAI
           OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
           OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
           OPENAI_KEY=$(az cognitiveservices account keys list -n $OPENAI_NAME -g $RG --query key1 -o tsv)
           
-          MSI_ID=$(az identity list -g $RG --query "[0].clientId" -o tsv)
+          # 3. Coleta de dados do AI Search
           SEARCH_NAME=$(az search service list -g $RG --query "[0].name" -o tsv)
-
-          # --- PADRONIZAÇÃO DAS VARIÁVEIS ---
-          echo "ACR_SERVER='$ACR_SERVER'" > azure.env
           
-          # Esta é a variável que o seu chain.py espera!
+          # 4. Outros (Storage e Identity)
+          ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
+          ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
+          MSI_ID=$(az identity list -g $RG --query "[0].clientId" -o tsv)
+          
+          # 5. Coleta da Function
+          FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
+          FUNC_URL="https://${FUNC_NAME}.azurewebsites.net"
+
+          # --- GERAÇÃO DO ARQUIVO AZURE.ENV ---
+          # IMPORTANTE: A primeira linha usa '>' para criar/limpar, as outras '>>' para adicionar
+          echo "ACR_NAME='$ACR_NAME_ONLY'" > azure.env
+          echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
+          echo "ACR_LOGIN_SERVER='$ACR_SERVER'" >> azure.env
+          
+          # Variáveis para o chain.py e retriever.py
           echo "AZURE_OPENAI_ENDPOINT='$OPENAI_ENDPOINT'" >> azure.env
           echo "AZURE_OPENAI_API_KEY='$OPENAI_KEY'" >> azure.env
-          
-          # Esta é a variável que o seu retriever.py espera! (Você usou SEARCH_ENDPOINT lá)
           echo "SEARCH_ENDPOINT='https://${SEARCH_NAME}.search.windows.net'" >> azure.env
-          # Mas o seu printenv mostrou AZURE_SEARCH_ENDPOINT, então vamos garantir as duas:
           echo "AZURE_SEARCH_ENDPOINT='https://${SEARCH_NAME}.search.windows.net'" >> azure.env
           
+          # Configurações extras
           echo "AZURE_STORAGE_CONNECTION_STRING='$ST_CONN'" >> azure.env
           echo "MANAGED_IDENTITY_CLIENT_ID='$MSI_ID'" >> azure.env
           echo "OPENAI_API_VERSION='2024-02-01'" >> azure.env
+          echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
           
-          # Variáveis da Function
-          FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
-          echo "GEO_FUNCTION_URL='https://${FUNC_NAME}.azurewebsites.net'" >> azure.env
-          
+          # Output para o GitHub Actions
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
 
       - name: Upload das Variáveis
