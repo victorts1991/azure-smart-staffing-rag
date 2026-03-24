@@ -74,7 +74,9 @@ jobs:
         run: |
           RG="rg-${{ secrets.PREFIX }}-prod"
           FUNC_NAME=${{ steps.discover.outputs.nome_da_funcao }}
-          MAPS_KEY=$(az maps account keys list --name "maps-${{ secrets.PREFIX }}-prod" -g $RG --query primaryKey -o tsv)
+          # Busca o nome real do recurso de Maps no RG e depois pega a chave
+          MAPS_RESOURCE_NAME=$(az maps account list -g $RG --query "[0].name" -o tsv)
+          MAPS_KEY=$(az maps account keys list --name "$MAPS_RESOURCE_NAME" -g $RG --query primaryKey -o tsv)
           
           az functionapp config appsettings set --name $FUNC_NAME -g $RG --settings \
             AZURE_MAPS_SUBSCRIPTION_KEY=$MAPS_KEY
@@ -93,7 +95,7 @@ jobs:
 
   setup-env:
     name: '4. Auto-Discovery & Secrets'
-    needs: [terraform]
+    needs: [terraform, deploy-functions]
     # Essencial para os jobs seguintes, roda se o terraform deu bom ou foi pulado
     if: always() && !contains(needs.terraform.result, 'failure')
     runs-on: ubuntu-latest
