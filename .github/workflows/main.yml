@@ -23,7 +23,6 @@ jobs:
         with:
           filters: |
             terraform: ['terraform/**']
-            k8s: ['k8s/**']
             search: ['search_assets/**', 'scripts/sync_search.py']
 
   terraform:
@@ -165,8 +164,10 @@ jobs:
   ai-search-sync:
     name: '5. AI Search: Sync Pipeline'
     needs: [setup-env, changes, deploy-functions]
-    # só roda se mudar a pasta search ou for run #1
-    if: needs.setup-env.result == 'success' && (needs.changes.outputs.search == 'true' || github.run_number == 1)
+    if: |
+      always() && 
+      needs.setup-env.result == 'success' && 
+      (needs.changes.outputs.search == 'true' || github.run_number == 1)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
