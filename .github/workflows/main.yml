@@ -85,22 +85,26 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: 'Install Dependencies (Local Build)'
+        run: |
+          cd ./azure_functions/geocoding
+          # Instala as libs numa pasta que o Azure reconhece automaticamente
+          pip install --target=".python_packages/lib/site-packages" -r requirements.txt
+          
       - name: 'Zip and Deploy Function'
         run: |
-          # 1. Entra na pasta onde estão os arquivos (function_app.py, etc)
           cd ./azure_functions/geocoding
-          
-          # 2. Cria o pacote ZIP com o conteúdo da pasta (o ponto indica a raiz)
-          zip -r ../../deploy.zip ./*
+          # ZIP incluindo a pasta oculta .python_packages que acabamos de criar
+          zip -r ../../deploy.zip .
           
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ steps.discover.outputs.nome_da_funcao }}
-          # 3. Aponta para o arquivo ZIP gerado na raiz do workspace
           package: './deploy.zip'
-          scm-do-build-during-deployment: true
-          enable-oryx-build: true
+          # Como já instalamos tudo, desligamos o build da Azure
+          scm-do-build-during-deployment: false
+          enable-oryx-build: false
 
   setup-env:
     name: '4. Auto-Discovery & Secrets'
