@@ -93,9 +93,15 @@ jobs:
           
       - name: 'Zip and Deploy Function'
         run: |
+          # 1. Entra na pasta
           cd ./azure_functions/geocoding
-          # ZIP incluindo a pasta oculta .python_packages que acabamos de criar
+          
+          # 2. Força a inclusão de TUDO (inclusive arquivos ocultos .)
+          # O comando 'zip -r ../../deploy.zip .' pega a pasta atual como raiz
           zip -r ../../deploy.zip .
+          
+      - name: 'Debug: List ZIP content'
+        run: unzip -l deploy.zip | head -n 20
           
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
