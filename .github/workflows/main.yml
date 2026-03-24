@@ -70,6 +70,15 @@ jobs:
           REAL_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
           echo "nome_da_funcao=$REAL_NAME" >> $GITHUB_OUTPUT
 
+      - name: 'Injetar Chave do Maps na Function'
+        run: |
+          RG="rg-${{ secrets.PREFIX }}-prod"
+          FUNC_NAME=${{ steps.discover.outputs.nome_da_funcao }}
+          MAPS_KEY=$(az maps account keys list --name "maps-${{ secrets.PREFIX }}-prod" -g $RG --query primaryKey -o tsv)
+          
+          az functionapp config appsettings set --name $FUNC_NAME -g $RG --settings \
+            AZURE_MAPS_SUBSCRIPTION_KEY=$MAPS_KEY
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -112,27 +121,24 @@ jobs:
           RG="rg-${{ secrets.PREFIX }}-prod"
           echo "Buscando recursos no RG: $RG"
 
-          # 1. Coleta de Nomes e Endpoints (Via CLI, sem erro de terraform)
+          # 1. Coleta de Nomes e Endpoints
           ACR_NAME=$(az acr list -g $RG --query "[0].name" -o tsv)
           ACR_SERVER=$(az acr list -g $RG --query "[0].loginServer" -o tsv)
-          
           ST_NAME=$(az storage account list -g $RG --query "[0].name" -o tsv)
           ST_CONN=$(az storage account show-connection-string -g $RG -n $ST_NAME --query connectionString -o tsv)
           
-          # Pega o primeiro serviço de IA do grupo (OpenAI)
           OPENAI_NAME=$(az cognitiveservices account list -g $RG --query "[0].name" -o tsv)
           OPENAI_ENDPOINT=$(az cognitiveservices account show -n $OPENAI_NAME -g $RG --query properties.endpoint -o tsv)
           OPENAI_KEY=$(az cognitiveservices account keys list -n $OPENAI_NAME -g $RG --query key1 -o tsv)
-
-          # Pega o Client ID da Identidade Gerenciada (Para o Workload Identity)
+          
           MSI_ID=$(az identity list -g $RG --query "[0].clientId" -o tsv)
 
-          # Pega a Function
+          # Coleta da Function (Definindo variáveis antes de usar)
           FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
-          FUNC_KEY=$(az functionapp keys list -n $FUNC_NAME -g $RG --query "masterKey" -o tsv)
-          FUNC_URL="https://$FUNC_NAME.azurewebsites.net/api/geocoding"
+          FUNC_KEY=$(az functionapp keys list --name $FUNC_NAME -g $RG --query "functionKeys.default" -o tsv)
+          FUNC_URL="https://${FUNC_NAME}.azurewebsites.net"
 
-          # 2. Geração do arquivo azure.env com aspas simples (Nomes Ajustados)
+          # 2. Geração do arquivo azure.env (Primeira linha usa '>', as outras '>>')
           echo "ACR_NAME='$ACR_NAME'" > azure.env
           echo "ACR_SERVER='$ACR_SERVER'" >> azure.env
           echo "ACR_LOGIN_SERVER='$ACR_SERVER'" >> azure.env
