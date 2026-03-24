@@ -435,22 +435,29 @@ Esqueça comandos manuais. O ciclo de vida é gerido pelo **GitHub Actions**:
 
 ---
 
-### 5. Ingestão de Dados (RAG)
+### 5. Ingestão de Dados (RAG) 🧠
 
-Para alimentar o "cérebro" da IA, faça o upload do CSV para o container de processamento. O Azure AI Search detectará o novo arquivo e iniciará a indexação vetorial automaticamente.
+Para alimentar o "cérebro" da IA, precisamos enviar o dataset de vigilantes para o Azure. O sistema utiliza um script de **Auto-Discovery** para localizar sua Storage Account (mesmo com sufixos aleatórios) e realizar o upload com segurança.
+
+#### A. Configuração do Script
+Antes de rodar, verifique se o `PREFIX` dentro do arquivo `upload_rh.sh` condiz com o que você configurou nos Secrets do GitHub (ex: `staffrag`).
 
 ```bash
-# 1. Obtenha a Connection String gerada pelo pipeline
-# (Ou verifique no estágio 'Auto-Discovery' do GitHub Actions)
+# 1. Dê permissão de execução ao script
+chmod +x upload_rh.sh
 
-# 2. Upload da base
-az storage blob upload \
-  --account-name "st${PREFIX}prod" \
-  --container-name "rh-uploads" \
-  --file "base_vigilantes_ativos.csv" \
-  --name "base_vigilantes_ativos.csv" \
-  --overwrite
+# 2. Execute o upload dinâmico
+./upload_rh.sh
 ```
+
+#### B. O que acontece agora?
+O **Azure AI Search** está configurado com um **Indexer** que monitora o container `rh-uploads`. 
+1. O Indexador detecta o novo arquivo `.csv`.
+2. Ele envia cada linha para a **Azure Function** (Geocoding) para obter a localização.
+3. Ele envia o perfil comportamental para o **Azure OpenAI** para gerar os vetores (Embeddings).
+4. Os dados enriquecidos são salvos no **Vector Store**.
+
+> **Nota:** O processo de indexação automática ocorre a cada 5 minutos. Para forçar a indexação imediata, você pode rodar o script `python scripts/sync_search.py` novamente ou usar o comando de `run` via Azure CLI.
 
 ---
 
