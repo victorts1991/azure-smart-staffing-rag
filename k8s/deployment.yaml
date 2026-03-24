@@ -36,6 +36,8 @@ spec:
             value: "${SEARCH_ENDPOINT}"
           - name: AZURE_OPENAI_API_KEY
             value: "${AZURE_OPENAI_API_KEY}"
+          - name: AZURE_OPENAI_ENDPOINT
+            value: "${AZURE_OPENAI_ENDPOINT}"
         livenessProbe:
           httpGet:
             path: /health # Recomendo criar um endpoint /health simples
