@@ -544,3 +544,4 @@ curl -X POST http://<EXTERNAL_IP>/v1/find-replacement \
 ├── verify_search_data.sh     # 🔍 Monitor: Valida a indexação via RBAC e tokens Bearer.
 ├── requirements.txt          # 📦 Dependências do ecossistema Python/AI.
 ```
+
