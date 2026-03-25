@@ -59,4 +59,5 @@ variable "tags" {
 variable "prefix" {
   type        = string
   description = "Prefixo único para os recursos da Azure"
+  default     = "staffrag" 
 }

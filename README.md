@@ -183,8 +183,7 @@ O Azure AI Search depende desta função para enriquecer os dados, esteja na rai
 
 ```bash
 cd azure_functions/geocoding
-func azure functionapp publish func-enrich-data-smart-staffing
-
+func azure functionapp publish func-enrich-data-staffrag
 ```
 
 ### 2. Extração de Credenciais (Pós-Deploy)

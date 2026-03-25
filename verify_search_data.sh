@@ -35,7 +35,7 @@ echo "---------------------------------------------------------"
 echo "🎫 Gerando Access Token..."
 AZ_TOKEN=$(az account get-access-token --resource https://search.azure.com --query accessToken -o tsv)
 
-# 4. Executa o curl cru para validar os dados no índice
+# 4. Executa o curl
 echo "📡 Consultando o Índice 'vigilantes-index'..."
 curl -v -X GET "https://srch-smart-staffing-prod2.search.windows.net/indexes/vigilantes-index/docs/\$count?api-version=2024-03-01-Preview" \
   -H "Content-Type: application/json" \

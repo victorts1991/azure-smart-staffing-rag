@@ -2,17 +2,27 @@
 
 # 1. Configurações de Caminho e Identificação
 TERRAFORM_DIR="./terraform"
-export RG_NAME="rg-smart-staffing-prod"
+export RG_NAME="rg-staffrag-prod"
+
+
 
 echo "🔍 Coletando informações da infraestrutura no Azure..."
 
 # 2. Captura de Outputs do Terraform
 # Usa -chdir para garantir que o Terraform encontre o estado (.tfstate)
 export SEARCH_ENDPOINT=$(terraform -chdir=$TERRAFORM_DIR output -raw azure_search_endpoint)
+
+RAW_OPENAI=$(terraform -chdir=$TERRAFORM_DIR output -raw azure_openai_endpoint)
+if [[ $RAW_OPENAI != http* ]]; then
+    export AZURE_OPENAI_ENDPOINT="https://$RAW_OPENAI"
+else
+    export AZURE_OPENAI_ENDPOINT="$RAW_OPENAI"
+fi
+
 # Extrai apenas o nome do serviço da URL
 export SEARCH_NAME=$(echo $SEARCH_ENDPOINT | sed -e 's|https://||' -e 's|.search.windows.net.*||')
 export SEARCH_KEY=$(az search admin-key show --service-name srch-smart-staffing-prod2 -g $RG_NAME --query "primaryKey" -o tsv)
-export OPENAI_ENDPOINT=$(terraform -chdir=$TERRAFORM_DIR output -raw azure_openai_endpoint)
+
 export FUNC_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw function_app_name)
 export STG_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw storage_account_name)
 
@@ -49,7 +59,7 @@ echo "📝 Gravando variáveis no arquivo .env..."
 cat <<EOF > .env
 SEARCH_ENDPOINT="$SEARCH_ENDPOINT"
 SEARCH_KEY="$SEARCH_KEY"
-AZURE_OPENAI_ENDPOINT="$OPENAI_ENDPOINT"
+AZURE_OPENAI_ENDPOINT="$AZURE_OPENAI_ENDPOINT"
 AZURE_OPENAI_API_KEY="$AZURE_OPENAI_API_KEY"
 OPENAI_API_VERSION="2024-02-01"
 AZURE_STORAGE_CONNECTION_STRING="$AZURE_STORAGE_CONNECTION_STRING"
@@ -64,7 +74,7 @@ echo "--------------------------------------------------------"
 echo "✅ AMBIENTE CONFIGURADO COM SUCESSO!"
 echo "RG:         $RG_NAME"
 echo "Search:     $SEARCH_ENDPOINT"
-echo "OpenAI:     $OPENAI_ENDPOINT"
+echo "OpenAI:     $AZURE_OPENAI_ENDPOINT"
 echo "Function:   $FUNC_NAME"
 echo "Storage:    $STG_NAME"
 echo "--------------------------------------------------------"

@@ -17,7 +17,7 @@ terraform {
 
   backend "azurerm" {
     resource_group_name  = "rg-terraform-state"
-    storage_account_name = "ststaffingragtfa18a85"
+    storage_account_name = "ststaffingragtfacfc3c"
     container_name       = "tfstate"
     key                  = "smart-staffing.terraform.tfstate"
     }

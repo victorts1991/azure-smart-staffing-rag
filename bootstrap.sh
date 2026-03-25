@@ -13,7 +13,8 @@ echo "🏁 Iniciando Bootstrap Total..."
 # 2. Criar Storage para o Terraform State
 echo "📦 Criando Storage para o State..."
 az group create --name $RG_STATE --location $LOCATION
-az storage account create --resource-group $RG_STATE --name $ST_NAME --sku Standard_LRS --encryption-services blob
+az storage account create --resource-group $RG_STATE --name $ST_NAME --sku Standard_LRS --encryption-services blob 
+
 az storage container create --name $CONTAINER --account-name $ST_NAME
 
 # 3. Criar o Service Principal e já obter as Credenciais

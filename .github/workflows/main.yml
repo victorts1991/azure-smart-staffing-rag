@@ -214,7 +214,6 @@ jobs:
           python-version: '3.11'
       - name: Sync Search Assets
         run: |
-          # Carrega as variáveis do arquivo gerado no Job 3
           set -a
           source azure.env
           set +a
