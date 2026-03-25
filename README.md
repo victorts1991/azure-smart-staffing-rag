@@ -152,6 +152,8 @@ chmod +x bootstrap.sh
 
 *Este script criará um Resource Group chamado `rg-terraform-state`. **Anote o nome da Storage Account gerada no final.***
 
+Caso de algum problema de conflito, tanto neste passo como no próximo, recomenda-se executar o script `clean.sh`.
+
 #### B. Configuração do Backend 
 Abra o arquivo `terraform/main.tf` e atualize o bloco `backend "azurerm"` com o nome da Storage Account gerada:
 
