@@ -9,6 +9,16 @@
 
 Sistema Inteligente de Alocação de Vigilantes utilizando arquitetura **RAG (Retrieval-Augmented Generation)**. O projeto combina busca vetorial, filtros geoespaciais e inteligência generativa para otimizar a logística de substituição de postos de segurança armada.
 
+---
+
+## 📺 Demonstração em Vídeo
+
+[![Demonstração do Sistema](https://img.youtube.com/vi/qz0e_IshYTk/maxresdefault.jpg)](https://www.youtube.com/watch?v=qz0e_IshYTk)
+
+*Clique na imagem acima para assistir à demonstração completa do fluxo (Infra, API e CI/CD).*
+
+---
+
 ## 🚀 O Problema e a Solução
 
 A realocação de vigilantes é um desafio crítico que envolve:
@@ -18,14 +28,6 @@ A realocação de vigilantes é um desafio crítico que envolve:
 3. **Fit Comportamental:** O perfil (Soft Skills) deve ser adequado ao tipo de posto (Ex: Escolar vs. Bancário).
 
 Este sistema utiliza **AI Enrichment** para converter endereços brutos em coordenadas e **Vector Embeddings** para analisar perfis comportamentais, entregando ao gestor uma lista de candidatos ideais com justificativas geradas por GPT-4o.
-
----
-
-## 📺 Demonstração em Vídeo
-
-[![Demonstração do Sistema](https://youtu.be/qz0e_IshYTk/0.jpg)](https://youtu.be/qz0e_IshYTk)
-
-*Clique na imagem acima para assistir à demonstração completa do fluxo (Infra, API e CI/CD).*
 
 ---
 
