@@ -44,7 +44,7 @@ def setup_datasource(idr_client):
 def sync():
     endpoint = os.environ.get("SEARCH_ENDPOINT")
     replacements = {
-        "AZURE_OPENAI_ENDPOINT": os.environ.get("OPENAI_ENDPOINT"),
+        "AZURE_OPENAI_ENDPOINT": os.environ.get("AZURE_OPENAI_ENDPOINT"),
         "GEO_FUNCTION_URL": os.environ.get("GEO_FUNCTION_URL"),
         "GEO_FUNCTION_KEY": os.environ.get("GEO_FUNCTION_KEY")
     }

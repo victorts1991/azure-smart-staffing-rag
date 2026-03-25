@@ -161,6 +161,7 @@ jobs:
           # 5. Coleta da Function
           FUNC_NAME=$(az functionapp list -g $RG --query "[0].name" -o tsv)
           FUNC_URL="https://${FUNC_NAME}.azurewebsites.net"
+          FUNC_KEY=$(az functionapp keys list --name $FUNC_NAME -g $RG --query "functionKeys.default" -o tsv)
 
           # --- GERAÇÃO DO ARQUIVO AZURE.ENV ---
           # IMPORTANTE: A primeira linha usa '>' para criar/limpar, as outras '>>' para adicionar
@@ -179,6 +180,7 @@ jobs:
           echo "MANAGED_IDENTITY_CLIENT_ID='$MSI_ID'" >> azure.env
           echo "OPENAI_API_VERSION='2024-02-01'" >> azure.env
           echo "GEO_FUNCTION_URL='$FUNC_URL'" >> azure.env
+          echo "GEO_FUNCTION_KEY='$FUNC_KEY'" >> azure.env
           
           # Output para o GitHub Actions
           echo "acrserver=$ACR_SERVER" >> $GITHUB_OUTPUT
