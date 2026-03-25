@@ -21,7 +21,7 @@ fi
 
 # Extrai apenas o nome do serviço da URL
 export SEARCH_NAME=$(echo $SEARCH_ENDPOINT | sed -e 's|https://||' -e 's|.search.windows.net.*||')
-export SEARCH_KEY=$(az search admin-key show --service-name srch-smart-staffing-prod2 -g $RG_NAME --query "primaryKey" -o tsv)
+export SEARCH_KEY=$(az search admin-key show --service-name $SEARCH_NAME -g $RG_NAME --query "primaryKey" -o tsv)
 
 export FUNC_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw function_app_name)
 export STG_NAME=$(terraform -chdir=$TERRAFORM_DIR output -raw storage_account_name)

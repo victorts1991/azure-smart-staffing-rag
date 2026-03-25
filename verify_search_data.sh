@@ -13,7 +13,7 @@ az login
 # 2. Atribui a permissão de leitura de dados do índice para o seu usuário logado
 echo "⚙️ Atribuindo papel 'Search Index Data Reader'..."
 USER_ID=$(az ad signed-in-user show --query id -o tsv)
-SEARCH_ID=$(az search service show --name srch-smart-staffing-prod2 --resource-group $RG_NAME --query id -o tsv)
+SEARCH_ID=$(az search service show --name $SEARCH_NAME --resource-group $RG_NAME --query id -o tsv)
 
 az role assignment create \
     --role "Search Index Data Reader" \
@@ -36,8 +36,10 @@ echo "🎫 Gerando Access Token..."
 AZ_TOKEN=$(az account get-access-token --resource https://search.azure.com --query accessToken -o tsv)
 
 # 4. Executa o curl
-echo "📡 Consultando o Índice 'vigilantes-index'..."
-curl -v -X GET "https://srch-smart-staffing-prod2.search.windows.net/indexes/vigilantes-index/docs/\$count?api-version=2024-03-01-Preview" \
+echo "📡 Consultando o Índice 'vigilantes-index' no endpoint: $SEARCH_ENDPOINT"
+
+# Usa a variável $SEARCH_ENDPOINT que já contém 'https://srch-staffing-xxxx.search.windows.net'
+curl -v -X GET "${SEARCH_ENDPOINT}/indexes/vigilantes-index/docs/\$count?api-version=2024-03-01-Preview" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AZ_TOKEN"
 

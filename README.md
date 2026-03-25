@@ -212,6 +212,9 @@ python scripts/data_generator.py
 Com a infraestrutura pronta e as variáveis configuradas, rode o script de sincronização para criar o Índice, o Skillset e o Indexador:
 
 ```bash
+python -m venv venv
+source venv/bin/activate  # venv\Scripts\activate no Windows
+pip install -r requirements.txt
 # Sincroniza as definições JSON locais com a Azure
 python scripts/sync_search.py
 ```
@@ -257,8 +260,9 @@ Com os dados indexados e enriquecidos, agora você pode rodar o motor de busca h
 Certifique-se de estar na raiz do projeto e com o ambiente virtual ativo. Utilize o prefixo `python -m` para garantir que o Uvicorn utilize as dependências do seu `venv` e não do Python global/Anaconda.
 
 ```bash
-# Ative o ambiente (se ainda não estiver)
-source venv/bin/activate 
+python -m venv venv
+source venv/bin/activate  # venv\Scripts\activate no Windows
+pip install -r requirements.txt
 
 # Execute os testes via módulo python (evita conflitos de PATH/Anaconda)
 python -m pytest
@@ -402,7 +406,6 @@ O Terraform utiliza um **Backend Remoto** para gerenciar o estado. Execute o scr
 chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
-> **Importante:** Anote o `storage_account_name` exibido no final do script.
 
 #### 2. Configuração do Backend 
 No arquivo `terraform/main.tf`, atualize o bloco `backend "azurerm"` com os dados gerados:
@@ -449,48 +452,38 @@ chmod +x upload_rh.sh
 ./upload_rh.sh
 ```
 
-#### B. O que acontece agora?
-O **Azure AI Search** está configurado com um **Indexer** que monitora o container `rh-uploads`. 
-1. O Indexador detecta o novo arquivo `.csv`.
-2. Ele envia cada linha para a **Azure Function** (Geocoding) para obter a localização.
-3. Ele envia o perfil comportamental para o **Azure OpenAI** para gerar os vetores (Embeddings).
-4. Os dados enriquecidos são salvos no **Vector Store**.
+### B. Monitoramento e Execução Manual
+O **Azure AI Search** utiliza um **Indexer** que monitora o container `rh-uploads`. Por padrão, ele roda a cada 5 minutos, mas você pode forçar a execução para ver o resultado na hora:
 
-> **Nota:** O processo de indexação automática ocorre a cada 5 minutos. Para forçar a indexação imediata, você pode rodar o script `python scripts/sync_search.py` novamente ou usar o comando de `run` via Azure CLI.
+1. Acesse o **Portal da Azure** e entre no seu recurso de **Azure AI Search**.
+2. No menu lateral esquerdo, vá em **Gerenciamento de Pesquisa** > **Indexadores**.
+3. Clique no indexador correspondente (ex: `vigilantes-indexer`).
+4. **Para acompanhar:** Fique atualizando a página até que o status mude para *Em Execução* ou *Sucesso*.
+5. **Para agilizar:** Clique no botão **Executar** (Run) no topo da tela. Isso ignora o agendamento e inicia o processamento imediatamente.
 
 ---
 
 #### 6. Verificação e Diagnóstico (Troubleshooting)
-Após o sinal verde (✅) no GitHub:
 
-**1. Conecte ao Cluster:**
-```bash
-az aks get-credentials -g "rg-${PREFIX}-prod" -n "${PREFIX}-aks" --overwrite-existing
-```
+Após o sinal verde (✅) no GitHub, o seu ambiente deve estar "vivo". Siga os passos abaixo para validar a conectividade:
 
-**2. Valide a Identidade (O "Crachá" do Pod):**
-Verifique se a ServiceAccount recebeu o Client ID da Azure corretamente:
-```bash
-kubectl describe sa smart-staffing-sa | grep client-id
-```
+**A. Localize o Endpoint (IP Externo):**
+* **Pelo Portal da Azure:** 
+    1. Acesse o seu recurso de **Serviços de Kubernetes (AKS)**.
+    2. No menu lateral, em **Recursos do Kubernetes**, clique em **Serviços e Entradas** (Services and Ingresses).
+    3. Procure pelo serviço `smart-staffing-service`. O **IP Externo** estará listado lá. Clique nele para copiar.
 
-**3. Verifique os Logs em Tempo Real:**
-```bash
-kubectl logs -l app=smart-staffing -f
-```
-
-**4. Teste o Endpoint:**
-Pegue o `EXTERNAL-IP` com `kubectl get svc` e dispare o teste:
+**B. Teste de Fogo (Chamada à API):**
+Substitua `<EXTERNAL_IP>` pelo IP que você copiou e dispare o teste:
 
 ```bash
 curl -X POST http://<EXTERNAL_IP>/v1/find-replacement \
 -H "Content-Type: application/json" \
 -d '{
-  "nome": "NOME_DO_VIGILANTE",
+  "nome": "Samuel Novais",
   "perfil_extra": "Busco alguém com perfil calmo para recepção hospitalar."
 }'
 ```
-
 
 ---
 

@@ -1,6 +1,11 @@
+# 0. Gerador de Sufixo Aleatório (O "Vacina" contra o Erro 409)
+resource "random_id" "suffix" {
+  byte_length = 2 # Gera 4 caracteres hexadecimais (ex: 4f2a)
+}
+
 # 1. Azure OpenAI Service
 resource "azurerm_cognitive_account" "openai" {
-  name                = "cog-smart-staffing-${var.location}"
+  name                = "cog-smart-staffing-${random_id.suffix.hex}"
   location            = var.location
   resource_group_name = var.resource_group_name
   kind                = "OpenAI"
@@ -11,7 +16,8 @@ resource "azurerm_cognitive_account" "openai" {
     type = "SystemAssigned"
   }
 
-  custom_subdomain_name = "smart-staffing-openai-${lower(var.location)}"
+  # SUBDOMÍNIO DINÂMICO: Obrigatório ser único na Azure inteira
+  custom_subdomain_name = "smart-staffing-openai-${random_id.suffix.hex}"
 }
 
 # Deployment do GPT-4o (Justificativa e Raciocínio)
@@ -50,7 +56,7 @@ resource "azurerm_cognitive_deployment" "embeddings" {
 
 # 2. Azure AI Search (O motor de busca RAG)
 resource "azurerm_search_service" "search" {
-  name                = "srch-smart-staffing-prod2"
+  name                = "srch-smart-staffing-${random_id.suffix.hex}"
   resource_group_name = var.resource_group_name
   location            = var.location
   sku                 = "standard" # Essencial para Hybrid Search e Geolocation
