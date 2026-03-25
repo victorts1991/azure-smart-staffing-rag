@@ -8,7 +8,7 @@ ST_NAME="st${PREFIX}tf$(openssl rand -hex 3)"
 CONTAINER="tfstate"
 SP_NAME="${PREFIX}-github-actions"
 
-echo "⏳ Verificando se o grupo $RG_STATE ainda está sendo deletado..."
+echo "⏳ Verificando se o grupo $RG_STATE ainda existe..."
 while [ "$(az group show --name $RG_STATE --query "properties.provisioningState" -o tsv 2>/dev/null)" == "Deleting" ]; do
     echo "Aguardando a Azure terminar de apagar o grupo antigo..."
     sleep 10
@@ -34,7 +34,7 @@ az storage container create \
     --account-name $ST_NAME \
     --auth-mode login
 
-# 3. Criar o Service Principal e já obter as Credenciais
+# 3. Cria o Service Principal e já obtém as Credenciais
 echo "🔑 Criando Service Principal e gerando credenciais..."
 SUBSCRIPTION_ID=$(az account show --query id -o tsv)
 
@@ -43,7 +43,7 @@ AZURE_CREDENTIALS=$(az ad sp create-for-rbac --name "$SP_NAME" --role contributo
                     --scopes /subscriptions/$SUBSCRIPTION_ID \
                     --sdk-auth)
 
-# Extrair o ClientID (AppID) do JSON gerado para dar a permissão de Admin
+# Extrai o ClientID (AppID) do JSON gerado para dar a permissão de Admin
 SP_APP_ID=$(echo $AZURE_CREDENTIALS | jq -r '.clientId')
 
 echo "🛡️ Elevando permissões para 'User Access Administrator'..."

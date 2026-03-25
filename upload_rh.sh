@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Configurações Iniciais
-# Altere o PREFIX se você mudou no GitHub Secrets
 PREFIX="staffrag"
 RG_NAME="rg-${PREFIX}-prod"
 CONTAINER_NAME="rh-uploads"
@@ -34,7 +33,7 @@ az storage blob upload \
 
 if [ $? -eq 0 ]; then
     echo "✅ SUCESSO: Arquivo enviado para o Azure Blob Storage."
-    echo "💡 O Azure AI Search iniciará a indexação em breve (ou você pode forçar via script de sync)."
+    echo "💡 O Azure AI Search iniciará a indexação em breve."
 else
     echo "❌ FALHA: Ocorreu um erro durante o upload."
 fi

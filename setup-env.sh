@@ -4,8 +4,6 @@
 TERRAFORM_DIR="./terraform"
 export RG_NAME="rg-staffrag-prod"
 
-
-
 echo "🔍 Coletando informações da infraestrutura no Azure..."
 
 # 2. Captura de Outputs do Terraform
@@ -32,7 +30,7 @@ echo "🔑 Recuperando chaves de acesso dinâmicas..."
 OPENAI_NAME=$(az cognitiveservices account list -g $RG_NAME --query "[0].name" -o tsv)
 export AZURE_OPENAI_API_KEY=$(az cognitiveservices account keys list --name $OPENAI_NAME -g $RG_NAME --query "key1" -o tsv)
 
-# URL da Function (Padrão Azure)
+# URL da Function
 export GEO_FUNCTION_URL="https://${FUNC_NAME}.azurewebsites.net"
 
 # Chave da Function (Necessária para o Skillset do Search autenticar na Function)
@@ -64,11 +62,6 @@ AZURE_OPENAI_API_KEY="$AZURE_OPENAI_API_KEY"
 OPENAI_API_VERSION="2024-02-01"
 AZURE_STORAGE_CONNECTION_STRING="$AZURE_STORAGE_CONNECTION_STRING"
 EOF
-
-echo "--------------------------------------------------------"
-echo "✅ AMBIENTE CONFIGURADO E .ENV ATUALIZADO!"
-
-
 
 echo "--------------------------------------------------------"
 echo "✅ AMBIENTE CONFIGURADO COM SUCESSO!"

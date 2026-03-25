@@ -1,6 +1,11 @@
 # Azure Smart Staffing RAG 🛡️
 
-![Status: Work In Progress](https://img.shields.io/badge/Status-Work%20In%20Progress-orange?style=for-the-badge&logo=github)
+![Status: Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green?style=for-the-badge&logo=github)
+![Tests: Passing](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&logo=pytest)
+![Security: Identity--First](https://img.shields.io/badge/Security-Identity--First-blue?style=for-the-badge&logo=azure)
+![Platform: Azure Cloud](https://img.shields.io/badge/Platform-Azure-0089D6?style=for-the-badge&logo=microsoftazure)
+![Engine: GPT--4o](https://img.shields.io/badge/Engine-GPT--4o-412991?style=for-the-badge&logo=openai)
+![Architecture: RAG](https://img.shields.io/badge/Architecture-RAG-orange?style=for-the-badge)
 
 Sistema Inteligente de Alocação de Vigilantes utilizando arquitetura **RAG (Retrieval-Augmented Generation)**. O projeto combina busca vetorial, filtros geoespaciais e inteligência generativa para otimizar a logística de substituição de postos de segurança armada.
 
@@ -497,9 +502,38 @@ curl -X POST http://<EXTERNAL_IP>/v1/find-replacement \
 
 ---
 
+## 🔄 Pipeline de CI/CD: GitOps & Auto-Discovery
+
+O projeto utiliza o **GitHub Actions** para implementar uma esteira de entrega contínua (CD) baseada em eventos. O diferencial desta arquitetura é o **Auto-Discovery**: o pipeline não depende de variáveis estáticas; ele interroga a Azure em tempo real para descobrir endpoints, chaves de Maps e IDs de identidade.
+
+### Estágios do Workflow (`main.yml`):
+
+1.  **Detectar Alterações**: Utiliza `paths-filter` para otimizar o tempo de execução, disparando o deploy de infraestrutura ou sincronização de busca apenas se houver mudanças nas pastas `terraform/` ou `search_assets/`.
+2.  **Infraestrutura (Terraform)**: Provisiona ou atualiza os recursos na Azure (AKS, OpenAI, AI Search) de forma idempotente.
+3.  **Deploy: Azure Functions**:
+    * Realiza o **Auto-Discovery** do nome real da Function.
+    * Injeta dinamicamente a `AZURE_MAPS_SUBSCRIPTION_KEY` nas App Settings.
+    * Realiza o build local das dependências e o deploy via Zip.
+4.  **Auto-Discovery & Secrets**: O estágio mais crítico. Ele gera um artefato `azure.env` capturando dinamicamente:
+    * Endpoints do OpenAI e AI Search.
+    * Connection Strings de Storage.
+    * **Managed Identity ClientID** (essencial para o Workload Identity no AKS).
+5.  **AI Search: Sync Pipeline**: Executa o script `sync_search.py` utilizando as variáveis descobertas para garantir que o Índice, Skillset e Indexadores estejam atualizados antes da API subir.
+6.  **CI: QA & Docker Build**:
+    * Executa testes unitários e de integração com **Pytest**.
+    * Gera a imagem Docker e faz o push para o **Azure Container Registry (ACR)**.
+7.  **CD: Deploy AKS**:
+    * Utiliza `envsubst` para injetar o `MANAGED_IDENTITY_CLIENT_ID` e a imagem do ACR nos manifestos de Kubernetes (`deployment.yaml` e `service-account.yaml`).
+    * Aplica as configurações de **HPA (Autoscaling)** e força um `rollout restart` para garantir que a versão mais nova do código esteja ativa.
+
+---
+
 ## 📁 Estrutura do Repositório: Backend & Engine RAG
 
 ```text
+├── .github/
+│   └── workflows/
+│       └── main.yml          # 🚀 Pipeline CI/CD (GitOps): Automação total com 7 estágios.
 ├── app/
 │   ├── engine/
 │   │   ├── chain.py          # 🧠 Orquestração LangChain: Define o Prompt Template e a integração com GPT-4o para gerar as justificativas.
@@ -544,4 +578,3 @@ curl -X POST http://<EXTERNAL_IP>/v1/find-replacement \
 ├── verify_search_data.sh     # 🔍 Monitor: Valida a indexação via RBAC e tokens Bearer.
 ├── requirements.txt          # 📦 Dependências do ecossistema Python/AI.
 ```
-

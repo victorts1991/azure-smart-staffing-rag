@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Carrega as variáveis de ambiente (Certifique-se que o RG_NAME e SEARCH_NAME estão lá)
+# Carrega as variáveis de ambiente
 source setup-env.sh
 
 echo "---------------------------------------------------------"
 echo "🔐 PASSO 1: Autenticação e Permissão de Dados (RBAC)"
 echo "---------------------------------------------------------"
 
-# 1. Garanta que está logado
+# 1. Garante que está logado
 az login
 
-# 2. Atribui a permissão de leitura de dados do índice para o seu usuário logado
+# 2. Atribui a permissão de leitura de dados do índice para o usuário logado
 echo "⚙️ Atribuindo papel 'Search Index Data Reader'..."
 USER_ID=$(az ad signed-in-user show --query id -o tsv)
 SEARCH_ID=$(az search service show --name $SEARCH_NAME --resource-group $RG_NAME --query id -o tsv)
