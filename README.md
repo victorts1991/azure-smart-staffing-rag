@@ -1,8 +1,8 @@
 # Azure Smart Staffing RAG 🛡️
 
-![Status: Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green?style=for-the-badge&logo=github)
-![Tests: Passing](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&logo=pytest)
-![Security: Identity--First](https://img.shields.io/badge/Security-Identity--First-blue?style=for-the-badge&logo=azure)
+![Status: Concluído](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen?style=for-the-badge&logo=github)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-AKS-blue?style=for-the-badge&logo=kubernetes)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-purple?style=for-the-badge&logo=terraform)
 ![Platform: Azure Cloud](https://img.shields.io/badge/Platform-Azure-0089D6?style=for-the-badge&logo=microsoftazure)
 ![Engine: GPT--4o](https://img.shields.io/badge/Engine-GPT--4o-412991?style=for-the-badge&logo=openai)
 ![Architecture: RAG](https://img.shields.io/badge/Architecture-RAG-orange?style=for-the-badge)
@@ -18,6 +18,14 @@ A realocação de vigilantes é um desafio crítico que envolve:
 3. **Fit Comportamental:** O perfil (Soft Skills) deve ser adequado ao tipo de posto (Ex: Escolar vs. Bancário).
 
 Este sistema utiliza **AI Enrichment** para converter endereços brutos em coordenadas e **Vector Embeddings** para analisar perfis comportamentais, entregando ao gestor uma lista de candidatos ideais com justificativas geradas por GPT-4o.
+
+---
+
+## 📺 Demonstração em Vídeo
+
+[![Demonstração do Sistema](https://youtu.be/qz0e_IshYTk/0.jpg)](https://youtu.be/qz0e_IshYTk)
+
+*Clique na imagem acima para assistir à demonstração completa do fluxo (Infra, API e CI/CD).*
 
 ---
 
