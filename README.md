@@ -56,7 +56,7 @@ graph TD
     C --> E[OpenAI Embeddings]
     D --> F[Index: Coordenadas]
     E --> G[Index: Vetores]
-    F --> H[Normalização: Custom Analyzer]
+    F --> H[Normalização: Análise Customizada]
     G --> H
     H --> I[Busca Híbrida / RAG]
     I --> J[GPT-4o: Justificativa Final]
