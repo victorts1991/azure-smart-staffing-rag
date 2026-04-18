@@ -84,7 +84,7 @@ Para evitar falhas na identificação do vigilante faltante (ex: `Maitê` vs `Ma
 
 ---
 
-## 🛠️ Stack Tecnológica (Revisada)
+## 🛠️ Stack Tecnológica
 
 * **Linguagem:** Python 3.11+
 * **Framework:** FastAPI & LangChain (Orquestração RAG)
